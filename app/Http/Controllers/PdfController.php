@@ -119,4 +119,29 @@ class PdfController extends Controller
         $pdf = PDF::loadView('members.pdf.tagging');
         return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Maklumat Acara.pdf');
     }
+
+    //
+    // Laporan
+    //
+    public function laporanKeseluruhan($id) {
+
+        // Access Limitation
+        if(Auth::user()->email != 'suhairi81@gmail.com') {
+            if(Auth::user()->agensi->agensi->id != $id){
+                Session::flash('error', 'Gagal. Tiada hak akses.');
+                return back();
+            }
+        }
+
+        $acaras = Acara::orderBy('nama', 'asc')->get();
+
+        // dd($acaras);
+
+        view()->share('acaras', $acaras);
+
+        $pdf = Pdf::loadView('members.pdf.laporan.keseluruhan');
+
+        return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Laporan Peserta Keseluruhan.pdf');
+
+    }
 }

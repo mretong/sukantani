@@ -101,15 +101,7 @@ class PesertaController extends Controller
     		'photo'			=> $filename
 		]);
 
-    	$bil = 0;
-    	$penyertaan = new Penyertaan;
-		foreach($request->get('acara') as $acara) {
-			$penyertaan->create([
-				'acara_id' 		=> $acara,
-				'peserta_id' 	=> $peserta->id
-			]);
-			$bil++;
-		}
+    	$peserta->acara->attach($request->input('acara'));
   	
     	Session::flash('success', 'Berjaya. Peserta telah direkodkan.');
 

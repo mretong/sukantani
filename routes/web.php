@@ -115,6 +115,11 @@ Route::post('/pdf/tag', [
 	'uses'	=> 'PdfController@tag'
 ]);
 
+Route::get('/pdf/laporan/keseluruhan/{id}', [
+	'as'	=> 'pdf-laporan-keseluruhan',
+	'uses'	=> 'PdfController@laporanKeseluruhan'
+]);
+
 
 //
 // Laporan

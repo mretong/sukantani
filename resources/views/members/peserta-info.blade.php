@@ -57,9 +57,13 @@ input {
 					<tr>
 						<td><strong>Acara</strong></td>
 						<td valign="top">
-							@foreach($acaras as $acara)
-								{{ $loop->index+1 }}. {{ $acara }} <br />
+						@unless($peserta->acara->isEmpty())
+							<ul>
+							@foreach($peserta->acara as $acara)
+								<li>{{ $acara->nama }}</li>
 							@endforeach
+							</ul>
+						@endunless
 						</td>
 					</tr>
 				</table>

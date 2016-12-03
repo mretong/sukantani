@@ -17,39 +17,7 @@ class LaporanController extends Controller
 
     	$acaras = Acara::orderBy('nama', 'asc')->get();
 
-    	// dd($acaras);
-
-    	$lists = Array();
-
-    	foreach($acaras as $acara) {
-
-    		$penyertaan = Penyertaan::where('acara_id', $acara->id)
-    					->orderBy('id', 'asc')
-    					->get();
-
-			$lists[$acara->id] = $penyertaan;
-
-    	}
-
-    	$peserta = Array();
-    	$temp = Array();
-    	$bil = 0;
-    	foreach($lists as $acara=>$list) {
-
-    		$temp = Peserta::where('id', $list[$acara]->peserta_id)
-    				->where('agensi_id', Auth::user()->agensi_id)
-    				->first();
-			
-			// dd($temp);
-			
-			if($temp != null) {
-				array_push($peserta[$acara], $temp);
-			}    		
-    	}
-
-    	dd($peserta);
-
-    	return View('members.laporan.keseluruhan', compact('acaras', 'lists', 'peserta'));
+        return View('members.laporan.keseluruhan', compact('acaras'));
 
     }
 }

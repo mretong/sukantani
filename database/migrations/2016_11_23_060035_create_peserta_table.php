@@ -24,7 +24,7 @@ class CreatePesertaTable extends Migration
             $table->string('tarikhLantikan');
             $table->string('vege', 10);
             $table->string('noAtlet', 7);
-            $table->string('photo', 50);
+            $table->string('photo', 255);
             $table->integer('agensi_id', false, false);
         });
     }
