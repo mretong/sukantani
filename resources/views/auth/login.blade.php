@@ -17,11 +17,14 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group has-success">
                             <label for="email" class="col-md-4 control-label">Kata Nama</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class=" glyphicon glyphicon-envelope"></span> </span>
+                                    <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                </div>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -31,11 +34,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group has-success">
                             <label for="password" class="col-md-4 control-label">Kata Laluan</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icon-key"></i> </span>
+                                    <input id="password" type="password" class="form-control" name="password" required>
+                                </div>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">

@@ -49,6 +49,18 @@ Route::get('/peserta/kemaskini/{id}', [
 	'uses'	=> 'PesertaController@kemaskini'
 ]);
 
+Route::post('/peserta/kemaskini', [
+	'as'	=> 'peserta-kemaskini-post',
+	'uses'	=> 'PesertaController@kemaskiniPost'
+]);
+
+
+// Info
+Route::get('/peserta/info/{id}', [
+	'as'	=> 'peserta-info',
+	'uses'	=> 'PesertaController@info'
+]);
+
 //
 // CARIAN
 //
@@ -60,4 +72,64 @@ Route::get('/carian', [
 Route::post('/carian', [
 	'as'	=> 'carian-post',
 	'uses'	=> 'CarianController@carian'
+]);
+
+Route::get('/carian-nama', [
+	'as'	=> 'carian-nama',
+	'uses'	=> 'CarianController@carianNama'
+]);
+
+Route::post('/carian-nama', [
+	'as'	=> 'carianNama-post',
+	'uses'	=> 'CarianController@carianNamaResult'
+]);
+
+//
+// Tagging
+//
+Route::get('/tagging', [
+	'as'	=> 'tagging',
+	'uses'	=> 'TaggingController@index'
+]);
+
+//
+// PDF
+//
+Route::get('/pdf/{agensi_id}', [
+	'as'	=> 'pdf-kontinjen',
+	'uses'	=> 'PdfController@kontinjen'
+]);
+
+Route::get('/pdf/acara/{id}', [
+	'as'	=> 'pdf-acara',
+	'uses'	=> 'PdfController@acara'
+]);
+
+Route::get('/pdf/peserta/{id}', [
+	'as'	=> 'pdf-peserta',
+	'uses'	=> 'PdfController@peserta'
+]);
+
+Route::post('/pdf/tag', [
+	'as'	=> 'pdf-tag',
+	'uses'	=> 'PdfController@tag'
+]);
+
+
+//
+// Laporan
+//
+Route::get('/laporan/keseluruhan', [
+	'as'	=> 'laporan-keseluruhan',
+	'uses'	=> 'LaporanController@keseluruhan'
+]);
+
+
+
+//
+// Settings
+//
+Route::get('/setting/1', [
+	'as'	=> 'setting1',
+	'uses'	=> 'SettingsController@setting1'
 ]);

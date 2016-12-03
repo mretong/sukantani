@@ -19,16 +19,5 @@ class UsersTableSeeder extends Seeder
             'password'      => bcrypt('suhairi'),
             'agensi_id'     => '1'
         ]);
-
-        User::create([
-        	'name' 			=> strtoupper('kada'),
-        	'email'			=> 'kada@gmail.com',
-        	'password'		=> bcrypt('kada'),
-        	'agensi_id'		=> '2'
-    	]);
-
-
-
-
     }
 }

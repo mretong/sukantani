@@ -16,18 +16,18 @@ class CreateKontinjensTable extends Migration
         Schema::create('kontinjens', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->string('ketua');
-            $table->string('timbalan');
-            $table->string('urusetia1');
-            $table->string('urusetia2');
-            $table->string('urusetia3');
-            $table->string('urusetia4');
-            $table->string('urusetia5');
-            $table->string('urusetia6');
-            $table->string('urusetia7');
-            $table->string('urusetia8');
-            $table->string('urusetia9');
-            $table->string('urusetia10');
+            $table->string('ketua')->nullable();
+            $table->string('timbalan')->nullable();
+            $table->string('urusetia1')->nullable();
+            $table->string('urusetia2')->nullable();
+            $table->string('urusetia3')->nullable();
+            $table->string('urusetia4')->nullable();
+            $table->string('urusetia5')->nullable();
+            $table->string('urusetia6')->nullable();
+            $table->string('urusetia7')->nullable();
+            $table->string('urusetia8')->nullable();
+            $table->string('urusetia9')->nullable();
+            $table->string('urusetia10')->nullable();
             $table->string('agensi_id');
         });
     }

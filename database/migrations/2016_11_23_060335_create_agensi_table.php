@@ -17,6 +17,7 @@ class CreateAgensiTable extends Migration
             $table->increments('id');
             $table->string('nama');
             $table->string('kod');
+            $table->string('kod2');
         });
     }
 

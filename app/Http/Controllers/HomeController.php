@@ -8,6 +8,8 @@ use Auth;
 
 use Session;
 
+use App\Peserta;
+
 class HomeController extends Controller
 {
     /**
@@ -27,7 +29,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $kontinjen = Kontinjen::where('agensi_id', Auth::User()->agensi_id)->first();
 
         return view('home', compact('kontinjen'));

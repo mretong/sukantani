@@ -12,7 +12,7 @@ input {
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-8 col-xs-offset-1">
+        <div class="col-xs-9">
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>{{ Auth::User()->agensi->kod }} :: {{ Auth::User()->agensi->nama }}</strong></div>
 
@@ -21,7 +21,7 @@ input {
                 	<br />
                     <table class="table table-hover">
                     	<tr>
-                    		<th colspan="6">Senarai Peserta </th>
+                    		<th colspan="7">Senarai Peserta </th>
                     		<th colspan="3"><div align="right">(Jumlah : {{ $count }} Peserta)</div></th>
                     	</tr>
 						<tr>
@@ -40,7 +40,7 @@ input {
 						@if(!empty($participants))
 							@foreach($participants as $participant)
 								<tr>
-									<td>{{ $participant->nama }}</td>
+									<td><a href="{{ route('peserta-info', $participant->id) }}" title="Klik Untuk Maklumat Profil" target="_blank"> {{ $participant->nama }}</a></td>
 									<td>{{ $participant->nokp }}</td>
 									<td>{{ $participant->jantina }}</td>
 									<td>{{ $participant->tarafJawatan }}</td>
@@ -80,9 +80,17 @@ input {
                 <div class="panel-body">
 
         		{!! Form::open(['files' => 'true', 'autocomplete' => 'off']) !!}
-                	
-                {!! Form::label('Nama Penuh') !!}	
-				{!! Form::text('nama', '', ['class' => 'form-control', 'autofocus' => 'on']) !!}
+
+        		<div class="form-group">
+	        		{!! Form::label('Adakah Vegetarian?') !!}<br />
+					{!! Form::radio('vege', 'YA', true) !!} YA <br />
+					{!! Form::radio('vege', 'TIDAK', true) !!} TIDAK <br />
+                </div>
+
+                <div class="form-group">
+                	{!! Form::label('Nama Penuh') !!}	
+                	{!! Form::text('nama', '', ['class' => 'form-control', 'autofocus' => 'on']) !!}
+            	</div>
 
 				{!! Form::label('No Kad Pengenalan') !!}	
 				{!! Form::text('nokp', '', ['class' => 'form-control', 'placeholder' => '710150025697']) !!}
@@ -94,13 +102,13 @@ input {
 				{!! Form::text('tarafJawatan', '', ['class' => 'form-control', 'placeholder' => 'Contoh : TETAP']) !!}
 
 				{!! Form::label('Gred jawatan') !!}	
-				{!! Form::text('gredJawatan', '', ['class' => 'form-control']) !!}
+				{!! Form::text('gredJawatan', '', ['class' => 'form-control', 'placeholder' => 'CONTOH : E41']) !!}
 
 				{!! Form::label('No Pekerja / No KWSP') !!}	
 				{!! Form::text('noPekerja', '', ['class' => 'form-control']) !!}
 
 				{!! Form::label('Tarikh lantikan') !!}	
-				{!! Form::text('tarikhLantikan', '', ['class' => 'form-control', 'placeholder' => 'Contoh: 06082008']) !!}
+				{!! Form::text('tarikhLantikan', '', ['class' => 'form-control', 'placeholder' => 'Contoh: 16082008']) !!}
 
 				{!! Form::label('Acara') !!}
 				@foreach($games as $game)
@@ -115,8 +123,6 @@ input {
 				{!! Form::file('photo', '', ['class' => 'form-control']) !!}
 
 				{!! Form::hidden('agensi_id', Auth::user()->agensi_id) !!}
-
-
 
 				<div align="right"><button class="btn btn-primary">Tambah Peserta</button></div>
 

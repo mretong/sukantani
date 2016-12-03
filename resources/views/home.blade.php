@@ -22,6 +22,7 @@ input {
 
     <div class="row">
         <div class="col-xs-6">
+        <div align="right"><span class="glyphicon glyphicon-download-alt"></span> <a href="{{ route('pdf-kontinjen', Auth::user()->agensi_id) }}" target="_blank"> PDF </a></div>
             <div class="panel panel-primary">
                 <div class="panel-heading"><h4>Maklumat Kontinjen</h4></div>
                 <div class="panel-body">
@@ -88,7 +89,7 @@ input {
             <div class="panel panel-primary">
                 <div class="panel-heading"><h4>Kemaskini Maklumat Kontinjen</h4></div>
                 <div class="panel-body">
-                {!! Form::model(@$kontinjen, ['route' => ['kontinjen-post', @$kontinjen], 'method' => 'post']) !!}
+                {!! Form::model(@$kontinjen, ['route' => ['kontinjen-post', @$kontinjen], 'method' => 'post', 'autocomplete' => 'off']) !!}
 
                 {!! Form::label('Nama Kontinjen') !!}
                 {!! Form::text('nama', Auth::user()->agensi->nama, ['class' => 'form-control', 'readonly']) !!}

@@ -9,6 +9,13 @@
     <meta name="author" content="">
     <link rel="icon" href="images/mada.ico">
 
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    
+
+
     <title>MADA :: Sistem Pendaftaran Sukan Tani</title>
 
     <!-- Bootstrap core CSS -->
@@ -37,17 +44,42 @@
           <ul class="nav navbar-nav">
             <li><a href="{{ url('/home')}}">Home</a></li>
             <li><a href="{{ route('peserta')}}">Peserta</a></li>
-            <li><a href="{{ route('carian') }}">Carian</a></li>
+            
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carian <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ route('carian') }}">Carian Mengikut Acara</a></li>
+                <li><a href="{{ route('carian-nama') }}">Carian Mengikut Nama</a></li>
+
+                @if(Auth::user()->agensi_id == 1)
+                  <li><a href="#">[ Admin ] :: Carian Mengikut Agensi dan Acara</a></li>
+                @endif
+              </ul>
+            </li>
+
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Laporan <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Laporan Senarai peserta</a></li>
-                <li><a href="#">Laporan Jumlah Keseluruhan Peserta</a></li>
+                @if(Auth::user()->agensi->id == 1)
+                  <li><a href="{{ route('tagging') }}" target="_blank">ADMIN :: Senarai Tag Peserta</a></li>
+                @endif
+                <li><a href="{{ route('laporan-keseluruhan') }}">Laporan Jumlah Keseluruhan Peserta</a></li>
                 <li><a href="#">Laporan Keseluruhan Penyertaan Acara</a></li>
                 <li><a href="#">Laporan Keseluruhan Acara Mengikut Jantina</a></li>
                 <li><a href="#">Laporan Senarai Peserta Persembahan Kebudayaan</a></li>
               </ul>
             </li>
+
+            @if(Auth::user()->email == 'suhairi81@gmail.com')
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Settings <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ route('setting1') }}">Remove peserta_id not_in peserta</a></li>
+              </ul>
+            </li>
+            @endif
+
+
           </ul>
           <!-- Right Side Of Navbar -->
           <ul class="nav navbar-nav navbar-right">
@@ -80,11 +112,11 @@
     </nav>
 
     @if(Session::has('error'))
-      <div class="alert alert-danger">{{ Session::get('error') }}</div>
+      <div class="alert alert-danger"><strong>{{ Session::get('error') }}</strong></div>
     @endif
 
     @if(Session::has('success'))
-      <div class="alert alert-success">{{ Session::get('success') }}</div>
+      <div class="alert alert-success"><strong>{{ Session::get('success') }}</strong></div>
     @endif
 
     @if (count($errors) > 0)
