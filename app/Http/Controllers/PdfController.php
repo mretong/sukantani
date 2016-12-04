@@ -135,11 +135,14 @@ class PdfController extends Controller
             }
         }
 
-        $acaras = Acara::orderBy('nama', 'asc')->get();
+        $pesertas = Peserta::where('agensi_id', Auth::user()->agensi->id)
+                    ->orderBy('vege', 'desc')
+                    ->orderBy('jantina', 'asc')
+                    ->orderBy('tarafJawatan', 'desc')
+                    ->orderBy('nama', 'asc')
+                    ->get();
 
-        // dd($acaras);
-
-        view()->share('acaras', $acaras);
+        view()->share('pesertas', $pesertas);
 
         $pdf = Pdf::loadView('members.pdf.laporan.keseluruhan');
 

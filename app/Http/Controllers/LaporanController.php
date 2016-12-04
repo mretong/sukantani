@@ -16,7 +16,9 @@ class LaporanController extends Controller
     public function keseluruhan() {
 
     	$pesertas = Peserta::where('agensi_id', Auth::user()->agensi->id)
+                    ->orderBy('vege', 'desc')
                     ->orderBy('jantina', 'asc')
+                    ->orderBy('tarafJawatan', 'desc')
                     ->orderBy('nama', 'asc')
                     ->get();
 

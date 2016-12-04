@@ -125,6 +125,14 @@ Route::get('/pdf/laporan/keseluruhan/{id}', [
 	'uses'	=> 'PdfController@laporanKeseluruhan'
 ]);
 
+//
+// EXCEL
+//
+Route::get('/excel/keseluruhan', [
+	'as'	=> 'excel-keseluruhan',
+	'uses'	=> 'ExcelController@keseluruhan'
+]);
+
 
 //
 // Laporan
