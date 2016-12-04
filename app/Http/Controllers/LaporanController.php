@@ -15,9 +15,19 @@ class LaporanController extends Controller
 {
     public function keseluruhan() {
 
+    	$pesertas = Peserta::where('agensi_id', Auth::user()->agensi->id)
+                    ->orderBy('jantina', 'asc')
+                    ->orderBy('nama', 'asc')
+                    ->get();
+
+        return View('members.laporan.keseluruhan', compact('pesertas'));
+    }
+
+    // Members
+    public function acaraKeseluruhan() {
+    	
     	$acaras = Acara::orderBy('nama', 'asc')->get();
 
-        return View('members.laporan.keseluruhan', compact('acaras'));
-
+    	return view('members.laporan.acara-keseluruhan', compact('acaras'));
     }
 }

@@ -10,6 +10,7 @@ use Auth;
 use App\Acara;
 use App\Penyertaan;
 use App\Peserta;
+use App\Agensi;
 
 class CarianController extends Controller
 {
@@ -74,5 +75,13 @@ class CarianController extends Controller
                     ->paginate(10);
 
         return view('members.keputusanCarianNama', compact('participants', 'count'));
+    }
+
+    public function carianAcaraAgensi() {
+
+        $acaras = Acara::orderBy('nama', 'asc')->get();
+        $agencies = Agensi::orderBy('nama', 'asc')->get();
+
+        return view('members.carian-acara-agensi', compact('acaras', 'agencies'));
     }
 }					

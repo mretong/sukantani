@@ -16,7 +16,7 @@
                 	<br />
 	                <table class="table table-hover">
 	                	<tr>
-	                		<th colspan="8">Acara {{ ucWords(strtolower($acara->nama)) }} </th>
+	                		<th colspan="8">#{{ $loop->index + 1 }} Acara {{ ucWords(strtolower($acara->nama)) }} </th>
 	                	</tr>
 						<tr>
 							<td><strong>Bil</strong></td>

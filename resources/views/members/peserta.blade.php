@@ -31,8 +31,7 @@ input {
 							<td><strong>Taraf Jawatan</strong></td>
 							<td><strong>Gred jawatan</strong></td>
 							<td><strong>No Pekerja / No KWSP</strong></td>		
-							<td><strong>Tarikh Lantikan</strong></td>
-							<td><strong>Agensi</strong></td>
+							<td><strong>Acara</strong></td>
 							<td><strong>Foto</strong></td>
 							<td><strong>Pilihan</strong></td>
 						</tr>
@@ -40,14 +39,27 @@ input {
 						@if(!empty($participants))
 							@foreach($participants as $participant)
 								<tr>
-									<td><a href="{{ route('peserta-info', $participant->id) }}" title="Klik Untuk Maklumat Profil" target="_blank"> {{ $participant->nama }}</a></td>
+									<td>
+									<a href="{{ route('peserta-info', $participant->id) }}" title="Klik Untuk Maklumat Profil" target="_blank"> {{ $participant->nama }}</a><br />
+									{{ $participant->id }} <br />
+									{{ $participant->noAtlet }}
+
+									</td>
 									<td>{{ $participant->nokp }}</td>
 									<td>{{ $participant->jantina }}</td>
 									<td>{{ $participant->tarafJawatan }}</td>
 									<td>{{ $participant->gredJawatan }}</td>
 									<td>{{ $participant->noPekerja }}</td>
-									<td>{{ $participant->tarikhLantikan }}</td>
-									<td>{{ $participant->agensi->kod }}</td>									
+									<td>
+									@unless($participant->acara->isEmpty())
+										<ul>
+										@foreach($participant->acara as $acara)
+											<li>{{ $acara->nama }}</li>
+										@endforeach
+										</ul>
+									@endunless
+
+									</td>									
 									<td>
 										@if($participant->photo)
 											<img src="{{ asset($participant->photo) }}" height="50" width="50">

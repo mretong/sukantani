@@ -52,7 +52,7 @@
                 <li><a href="{{ route('carian-nama') }}">Carian Mengikut Nama</a></li>
 
                 @if(Auth::user()->agensi_id == 1)
-                  <li><a href="#">[ Admin ] :: Carian Mengikut Agensi dan Acara</a></li>
+                  <li><a href="{{ route('carian-acara-agensi') }}">[ Admin ] :: Carian Mengikut Agensi dan Acara</a></li>
                 @endif
               </ul>
             </li>
@@ -64,7 +64,7 @@
                   <li><a href="{{ route('tagging') }}" target="_blank">ADMIN :: Senarai Tag Peserta</a></li>
                 @endif
                 <li><a href="{{ route('laporan-keseluruhan') }}">Laporan Jumlah Keseluruhan Peserta</a></li>
-                <li><a href="#">Laporan Keseluruhan Penyertaan Acara</a></li>
+                <li><a href="{{ route('acara-keseluruhan') }}">Laporan Keseluruhan Penyertaan Acara</a></li>
                 <li><a href="#">Laporan Keseluruhan Acara Mengikut Jantina</a></li>
                 <li><a href="#">Laporan Senarai Peserta Persembahan Kebudayaan</a></li>
               </ul>
@@ -76,6 +76,7 @@
               <ul class="dropdown-menu">
                 <li><a href="{{ route('setting1') }}">Remove peserta_id not_in peserta</a></li>
                 <li><a href="{{ route('setting2') }}">Remove penyertaan that exceed limit</a></li>
+                <li><a href="{{ route('setting3') }}">Remove peserta with no acara</a></li>
               </ul>
             </li>
             @endif

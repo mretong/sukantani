@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Session;
+
 use App\Penyertaan;
 use App\Peserta;
 use App\Acara;
@@ -82,7 +84,25 @@ class SettingsController extends Controller
             } // end of foreach acara
         }//end of foreach agency
 
-        Session::flash('success', 'Berjaya. Semua acara yg melebihi pemain telah ditapis.')
-        return back();
+        Session::flash('success', 'Berjaya. Semua acara yg melebihi pemain telah ditapis.');
+        return redirect('/home');
+    }
+
+    //
+    // Remove peserta with no acara
+    //
+    public function setting3() {
+        
+        $pesertas = Peserta::all();
+
+        foreach($pesertas as $peserta) {
+
+            if($peserta->acara->isEmpty()) {
+                $peserta->delete();
+            }
+        }
+
+        Session::flash('success', 'Berjaya. Semua peserta yang tiada acara telah dihapuskan.');
+        return redirect('/home');
     }
 }
