@@ -138,3 +138,17 @@ Route::get('/setting/1', [
 	'as'	=> 'setting1',
 	'uses'	=> 'SettingsController@setting1'
 ]);
+
+Route::get('/setting/2', [
+	'as'	=> 'setting2',
+	'uses'	=> 'SettingsController@setting2'
+]);
+
+
+//
+// Nota
+//
+Route::get('/nota', [
+	'as'	=> 'nota',
+	'uses'	=> 'NotaController@index'
+]);

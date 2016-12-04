@@ -16,7 +16,7 @@ class PesertaTableSeeder extends Seeder
     public function run()
     {
 
-    	factory(App\Peserta::class, 1500)->create();
+    	factory(App\Peserta::class, 5000)->create();
 	
     	$pesertas = Peserta::all();
 

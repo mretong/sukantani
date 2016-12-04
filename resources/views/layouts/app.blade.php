@@ -75,9 +75,11 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Settings <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="{{ route('setting1') }}">Remove peserta_id not_in peserta</a></li>
+                <li><a href="{{ route('setting2') }}">Remove penyertaan that exceed limit</a></li>
               </ul>
             </li>
             @endif
+            <li><a href="{{ route('nota')}}">Nota</a></li>
 
 
           </ul>

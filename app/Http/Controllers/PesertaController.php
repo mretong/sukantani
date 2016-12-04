@@ -101,7 +101,7 @@ class PesertaController extends Controller
     		'photo'			=> $filename
 		]);
 
-    	$peserta->acara->attach($request->input('acara'));
+    	$peserta->acara()->attach($request->input('acara'));
   	
     	Session::flash('success', 'Berjaya. Peserta telah direkodkan.');
 
@@ -121,7 +121,7 @@ class PesertaController extends Controller
     	else
     		Session::flash('error', 'Gagal. Peserta gagal dihapus.');
 
-    	return redirect('/peserta');
+    	return back();
 
     }
 
@@ -170,8 +170,10 @@ class PesertaController extends Controller
             Session::flash('error', 'Ruangan nama, nokp, acara dan agensi adalah wajib diisi. <br />Perlu diisi dengan format yang betul');
             return redirect('/peserta');
         }
+        
+        $peserta = Peserta::where('id', $request->id)->first();
 
-        $filename = '';
+        $filename = $peserta->photo;
         if(!empty($request->file('photo'))) {
             $destination = 'images/peserta/';
             $filename = $destination . time() . '-' . $request->get('nama') . '.' . $request->file('photo')->getClientOriginalExtension();
@@ -181,7 +183,7 @@ class PesertaController extends Controller
             if($request->file('photo')->move($destination, $filename));
         }
 
-        $peserta = Peserta::where('id', $request->id)->first();
+        
 
         $peserta->nama          = $request->get('nama');
         $peserta->nokp          = $request->get('nokp');
@@ -227,20 +229,7 @@ class PesertaController extends Controller
 
         $peserta = Peserta::where('id', $id)->first();        
 
-        // dd($peserta->nama);
-        $penyertaans = Penyertaan::where('peserta_id', $id)->get();
-
-        $acaras = [];
-
-        foreach($penyertaans as $penyertaan) {
-
-            // dd($penyertaan);
-
-            $temp = Acara::where('id', $penyertaan->acara_id)->first();
-            array_push($acaras, $temp->nama);
-        }
-
-        return view('members.peserta-info', compact('acaras', 'peserta'));
+        return view('members.peserta-info', compact('peserta'));
     }
 
 }

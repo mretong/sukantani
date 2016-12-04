@@ -1,5 +1,6 @@
 /node_modules
 /public/storage
+/public/images/peserta
 /vendor
 /.idea
 Homestead.json

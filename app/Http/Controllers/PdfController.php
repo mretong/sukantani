@@ -81,7 +81,7 @@ class PdfController extends Controller
         // check wether its from the right agensi_id
         $peserta = Peserta::where('id', $id)->first();
 
-        if(Auth::user()->agensi->id != 1) {
+        if(Auth::user()->agensi->id != $peserta->agensi_id) {
 
             if($peserta->agensi_id != Auth::user()->agensi->id){
                 Session::flash('error', 'Gagal. Peserta ini bukan dari agensi anda.');
@@ -89,7 +89,9 @@ class PdfController extends Controller
             }
         }
 
-        return view('members.pdf.peserta-info');
+        view()->share('peserta', $peserta);
+        $pdf = Pdf::loadView('members.pdf.peserta-info');
+        return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Profil Atlet.pdf');
     }
 
     //
