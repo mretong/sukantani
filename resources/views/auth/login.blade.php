@@ -63,4 +63,20 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('js')
+
+<script type="text/javascript">
+
+    swal({
+      title: "<strong>Peringatan Mesra</strong>",
+      text: "Pendaftaran Online akan dibuka pada 15 Disember 2016 sehingga 2 Disember 2017.",
+      html: true
+    });
+
+</script>
+
+
 @endsection

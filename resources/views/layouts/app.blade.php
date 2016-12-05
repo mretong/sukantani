@@ -13,6 +13,10 @@
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
+    <!-- Sweet Alert -->
+    <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet">
+    <script src="{{ asset('/js/sweetalert-dev.js') }}"></script>
+
     
 
 
@@ -62,6 +66,7 @@
               <ul class="dropdown-menu">
                 @if(Auth::user()->agensi->id == 1)
                   <li><a href="{{ route('tagging') }}" target="_blank">ADMIN :: Senarai Tag Peserta</a></li>
+                  <li><a href="{{ route('penginapan') }}" target="_blank">ADMIN :: Penginapan</a></li>
                 @endif
                 <li><a href="{{ route('laporan-keseluruhan') }}">Laporan Jumlah Keseluruhan Peserta</a></li>
                 <li><a href="{{ route('acara-keseluruhan') }}">Laporan Keseluruhan Penyertaan Acara</a></li>
@@ -141,8 +146,10 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->    
     <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>    
-    <script src="/js/app.min.js"></script>
+    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>  
+    <script src="{{ asset('/js/app.min.js') }}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    @yield('js')
   </body>
 </html>

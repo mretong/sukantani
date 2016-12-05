@@ -1,4 +1,4 @@
-@extends('layouts.pdf')
+@extends('layouts.app')
 
 @section('content')
 

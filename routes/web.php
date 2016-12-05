@@ -147,6 +147,11 @@ Route::get('/laporan/acara/keseluruhan', [
 	'uses'	=> 'LaporanController@acaraKeseluruhan'
 ]);
 
+Route::get('/laporan/penginapan', [
+	'as'	=> 'penginapan',
+	'uses'	=> 'LaporanController@penginapan'
+]);
+
 
 
 //
