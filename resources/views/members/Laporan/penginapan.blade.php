@@ -5,6 +5,11 @@
 <div class="container">
 	
 	<div class="col-xs-4">
+
+		<div align="right"><span class="glyphicon glyphicon-download-alt"> </span> 
+        	<a href="{{ route('pdf-penginapan') }}" target="_blank">PDF</a>&nbsp;&nbsp;
+        	<a href="{{ route('excel-penginapan') }}" target="_blank">Excel</a>&nbsp;&nbsp;
+    	</div>
 			
 		<div class="panel panel-primary">
 			<div class="panel-heading"><h4>Ringkasan Maklumat Penginapan</h4></div>
@@ -42,7 +47,7 @@
 							<td>
 								<hr />
 								<div align="right"><strong>### KESELURUHAN ###</strong><br />
-								LELAKI :  <br />
+								LELAKI :  {{ $acaras-><br />
 								WANITA :  <hr height="2" />
 								</div>
 

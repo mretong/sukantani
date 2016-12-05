@@ -125,12 +125,22 @@ Route::get('/pdf/laporan/keseluruhan/{id}', [
 	'uses'	=> 'PdfController@laporanKeseluruhan'
 ]);
 
+Route::get('/pdf/laporan/penginapan', [
+	'as'	=> 'pdf-penginapan',
+	'uses'	=> 'PdfController@penginapan'
+]);
+
 //
 // EXCEL
 //
 Route::get('/excel/keseluruhan', [
 	'as'	=> 'excel-keseluruhan',
 	'uses'	=> 'ExcelController@keseluruhan'
+]);
+
+Route::get('/excel/laporan/penginapan', [
+	'as'	=> 'excel-penginapan',
+	'uses'	=> 'ExcelController@penginapan'
 ]);
 
 

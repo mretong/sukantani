@@ -149,4 +149,20 @@ class PdfController extends Controller
         return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Laporan Peserta Keseluruhan.pdf');
 
     }
+
+    //
+    // ADMIN :: Penginapan
+    //
+    public function penginapan() {
+
+        $acaras = Acara::limit(8)->get();
+        $agencies = Agensi::limit(2)->get();
+
+        view()->share('acaras', $acaras);
+        view()->share('agencies', $agencies);
+
+        $pdf = Pdf::loadView('members.pdf.laporan.penginapan');
+
+        return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Ringkasan Penginapan.pdf');
+    }
 }
