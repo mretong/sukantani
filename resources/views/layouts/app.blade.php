@@ -75,7 +75,7 @@
                 <li><a href="{{ route('laporan-keseluruhan') }}">Laporan Jumlah Keseluruhan Peserta</a></li>
                 <li><a href="{{ route('acara-keseluruhan') }}">Laporan Keseluruhan Penyertaan Acara</a></li>
                 <li><a href="#">Laporan Keseluruhan Acara Mengikut Jantina</a></li>
-                <li><a href="#">Laporan Senarai Peserta Persembahan Kebudayaan</a></li>
+                <li><a href="{{ route('senarai-semak') }}">Senarai Semak</a></li>
               </ul>
             </li>
 
@@ -90,6 +90,7 @@
             </li>
             @endif
             <li><a href="{{ route('nota')}}">Nota</a></li>
+            <li><a href="{{ url('/pengesahan')}}">Pengesahan</a></li>
 
 
           </ul>

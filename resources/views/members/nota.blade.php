@@ -21,8 +21,8 @@
 
 		<h4><strong>Menu</strong></h4>
 		<ul>
-			<li>Pendafataran/Kemaskini Maklumat Kontinjen</li>
-			<li>Pendaftaran/Kemaskini/Profil Peserta</li>
+			<li>Pendafataran/Kemaskini <strong>Maklumat Kontinjen</strong></li>
+			<li>Pendaftaran/Kemaskini/Profil <strong>Peserta</strong></li>
 			<li><strong>Carian</strong>
 				<ul>
 					<li>Carian Mengikut Nama</li>
@@ -36,6 +36,10 @@
 				</ul>				
 			</li>
 		</ul>
+
+		<h4><strong>Keperluan</strong></h4>
+		<ul>
+			<li>Logo Sukan Tani</li>
 
 
 

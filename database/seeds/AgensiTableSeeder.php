@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Agensi;
 use App\User;
 use App\Kontinjen;
+use App\Pengesahan;
 
 class AgensiTableSeeder extends Seeder
 {
@@ -36,6 +37,11 @@ class AgensiTableSeeder extends Seeder
             'agensi_id' => $agensi->id
         ]);
 
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
+        ]);
+
         // 2 => KADA
 
         Agensi::create([
@@ -59,6 +65,11 @@ class AgensiTableSeeder extends Seeder
             'agensi_id' => $agensi->id
         ]);
 
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
+        ]);
+
         // 3 => MARDI
 
         Agensi::create([
@@ -80,6 +91,11 @@ class AgensiTableSeeder extends Seeder
         Kontinjen::create([
             'nama' => $agensi->nama,
             'agensi_id' => $agensi->id
+        ]);
+
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
         ]);
 
 
@@ -106,6 +122,11 @@ class AgensiTableSeeder extends Seeder
             'agensi_id' => $agensi->id
         ]);
 
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
+        ]);
+
 
         // 5 => JABATAN PERIKANAN
 
@@ -128,6 +149,11 @@ class AgensiTableSeeder extends Seeder
         Kontinjen::create([
             'nama' => $agensi->nama,
             'agensi_id' => $agensi->id
+        ]);
+
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
         ]);
         
 
@@ -154,6 +180,11 @@ class AgensiTableSeeder extends Seeder
             'agensi_id' => $agensi->id
         ]);
 
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
+        ]);
+
 
         // 7 => LKIM
 
@@ -176,6 +207,11 @@ class AgensiTableSeeder extends Seeder
         Kontinjen::create([
             'nama' => $agensi->nama,
             'agensi_id' => $agensi->id
+        ]);
+
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
         ]);
 
 
@@ -202,6 +238,12 @@ class AgensiTableSeeder extends Seeder
             'agensi_id' => $agensi->id
         ]);
 
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
+        ]);
+
+
         // 9 => tekun
 
         Agensi::create([
@@ -224,6 +266,12 @@ class AgensiTableSeeder extends Seeder
             'nama' => $agensi->nama,
             'agensi_id' => $agensi->id
         ]);
+
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
+        ]);
+
 
         // 10 => jabatan veterinar
 
@@ -248,6 +296,12 @@ class AgensiTableSeeder extends Seeder
             'agensi_id' => $agensi->id
         ]);
 
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
+        ]);
+
+
         // 11 => agrobank
 
         Agensi::create([
@@ -270,6 +324,12 @@ class AgensiTableSeeder extends Seeder
             'nama' => $agensi->nama,
             'agensi_id' => $agensi->id
         ]);
+
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
+        ]);
+
 
         // 12 => kementerian pertanian malaysia
 
@@ -294,6 +354,12 @@ class AgensiTableSeeder extends Seeder
             'agensi_id' => $agensi->id
         ]);
 
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
+        ]);
+
+
         // 13 => lembaga perindustrian nanas
 
         Agensi::create([
@@ -316,6 +382,12 @@ class AgensiTableSeeder extends Seeder
             'nama' => $agensi->nama,
             'agensi_id' => $agensi->id
         ]);
+
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
+        ]);
+
 
         // 14 => maqis
 
@@ -340,9 +412,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id' => $agensi->id
         ]);
 
-
-
-
+        Pengesahan::create([
+            'agensi_id' => $agensi->id,
+            'status'    => "TIDAK"
+        ]);
         
 
     }

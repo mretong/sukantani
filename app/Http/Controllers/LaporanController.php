@@ -11,6 +11,8 @@ use App\Acara;
 use App\Peserta;
 use App\Penyertaan;
 use App\Agensi;
+use App\Pengesahan;
+
 use DB;
 
 class LaporanController extends Controller
@@ -69,9 +71,46 @@ class LaporanController extends Controller
             // echo '<br />';
         }
 
-        // exit;
-
         return view('members.laporan.penginapan', compact('agencies', 'acaras'));
+    }
+
+    public function senaraiSemak() {
+
+        $ringkasan = Array();
+
+        $pengesahan     = Pengesahan::where('agensi_id', Auth::user()->agensi->id)->first();
+
+        if($pengesahan == null) {
+            $pengesahan = new Pengesahan;
+            $pengesahan->agensi_id = Auth::user()->agensi->id;
+            $pengesahan->status    = "TIDAK";
+            $pengesahan->save();     
+        }
+
+        $pengesahan = $pengesahan->status;
+
+
+        $jumlahPeserta  = Peserta::where('agensi_id', Auth::user()->agensi->id)->count();
+        $jumlahLelaki   = Peserta::where('agensi_id', Auth::user()->agensi->id)
+                            ->where('jantina', 'LELAKI')
+                            ->count();
+        $jumlahWanita   = Peserta::where('agensi_id', Auth::user()->agensi->id)
+                            ->where('jantina', 'WANITA')
+                            ->count();
+        $kesempurnaan    = "TIDAK";
+
+        if($jumlahPeserta == ($jumlahLelaki + $jumlahWanita))
+            $kesempurnaan = "YA";
+
+        $ringkasan["pengesahan"]    = $pengesahan;
+        $ringkasan["jumlahPeserta"] = $jumlahPeserta;
+        $ringkasan["jumlahLelaki"]  = $jumlahLelaki;
+        $ringkasan["jumlahWanita"]  = $jumlahWanita;
+        $ringkasan["kesempurnaan"]  = $kesempurnaan;
+
+        $acaras = Acara::all();
+
+        return view('members.laporan.senarai-semak', compact('ringkasan', 'acaras'));
 
     }
 }

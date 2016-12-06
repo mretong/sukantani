@@ -163,6 +163,12 @@ Route::get('/laporan/penginapan', [
 ]);
 
 
+Route::get('/senarai/semak', [
+	'as'	=> 'senarai-semak',
+	'uses'	=> 'LaporanController@senaraiSemak'
+]);
+
+
 
 //
 // Settings
@@ -192,4 +198,12 @@ Route::get('/setting/3', [
 Route::get('/nota', [
 	'as'	=> 'nota',
 	'uses'	=> 'NotaController@index'
+]);
+
+//
+// Pengesahan
+//
+Route::get('/pengesahan', [
+	'as'	=> 'pengesahan',
+	'uses'	=> 'PengesahanController@index'
 ]);
