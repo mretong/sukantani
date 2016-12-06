@@ -127,9 +127,10 @@ class PdfController extends Controller
     //
     public function laporanKeseluruhan($id) {
 
+
         // Access Limitation
         if(Auth::user()->email != 'suhairi81@gmail.com') {
-            if(Auth::user()->agensi->agensi->id != $id){
+            if(Auth::user()->agensi->id != $id){
                 Session::flash('error', 'Gagal. Tiada hak akses.');
                 return back();
             }
@@ -155,13 +156,14 @@ class PdfController extends Controller
     //
     public function penginapan() {
 
-        $acaras = Acara::limit(8)->get();
+        $acaras = Acara::limit(9)->get();
         $agencies = Agensi::limit(2)->get();
 
         view()->share('acaras', $acaras);
         view()->share('agencies', $agencies);
 
         $pdf = Pdf::loadView('members.pdf.laporan.penginapan');
+        // return view('members.pdf.laporan.penginapan', compact('acaras', 'agencies'));
 
         return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Ringkasan Penginapan.pdf');
     }

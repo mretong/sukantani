@@ -13,6 +13,10 @@
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
+    <!-- PACE JS -->
+    <script src="{{ asset('/js/pace.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/pace.min.') }}">
+
     <!-- Sweet Alert -->
     <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet">
     <script src="{{ asset('/js/sweetalert-dev.js') }}"></script>

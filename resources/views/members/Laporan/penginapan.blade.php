@@ -8,7 +8,6 @@
 
 		<div align="right"><span class="glyphicon glyphicon-download-alt"> </span> 
         	<a href="{{ route('pdf-penginapan') }}" target="_blank">PDF</a>&nbsp;&nbsp;
-        	<a href="{{ route('excel-penginapan') }}" target="_blank">Excel</a>&nbsp;&nbsp;
     	</div>
 			
 		<div class="panel panel-primary">
@@ -24,6 +23,7 @@
 					</table>
 					<table class="table table-condensed table-striped">
 						
+						<?php $kLelaki = $kWanita = 0; ?>
 						@foreach($acaras as $acara)
 
 							<tr>
@@ -33,12 +33,22 @@
 												$acara->peserta->where('agensi_id', $agency->id)
 													->where('jantina', 'LELAKI')
 													->count()
-											}} <br />
+											}} 
+									<?php 
+									$kLelaki += $acara->peserta->where('agensi_id', $agency->id)
+											->where('jantina', 'LELAKI')
+											->count();
+									?><br />
 									WANITA : {{ 	
 												$acara->peserta->where('agensi_id', $agency->id)
 													->where('jantina', 'WANITA')
 													->count()
-											}} <br />
+											}}
+									<?php 
+										$kWanita += $acara->peserta->where('agensi_id', $agency->id)
+												->where('jantina', 'WANITA')
+												->count();
+									?><br />
 
 								</td>
 							</tr>
@@ -47,8 +57,8 @@
 							<td>
 								<hr />
 								<div align="right"><strong>### KESELURUHAN ###</strong><br />
-								LELAKI :  {{ $acaras-><br />
-								WANITA :  <hr height="2" />
+								LELAKI :  {{ $kLelaki }}<br />
+								WANITA :  {{ $kWanita }}<hr height="2" />
 								</div>
 
 							</td>

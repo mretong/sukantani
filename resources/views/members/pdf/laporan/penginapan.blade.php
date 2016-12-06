@@ -31,11 +31,10 @@
 						<table class="table table-condensed table-striped">
 					@endif
 
-						<?php $kLelaki = $kWanita = 0; ?>
-						
+						<?php $kLelaki = $kWanita = 0; ?>						
 						@foreach($acaras as $acara)
 
-							@if($loop->first || (($loop->iteration) % 6) != 0)
+							@if($loop->first || ($loop->iteration % 6) != 0)
 								<tr>
 									<td>
 										<strong>#{{ $loop->index + 1}} {{ $acara->nama }}</strong><br />
@@ -54,7 +53,7 @@
 														->where('jantina', 'WANITA')
 														->count()
 												}} <br />
-										<?php 
+										<?php
 											$kWanita += $acara->peserta->where('agensi_id', $agency->id)
 													->where('jantina', 'WANITA')
 													->count();
@@ -63,7 +62,7 @@
 								</tr>
 							@endif
 
-							@if(($loop->iteration % 6) == 0)
+							@if($loop->iteration % 6 == 0)
 								<div class="page-break"></div>
 								<tr>
 									<td>
@@ -96,20 +95,15 @@
 
 						<tr>
 							<td>
-								<hr />
 								<div align="right">
 									<strong>### KESELURUHAN ###</strong><br />
 									LELAKI : {{ $kLelaki }} <br />
 									WANITA :  {{ $kWanita }}<br />
-								<hr height="2" />
 								</div>
-
 							</td>
 						</tr>
 					</table>
-					<br />
-
-				@endforeach
+				@endforeach <!-- AGENSI -->
 
 
 			</div>
