@@ -41,7 +41,6 @@ input {
 								<tr>
 									<td>
 									<a href="{{ route('peserta-info', $participant->id) }}" title="Klik Untuk Maklumat Profil" target="_blank"> {{ $participant->nama }}</a><br />
-									{{ $participant->id }} <br />
 									{{ $participant->noAtlet }}
 
 									</td>

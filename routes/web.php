@@ -55,6 +55,13 @@ Route::post('/peserta/kemaskini', [
 ]);
 
 
+// ACARA
+Route::get('/acara/hapus/{peserta}/{acara}', [
+	'as'	=> 'acara-hapus',
+	'uses'	=> 'AcaraController@hapus'
+]);
+
+
 // Info
 Route::get('/peserta/info/{id}', [
 	'as'	=> 'peserta-info',

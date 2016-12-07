@@ -12,7 +12,8 @@
 		<ul type="1">
 			<li>Tarikh bagi pendaftaran online adalah <strong>15 Disember 2016 sehingga 02 Januari 2017</strong>.<br /> <strong>Tiada lagi pendaftaran online</strong> dibenarkan selepas tarikh yang telah ditetapkan.</li>
 			<li>Pendaftaran selepas tarikh tutup, perlu dilakukan pada <strong>pagi pertama hari sukan</strong> dengan beserta bayaran denda.</li>
-			<li><strong>Nama Penuh</strong> dan <strong>No Kad Pengenalan</strong> adalah wajib diisi.</li>
+			<li><strong>Nama Penuh</strong>, gambar, jantina, tarikh lantikan dan <strong>No Kad Pengenalan</strong> adalah wajib diisi.</li>
+			<li>Urusetia tidak terlibat dengan acara dan atlet. Pengurus dan jurulatih acara di</li>
 			<li>Peserta yang didftarkan hendaklah bermain <strong>sekurang-kurangnya satu</strong> acara.</li>
 			<li>Peserta yang dikesan oleh sistem <strong>tidak bermain apa-apa acara</strong> akan dihapuskan secara automatik.<br /> Sistem saringan automatik ini akan berlaku sebaik tarikh tutup.</li>
 			<li>Bagi acara yang <strong>melebihi had peserta</strong> yang ditetapkan, sistem akan menyahrekodkan peserta-peserta yang didaftarkan terkemudian.</li>
@@ -40,6 +41,8 @@
 		<h4><strong>Keperluan</strong></h4>
 		<ul>
 			<li>Logo Sukan Tani</li>
+			<li>Motto Sukan Tani</li>
+		</ul>
 
 
 

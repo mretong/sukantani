@@ -35,8 +35,7 @@
 						<td>{{ $participant['nokp'] }}</td>
 						<td>{{ $participant['jantina'] }}</td>
 						<td>
-							<a href="{{ route('peserta-kemaskini', $participant['id']) }}"><span class="btn alert-info">Kemaskini</span></a>
-							<a href="{{ route('peserta-hapus', $participant['id']) }}"><span class="btn alert-danger">Hapus</span></a>
+							<a href="{{ route('acara-hapus', [$participant['id'], $acara->id]) }}"><span class="btn alert-danger">Hapus</span></a>
 
 						</td>
     				</tr>
