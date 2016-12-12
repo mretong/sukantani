@@ -127,6 +127,11 @@ Route::get('/pdf/peserta/{id}', [
 	'uses'	=> 'PdfController@peserta'
 ]);
 
+Route::get('/pdf/profiles', [
+	'as'	=> 'pdf-profiles',
+	'uses'	=> 'PesertaController@profiles'
+]);
+
 Route::post('/pdf/tag', [
 	'as'	=> 'pdf-tag',
 	'uses'	=> 'PdfController@tag'
@@ -141,6 +146,8 @@ Route::get('/pdf/laporan/penginapan', [
 	'as'	=> 'pdf-penginapan',
 	'uses'	=> 'PdfController@penginapan'
 ]);
+
+
 
 //
 // EXCEL

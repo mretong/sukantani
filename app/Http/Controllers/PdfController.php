@@ -25,6 +25,7 @@ class PdfController extends Controller
     
     public function kontinjen($agensi_id) {
 
+        return 'kontinjen';
     	if(Auth::user()->agensi_id != $agensi_id) {
     		Session::flash('error', 'Gagal. Tiada hak akses.');
     		return back();
@@ -126,7 +127,6 @@ class PdfController extends Controller
     // Laporan
     //
     public function laporanKeseluruhan($id) {
-
 
         // Access Limitation
         if(Auth::user()->email != 'suhairi81@gmail.com') {

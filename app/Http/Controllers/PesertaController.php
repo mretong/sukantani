@@ -315,4 +315,18 @@ class PesertaController extends Controller
         return view('members.peserta-info', compact('peserta'));
     }
 
+    //
+    // Profile
+    //
+    public function profiles() {
+
+        return 'profile';
+
+        $pesertas = Peserta::orderBy('agensi_id', 'asc')->get();
+
+        view()->share('pesertas', $pesertas);
+        $pdf = Pdf::loadView('members.pdf.profile');
+        return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Profil Atlet.pdf');
+    }
+
 }

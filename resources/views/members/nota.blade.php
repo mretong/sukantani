@@ -28,12 +28,25 @@
 				<ul>
 					<li>Carian Mengikut Nama</li>
 					<li>Carian Mengikut Acara</li>
+					<li>ADMIN
+						<ul>
+							<li>Carian Mengikut Agensi dan Acara</li>
+						</ul>
+					</li>
 				</ul>
 			</li>
 			<li><strong>Laporan</strong>
 				<ul>
 					<li>Laporan Keseluruhan Peserta (Disusun mengikut jantina, alphabet)</li>
 					<li>Laporan Keseluruhan Peserta Mengikut Acara</li>
+					<li>Senarai Semak</li>
+					<li>ADMIN
+						<ul>
+							<li>Tagging (No Atlet/Pengurus/Jurulatih/Kontinjen)</li>
+							<li>Penginapan</li>
+							<li>Profil Semua Peserta</li>
+						</ul>
+					</li>
 				</ul>				
 			</li>
 		</ul>
