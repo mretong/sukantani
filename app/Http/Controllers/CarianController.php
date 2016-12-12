@@ -11,6 +11,7 @@ use App\Acara;
 use App\Penyertaan;
 use App\Peserta;
 use App\Agensi;
+use App\Pengurus;
 
 class CarianController extends Controller
 {
@@ -29,35 +30,7 @@ class CarianController extends Controller
 
         $acara = Acara::where('id', $request->get('acara'))->first();
 
-        // dd($acara->limit);
-
-    	$penyertaans = Penyertaan::where('acara_id', $request->get('acara'))
-    					->orderBy('peserta_id', 'asc')
-    					->get();
-
-    	$participants = Array();
-
-        $bil = 0;
-    	foreach($penyertaans as $penyertaan) {
-
-            // dd($penyertaan->peserta_id);
-    		$peserta = Peserta::where('id', $penyertaan->peserta_id)
-    					->where('agensi_id', Auth::user()->agensi->id)
-    					->first();
-
-            if($peserta != null) {
-                
-                $bil++;
-                if($bil > $acara->limit) {
-                    break;
-                }
-                array_push($participants, $peserta->toArray());				
-			}
-    	}
-
-        // return $bil;
-
-    	return view('members.keputusanCarian', compact('participants', 'acara', 'acaras'));
+    	return view('members.keputusanCarian', compact('acara', 'acaras'));
     }
 
     public function carianNama() {
@@ -79,9 +52,35 @@ class CarianController extends Controller
 
     public function carianAcaraAgensi() {
 
-        $acaras = Acara::orderBy('nama', 'asc')->get();
-        $agencies = Agensi::orderBy('nama', 'asc')->get();
+        $games = Acara::orderBy('nama', 'asc')->pluck('nama', 'id');
+        $agencies = Agensi::orderBy('nama', 'asc')->pluck('nama', 'id');
 
-        return view('members.carian-acara-agensi', compact('acaras', 'agencies'));
+        // dd($games);
+
+        return view('members.carian-acara-agensi', compact('games', 'agencies'));
+    }
+
+    public function keputusanCarianAcaraAgensi(Request $request) {
+
+        // return $request->all();  
+
+        $acaras = Acara::where('id', $request->get('acara_id'))
+                    ->get();
+
+        $pesertas = Array();
+
+        foreach($acaras as $acara) {
+
+            foreach($acara->peserta as $peserta){
+
+                if($peserta->agensi->id == $request->get('agensi_id'))
+                    array_push($pesertas, $peserta);
+            }
+ 
+            // dd($pesertas);
+        }
+
+        return view('members.keputusan-carian-acara-agensi', compact('acaras', 'pesertas'));
+        
     }
 }					

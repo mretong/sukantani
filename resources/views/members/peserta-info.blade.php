@@ -25,7 +25,7 @@ input {
 					</tr>
 					<tr>
 						<td><strong>No Atlet/Pegawai</strong></td>
-						<td>{{ $peserta->noAtlet }}</td>
+						<td>{{ $peserta->noAtlet }} - {{ $peserta->role }}</td>
 					</tr>
 					<tr>
 						<td><strong>Vegetarian</strong></td>

@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 use App\Peserta;
 use App\Acara;
 use Faker\Generator;
+use App\Agensi;
 
 class PesertaTableSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class PesertaTableSeeder extends Seeder
     public function run()
     {
 
-    	factory(App\Peserta::class, 5000)->create();
+    	factory(App\Peserta::class, 2500)->create();
 	
     	$pesertas = Peserta::all();
 
@@ -33,6 +34,7 @@ class PesertaTableSeeder extends Seeder
     		$peserta->acara()->attach($acara);
     		
     	}
+        
     }
 
 }

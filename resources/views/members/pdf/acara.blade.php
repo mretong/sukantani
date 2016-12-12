@@ -21,7 +21,12 @@
     				@foreach($participants as $participant) 
     				<tr>
 						<td>{{ $loop->index + 1 }}</td>
-						<td>{{ $participant['nama'] }}</td>
+						<td>
+                            @if($participant['role'] == 'PENGURUS' || $participant['role'] == 'JURULATIH')
+                                    <font color="green"><strong>{{ $participant['role'] }}</strong></font> <br />
+                            @endif
+                            {{ $participant['nama'] }}
+                        </td>
 						<td>{{ $participant['nokp'] }}</td>
 						<td>{{ $participant['jantina'] }}</td>
     				</tr>

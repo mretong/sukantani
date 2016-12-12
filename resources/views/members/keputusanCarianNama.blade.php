@@ -33,7 +33,8 @@
 								<tr>
 									<td>
 									<a href="{{ route('peserta-info', $participant->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank"> {{ $participant->nama }}</a><br />
-									{{ $participant->noAtlet }}
+									{{ $participant->role }} <br />
+									{{ $participant->noAtlet }} 
 
 									</td>
 									<td>{{ $participant->nokp }}</td>

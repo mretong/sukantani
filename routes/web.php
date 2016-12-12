@@ -96,6 +96,11 @@ Route::get('/carian-acara-agensi', [
 	'uses'	=> 'CarianController@carianAcaraAgensi'
 ]);
 
+Route::post('/carian-acara-agensi', [
+	'as'	=> 'carian-acara-agensi',
+	'uses'	=> 'CarianController@keputusanCarianAcaraAgensi'
+]);
+
 //
 // Tagging
 //
@@ -214,3 +219,9 @@ Route::get('/pengesahan', [
 	'as'	=> 'pengesahan',
 	'uses'	=> 'PengesahanController@index'
 ]);
+
+Route::post('/pengesahan', [
+	'as'	=> 'pengesahan',
+	'uses'	=> 'PengesahanController@indexPost'
+]);
+

@@ -11,8 +11,17 @@
 				<div class="body" style="margin: 10px">
 					<p>Dengan ini saya mengesahkan bahawa maklumat di bawah adalah benar!</p>
 
+					@if($pengesahan->status == "TIDAK")
+						<div align="right">
+							{!! Form::open() !!}
+								<button class="btn btn-primary">SAH</button>
+							{!! Form::close() !!}
 
-					<div align="right"><button class="btn btn-primary">SAH</button></div>
+						</div>
+					@else
+						<div align="center"><font color="green"><strong>Pengesahan telah dilakukan.</strong></font></div>
+
+					@endif
 				</div>
 
 			</div>

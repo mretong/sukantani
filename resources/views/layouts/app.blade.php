@@ -51,7 +51,13 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="{{ url('/home')}}">Home</a></li>
-            <li><a href="{{ route('peserta')}}">Peserta</a></li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pendaftaran <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ route('peserta')}}">Atlet</a></li>
+              </ul>
+            </li>
             
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carian <span class="caret"></span></a>
@@ -71,6 +77,7 @@
                 @if(Auth::user()->agensi->id == 1)
                   <li><a href="{{ route('tagging') }}" target="_blank">ADMIN :: Senarai Tag Peserta</a></li>
                   <li><a href="{{ route('penginapan') }}" target="_blank">ADMIN :: Penginapan</a></li>
+                  <li><a href="#" target="_blank">ADMIN :: Profil Semua Peserta</a></li>
                 @endif
                 <li><a href="{{ route('laporan-keseluruhan') }}">Laporan Jumlah Keseluruhan Peserta</a></li>
                 <li><a href="{{ route('acara-keseluruhan') }}">Laporan Keseluruhan Penyertaan Acara</a></li>

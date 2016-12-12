@@ -34,6 +34,7 @@ $factory->define(App\Peserta::class, function (Faker\Generator $faker) {
         'gredJawatan'       => $faker->randomElement(array('F', 'E', 'G', 'N', 'FT', 'J', 'H')) . $faker->randomElement([11, 17, 22, 27, 29, 32, 36, 38, 41, 44, 48]),
         'tarikhLantikan'    => $faker->date,
         'vege'              => $faker->randomElement(array('YA', 'TIDAK')),
+        'role'              => 'ATLET',
         'noAtlet'           => $faker->randomElement(array('M', 'K', 'D', 'A', 'R', 'F', 'L', 'P', 'T', 'V', 'B', 'C', 'N', 'Q')) . $faker->numberBetween(1, 777),
         'photo'             => 'images/peserta/noPhoto.svg',
         'agensi_id'         => $faker->numberBetween(1, 14),

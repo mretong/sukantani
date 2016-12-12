@@ -86,7 +86,7 @@ input {
 
         <div class="col-md-3">
             <div class="panel panel-default">
-                <div class="panel-heading"><strong>{{ Auth::User()->agensi->kod }} :: {{ Auth::User()->agensi->nama }}</strong></div>
+                <div class="panel-heading"><strong>Pendaftaran Peserta</strong></div>
 
                 <div class="panel-body">
 
@@ -121,14 +121,17 @@ input {
 				{!! Form::label('Tarikh lantikan') !!}	
 				{!! Form::text('tarikhLantikan', '', ['class' => 'form-control', 'placeholder' => 'Contoh: 16082008']) !!}
 
+				{!! Form::label('Penyertaan') !!}
+				{!! Form::select('role', ['ATLET' => 'ATLET', 'PENGURUS' => 'PENGURUS', 'JURULATIH' => 'JURULATIH'], '', ['class' => 'form-control', 'id' => 'penyertaan']) !!}
+
 				{!! Form::label('Acara') !!}
 				@foreach($games as $game)
 					 <br />{!! Form::checkbox('acara[]', $game->id) !!} {{ $game->nama }}
 				@endforeach
 
 				<br />
-				{!! Form::label('Agensi') !!}	
-				{!! Form::text('agensi_id', Auth::user()->agensi->kod, ['class' => 'form-control', 'readonly']) !!}
+				<!-- {!! Form::label('Agensi') !!}	 -->
+				{!! Form::hidden('agensi_id', Auth::user()->agensi->kod) !!}
 
 				{!! Form::label('Gambar berukuran passpot') !!}	
 				{!! Form::file('photo', '', ['class' => 'form-control']) !!}
@@ -145,12 +148,28 @@ input {
     </div>
 </div>
 
+@endsection
+
+@section('js')
 
 <script type="text/javascript">
 	
 $('input[type=text]').keyup(function() {
 	$(this).val($(this).val().toUpperCase());
 });
+
+$('#penyertaan').change(function() {
+
+	var val = $('#penyertaan').val();
+	
+	if(val != 'ATLET'){
+		swal({
+	      title: "<strong>Peringatan Mesra</strong>",
+	      text: "Bagi Penyertaan sebagai Pengurus atau Jurulatih, hanya satu acara dibenarkan.",
+	      html: true
+    });
+	}
+})
 
 </script>
 

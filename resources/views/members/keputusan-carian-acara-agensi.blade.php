@@ -8,7 +8,7 @@
 	<div class="col-xs-8">		
 		
 		<div class="panel panel-primary">
-			<div class="panel-heading"><h4>Senarai Nama Peserta Acara</h4></div>
+			<div class="panel-heading"><h4>Keputusan Carian Acara dan Agensi</h4></div>
 			<div class="panel-body">
 			
 			<?php $count = 0; ?>
@@ -33,7 +33,7 @@
 				<?php $bil = 0; ?>
 				@foreach($acara->peserta as $peserta)
 
-					@if($peserta->agensi_id == Auth::user()->agensi->id)
+					@if($peserta->agensi->id == Auth::user()->agensi->id)
 					<?php $bil++; ?>
 					<tr>
 						<td>{{ $bil }}</td>

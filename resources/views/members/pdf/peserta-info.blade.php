@@ -21,7 +21,9 @@ input {
 
 				<table class="table table-condensed table-striped table-hover">
 					<tr>
-						<td colspan=2><img src="{{ asset($peserta->photo) }}" height="150" width="130"></td>
+						<td colspan=2>
+							<img src="{{ asset($peserta->photo) }}" height="50" width="40"><br /><br /><br /><br />
+						</td>
 					</tr>
 					<tr>
 						<td><strong>No Atlet/Pegawai</strong></td>

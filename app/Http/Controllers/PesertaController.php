@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 use Auth;
 use Validator;
 use Session;
+use Redirect;
 
 use App\Peserta;
 use App\User;
 use App\Agensi;
 use App\Acara;
 use App\Penyertaan;
+use App\Pengurus;
 
 class PesertaController extends Controller
 {
@@ -53,6 +55,7 @@ class PesertaController extends Controller
     	$validation = Validator::make($request->all(), [
     		'nama'		=> 'required|min:3',
     		'nokp'		=> 'required|min:7',
+            'jantina'   => 'required',
     		'agensi_id'	=> 'required',
     	]);
 
@@ -61,9 +64,43 @@ class PesertaController extends Controller
     		return redirect('/peserta');
     	}
 
+        // Check if there was already a pengurus or jurulatih
+        // dd(count($request->get('acara')));
+
+        if($request->get('role') != 'ATLET') {
+            
+            // check if acara more than 1
+            if(count($request->get('acara')) > 1) {
+                Session::flash('error', 'Bagi penyertaan Pengurus dan Jurulatih, hanya satu acara dibenarkan.');
+                return Redirect::back()->withInput($request->all());
+            }
+
+            //check if there was a pengurus or jurulatih
+            $pesertas = Peserta::where('agensi_id', Auth::user()->agensi->id)
+                        ->where('role', $request->get('role'))
+                        ->get();
+
+            if(!$pesertas->isEmpty()) {
+                foreach($pesertas as $peserta) {
+
+                    foreach($peserta->acara as $acara) {
+                  
+                        if(in_array($acara->id, $request->get('acara'))) {
+
+                            if($peserta->role == $request->get('role')) {
+                                Session::flash('error', $request->get('role') . ' bagi acara ini telah ada. Sila rujuk Laporan Keseluruhan Penyertaan Acara bagi pengemaskinian');
+                                return Redirect::back()->withInput($request->all());
+                            }
+                        }
+                    }
+                }     
+            }
+        }
+
     	// INSERT
 
-    	$filename = '';
+        $destination = 'images/peserta/';
+    	$filename = $destination . 'noPhoto.svg';
     	if(!empty($request->file('photo'))) {
     		$destination = 'images/peserta/';
     		$filename = $destination . time() . '-' . $request->get('nama') . '.' . $request->file('photo')->getClientOriginalExtension();
@@ -71,7 +108,10 @@ class PesertaController extends Controller
     		// return $destination;
 
     		if($request->file('photo')->move($destination, $filename));
-    	}
+    	} else {
+            Session::flash('error', 'Gagal. Gambar peserta adalah wajib.');
+            return back()->withInput($request->all());
+        }
 
         $count = Peserta::where('agensi_id', Auth::user()->id)->count();
         $count++;
@@ -86,8 +126,7 @@ class PesertaController extends Controller
 
         $noAtlet = Auth::user()->agensi->kod2 . $counter;
 
-
-    	$peserta = Peserta::create([
+       	$peserta = Peserta::create([
     		'nama'			=> strtoupper($request->get('nama')),
     		'nokp'			=> $request->get('nokp'),
     		'jantina'		=> strtoupper($request->get('jantina')),
@@ -96,12 +135,14 @@ class PesertaController extends Controller
     		'noPekerja'		=> strtoupper($request->get('noPekerja')),
     		'tarikhLantikan'=> $request->get('tarikhLantikan'),
             'vege'          => $request->get('vege'),
+            'role'          => $request->get('role'),
             'noAtlet'       => $noAtlet,
     		'agensi_id'		=> $request->get('agensi_id'),
     		'photo'			=> $filename
 		]);
 
-    	$peserta->acara()->attach($request->input('acara'));
+	   $peserta->acara()->attach($request->input('acara'));
+       
   	
     	Session::flash('success', 'Berjaya. Peserta telah direkodkan.');
 
@@ -163,14 +204,51 @@ class PesertaController extends Controller
         $validation = Validator::make($request->all(), [
             'nama'      => 'required|min:3',
             'nokp'      => 'required|min:7',
+            'jantina'   => 'required',
             'agensi_id' => 'required',
         ]);
 
         if($validation->fails()){
             Session::flash('error', 'Ruangan nama, nokp, acara dan agensi adalah wajib diisi. <br />Perlu diisi dengan format yang betul');
             return redirect('/peserta');
-        }
+        }    
         
+
+        // Check if there was already a pengurus or jurulatih
+        // dd(count($request->get('acara')));
+
+        if($request->get('role') != 'ATLET') {
+            
+            // check if acara more than 1
+            if(count($request->get('acara')) > 1) {
+                Session::flash('error', 'Bagi penyertaan Pengurus dan Jurulatih, hanya satu acara dibenarkan.');
+                return Redirect::back()->withInput($request->all());
+            }
+
+            //check if there was a pengurus or jurulatih
+            $pesertas = Peserta::where('agensi_id', Auth::user()->agensi->id)
+                        ->where('role', $request->get('role'))
+                        ->get();
+
+            if(!$pesertas->isEmpty()) {
+                foreach($pesertas as $peserta) {
+
+                    foreach($peserta->acara as $acara) {
+                  
+                        if(in_array($acara->id, $request->get('acara'))) {
+
+                            if($peserta->role == $request->get('role')) {
+                                Session::flash('error', $request->get('role') . ' bagi acara ini telah ada. Sila rujuk Laporan Keseluruhan Penyertaan Acara bagi pengemaskinian');
+                                return Redirect::back()->withInput($request->all());
+                            }
+                        }
+                    }
+                }     
+            }
+        }
+
+        // Proses Kemaskini
+
         $peserta = Peserta::where('id', $request->id)->first();
 
         $filename = $peserta->photo;
@@ -193,6 +271,7 @@ class PesertaController extends Controller
         $peserta->gredJawatan   = $request->get('gredJawatan');
         $peserta->tarikhLantikan= $request->get('tarikhLantikan');
         $peserta->vege          = $request->get('vege');
+        $peserta->role          = $request->get('role');
         $peserta->photo         = $filename;
 
         $penyertaan = Penyertaan::where('peserta_id', $peserta->id)

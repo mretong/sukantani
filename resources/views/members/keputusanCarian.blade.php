@@ -24,21 +24,42 @@
         				<td><strong>Bil</strong></td>
         				<td><strong>Nama</strong></td>
         				<td><strong>No KP</strong></td>
-        				<td><strong>Jantina</strong></td>
+                        <td><strong>Jantina</strong></td>
+        				<td><strong>Acara</strong></td>
         				<td><strong>Pilihan</strong></td>
     				</tr>
 
-    				@foreach($participants as $participant) 
-    				<tr>
-						<td>{{ $loop->index + 1 }}</td>
-						<td>{{ $participant['nama'] }}</td>
-						<td>{{ $participant['nokp'] }}</td>
-						<td>{{ $participant['jantina'] }}</td>
-						<td>
-							<a href="{{ route('acara-hapus', [$participant['id'], $acara->id]) }}"><span class="btn alert-danger">Hapus</span></a>
+                    <?php $bil = 0; ?>
+    				@foreach($acara->peserta as $peserta)
 
-						</td>
-    				</tr>
+                        @if($peserta->agensi->id == Auth::user()->agensi->id)
+                            <?php $bil++; ?>
+            				<tr>
+        						<td>{{ $bil }}</td>
+        						<td>
+                                    @if($peserta->role == 'PENGURUS' || $peserta->role == 'JURULATIH')
+                                        <font color="green"><strong>{{ $peserta->role }}</strong></font><br />
+                                    @endif
+
+                                    {{ $peserta->nama }}
+                                </td>
+        						<td>{{ $peserta->nokp }}</td>
+                                <td>{{ $peserta->jantina }}</td>
+                                <td>
+                                    <ul>
+                                    @foreach($peserta->acara as $acara)
+                                        <li>{{ $acara->nama }}</li>
+                                    @endforeach
+                                    </ul>
+
+                                </td>
+        						<td>
+                                    <a href="{{ route('peserta-kemaskini', $peserta->id) }}"><span class="btn alert-info">Kemaskini</span></a>
+        							<a href="{{ route('acara-hapus', [$peserta->id, $acara->id]) }}" title="Gugur dari Acara"><span class="btn alert-danger">Gugur</span></a>
+
+        						</td>
+            				</tr>
+                        @endif
 
     				@endforeach
 
