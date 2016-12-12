@@ -44,7 +44,10 @@ input {
 									{{ $participant->noAtlet }}
 
 									</td>
-									<td>{{ $participant->nokp }}</td>
+									<td>
+										{{ $participant->nokp }} <br />
+										{{ $participant->notel }}
+									</td>
 									<td>{{ $participant->jantina }}</td>
 									<td>{{ $participant->tarafJawatan }}</td>
 									<td>{{ $participant->gredJawatan }}</td>
@@ -61,9 +64,9 @@ input {
 									</td>									
 									<td>
 										@if($participant->photo)
-											<img src="{{ asset($participant->photo) }}" height="50" width="50">
+											<img src="{{ asset($participant->photo) }}" height="50" width="50" class="profile">
 										@else
-											<img src="{{ asset('/images/peserta/noPhoto.svg') }}" height="50" width="50">
+											<img src="{{ asset('/images/peserta/noPhoto.svg') }}" height="50" width="50" class="profile">
 										@endif
 									</td>
 									<td>
@@ -104,7 +107,10 @@ input {
             	</div>
 
 				{!! Form::label('No Kad Pengenalan') !!}	
-				{!! Form::text('nokp', '', ['class' => 'form-control', 'placeholder' => '710150025697']) !!}
+				{!! Form::text('nokp', '', ['class' => 'form-control', 'placeholder' => 'Contoh : 710150025697']) !!}
+
+				{!! Form::label('No Telefon') !!}	
+				{!! Form::text('notel', '', ['class' => 'form-control', 'placeholder' => 'Contoh : 0123456789']) !!}
 
 				{!! Form::label('Jantina') !!}	
 				{!! Form::select('jantina', ['Jantina', 'LELAKI' => 'LELAKI', 'WANITA' => 'WANITA'], '', ['class' => 'form-control']) !!}

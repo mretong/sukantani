@@ -33,7 +33,7 @@
 								<tr>
 									<td>
 									<a href="{{ route('peserta-info', $participant->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank"> {{ $participant->nama }}</a><br />
-									{{ $participant->role }} <br />
+									<font color="green"><strong>{{ $participant->role }}</strong></font> <br />
 									{{ $participant->noAtlet }} 
 
 									</td>
@@ -54,9 +54,9 @@
 									</td>									
 									<td>
 										@if($participant->photo)
-											<img src="{{ asset($participant->photo) }}" height="50" width="50">
+											<img src="{{ asset($participant->photo) }}" height="50" width="50" class="profile">
 										@else
-											<img src="{{ asset('/images/peserta/noPhoto.svg') }}" height="50" width="50">
+											<img src="{{ asset('/images/peserta/noPhoto.svg') }}" height="50" width="50" class="profile">
 										@endif
 									</td>
 									<td>

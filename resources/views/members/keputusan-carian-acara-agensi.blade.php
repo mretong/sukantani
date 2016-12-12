@@ -26,9 +26,8 @@
 					<td>Jantina</td>
 					<td>No Pekerja</td>
 					<td>Gred Jawatan</td>
-					<td>Taraf Jawatan</td>
 					<td>No Atlet</td>
-					<td></td>
+					<td>Pilihan</td>
 				</tr>
 				<?php $bil = 0; ?>
 				@foreach($acara->peserta as $peserta)
@@ -37,18 +36,24 @@
 					<?php $bil++; ?>
 					<tr>
 						<td>{{ $bil }}</td>
-						<td>
+						<td>							
+							{{ $peserta->nama }} <br />
 							@if($peserta->role == 'PENGURUS' || $peserta->role == 'JURULATIH')
-								<font color="green"><strong>{{ $peserta->role }}</strong></font><br />
+								<font color="green"><strong>{{ $peserta->role }}</strong></font>
 							@endif
-							{{ $peserta->nama }}
 						</td>
-						<td>{{ $peserta->nokp }}</td>
+						<td>
+							{{ $peserta->nokp }} <br />
+							{{ $peserta->notel }}
+						</td>
 						<td>{{ $peserta->jantina }}</td>
 						<td>{{ $peserta->noPekerja }}</td>
 						<td>{{ $peserta->gredJawatan }}</td>
-						<td>{{ $peserta->tarafJawatan }}</td>
 						<td>{{ $peserta->noAtlet }}</td>
+						<td>
+							<a href="{{ route('peserta-kemaskini', $peserta->id) }}"><span class="btn alert-info">Kemaskini</span></a>
+							<a href="{{ route('acara-hapus', [$peserta->id, $acara->id]) }}" title="Gugur dari Acara"><span class="btn alert-danger">Gugur</span></a>
+						</td>
 					</tr>
 					@endif
 

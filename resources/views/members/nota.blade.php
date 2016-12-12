@@ -17,7 +17,7 @@
 			<li>Peserta yang didftarkan hendaklah bermain <strong>sekurang-kurangnya satu</strong> acara.</li>
 			<li>Peserta yang dikesan oleh sistem <strong>tidak bermain apa-apa acara</strong> akan dihapuskan secara automatik.<br /> Sistem saringan automatik ini akan berlaku sebaik tarikh tutup.</li>
 			<li>Bagi acara yang <strong>melebihi had peserta</strong> yang ditetapkan, sistem akan menyahrekodkan peserta-peserta yang didaftarkan terkemudian.</li>
-			<li>Sila semak lebihan pemain dimenu <strong>LAPORAN</strong>.</li>
+			<li>Sila semak lebihan pemain dimenu <strong>LAPORAN</strong> atau <strong>CARIAN</strong>.</li>
 		</ul>
 
 		<h4><strong>Menu</strong></h4>

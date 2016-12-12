@@ -95,7 +95,10 @@ input {
             	</div>
 
 				{!! Form::label('No Kad Pengenalan') !!}	
-				{!! Form::text('nokp', $peserta->nokp, ['class' => 'form-control', 'placeholder' => '710150025697']) !!}
+				{!! Form::text('nokp', $peserta->nokp, ['class' => 'form-control', 'placeholder' => 'Contoh : 710150025697']) !!}
+
+				{!! Form::label('No Telefon') !!}	
+				{!! Form::text('notel', $peserta->notel, ['class' => 'form-control', 'placeholder' => 'Contoh : 0123456789']) !!}
 
 				{!! Form::label('Jantina') !!}	
 				{!! Form::select('jantina', ['Jantina', 'LELAKI' => 'LELAKI', 'WANITA' => 'WANITA'], $peserta->jantina, ['class' => 'form-control']) !!}

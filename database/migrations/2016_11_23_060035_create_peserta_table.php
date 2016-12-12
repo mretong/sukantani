@@ -17,6 +17,7 @@ class CreatePesertaTable extends Migration
             $table->increments('id');
             $table->string('nama');
             $table->string('nokp');
+            $table->string('notel');
             $table->string('jantina', 20);
             $table->string('noPekerja', 20);
             $table->string('tarafJawatan', 20);

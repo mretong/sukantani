@@ -28,6 +28,7 @@ $factory->define(App\Peserta::class, function (Faker\Generator $faker) {
     return [
         'nama'              => strtoupper($faker->name),
         'noKp'              => $faker->numberBetween(100000, 999999) . $faker->randomElement(array('01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12')) . $faker->numberBetween(5501, 5999),
+        'notel'             => $faker->e164PhoneNumber,
         'jantina'           => $faker->randomElement(array('LELAKI', 'WANITA')),
         'noPekerja'         => $faker->numberBetween(1000, 9999),
         'tarafJawatan'      => $faker->randomElement(array('TETAP', 'SAMBILAN')),

@@ -5,12 +5,13 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><strong>Log Masuk</strong></div>
+                <div class="panel-heading"><strong>KARNIVAL SUKAN TANI 2017</strong></div>
                 <div class="panel-heading">
                 <div align="center">
-                    <img src="{{ asset('images/maskot.jpg') }}"  height='150' width='150'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="{{ asset('images/logosukanmadasmall.gif') }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <!--  <img src="{{ asset('images/maskot.jpg') }}"  height='150' width='150'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <img src="{{ asset('images/moa.png') }}"  height='150' width='180'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <img src="{{ asset('images/mada.jpg') }}"  height='150' width='150'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="{{ asset('images/mada.jpg') }}"  height='150' width='150'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                 </div>
                 </div>
                 <div class="panel-body">

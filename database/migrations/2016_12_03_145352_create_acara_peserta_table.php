@@ -17,7 +17,6 @@ class CreateAcaraPesertaTable extends Migration
             $table->increments('id');
             $table->integer('acara_id')->unsigned()->index();
             $table->foreign('acara_id')->references('id')->on('acara')->onDelete('cascade');
-
             $table->integer('peserta_id')->unsigned()->index();
             $table->foreign('peserta_id')->references('id')->on('peserta')->onDelete('cascade');
         });

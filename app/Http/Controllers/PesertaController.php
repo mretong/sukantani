@@ -54,7 +54,8 @@ class PesertaController extends Controller
 
     	$validation = Validator::make($request->all(), [
     		'nama'		=> 'required|min:3',
-    		'nokp'		=> 'required|min:7',
+            'nokp'      => 'required|min:7',
+    		'notel'		=> 'required|min:7',
             'jantina'   => 'required',
     		'agensi_id'	=> 'required',
     	]);
@@ -128,7 +129,8 @@ class PesertaController extends Controller
 
        	$peserta = Peserta::create([
     		'nama'			=> strtoupper($request->get('nama')),
-    		'nokp'			=> $request->get('nokp'),
+            'nokp'          => $request->get('nokp'),
+    		'notel'			=> $request->get('notel'),
     		'jantina'		=> strtoupper($request->get('jantina')),
     		'tarafJawatan'	=> strtoupper($request->get('tarafJawatan')),
     		'gredJawatan'	=> strtoupper($request->get('gredJawatan')),
@@ -204,6 +206,7 @@ class PesertaController extends Controller
         $validation = Validator::make($request->all(), [
             'nama'      => 'required|min:3',
             'nokp'      => 'required|min:7',
+            'notel'     => 'required|min:7',
             'jantina'   => 'required',
             'agensi_id' => 'required',
         ]);
@@ -265,6 +268,7 @@ class PesertaController extends Controller
 
         $peserta->nama          = $request->get('nama');
         $peserta->nokp          = $request->get('nokp');
+        $peserta->notel          = $request->get('notel');
         $peserta->jantina       = $request->get('jantina');
         $peserta->noPekerja     = $request->get('noPekerja');
         $peserta->tarafJawatan  = $request->get('tarafJawatan');

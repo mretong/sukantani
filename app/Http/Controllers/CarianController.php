@@ -30,7 +30,9 @@ class CarianController extends Controller
 
         $acara = Acara::where('id', $request->get('acara'))->first();
 
-    	return view('members.keputusanCarian', compact('acara', 'acaras'));
+        $limit = Acara::where('id', $request->get('acara'))->get();
+
+    	return view('members.keputusanCarian', compact('acara', 'acaras', 'limit'));
     }
 
     public function carianNama() {
@@ -52,6 +54,7 @@ class CarianController extends Controller
 
     public function carianAcaraAgensi() {
 
+        
         $games = Acara::orderBy('nama', 'asc')->pluck('nama', 'id');
         $agencies = Agensi::orderBy('nama', 'asc')->pluck('nama', 'id');
 

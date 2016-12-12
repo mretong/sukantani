@@ -25,9 +25,14 @@
                             @if($participant['role'] == 'PENGURUS' || $participant['role'] == 'JURULATIH')
                                     <font color="green"><strong>{{ $participant['role'] }}</strong></font> <br />
                             @endif
-                            {{ $participant['nama'] }}
+                            {{ $participant['nama'] }} <br />
+                            {{ $participant['noAtlet'] }}
                         </td>
-						<td>{{ $participant['nokp'] }}</td>
+						<td>
+                            {{ $participant['nokp'] }} <br />
+                            {{ $participant['notel'] }}
+
+                        </td>
 						<td>{{ $participant['jantina'] }}</td>
     				</tr>
 

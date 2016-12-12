@@ -21,6 +21,20 @@
     <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet">
     <script src="{{ asset('/js/sweetalert-dev.js') }}"></script>
 
+    <style type="text/css">
+    
+.profile {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+    </style>
+
     
 
 
@@ -157,7 +171,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->    
-    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>  
     <script src="{{ asset('/js/app.min.js') }}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
