@@ -5,12 +5,16 @@
 
 @foreach($pesertas as $peserta)
 
+	@if($loop->iteration != 1)
+		<div class="page-break"></div>
+	@endif
+
 	<div class="container-fluid">
 	    <div class="row">
 	        <div class="col-xs-12">
 	        
 	            <div class="panel panel-default">
-	                <div class="panel-heading"><strong>{{ Auth::User()->agensi->kod }} :: {{ Auth::User()->agensi->nama }}</strong></div>
+	                <div class="panel-heading"><strong>{{ $peserta->agensi->kod }} :: {{ $peserta->agensi->nama }}</strong></div>
 
 	                <div class="panel-body">
 
@@ -69,7 +73,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 @endforeach
 
 

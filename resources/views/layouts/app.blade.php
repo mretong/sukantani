@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -15,7 +14,7 @@
 
     <!-- PACE JS -->
     <script src="{{ asset('/js/pace.min.js') }}"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/pace.min.') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/pace.min.css') }}">
 
     <!-- Sweet Alert -->
     <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet">
@@ -23,15 +22,15 @@
 
     <style type="text/css">
     
-.profile {
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
+    .profile {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
 
     </style>
 
@@ -41,7 +40,7 @@
     <title>MADA :: Sistem Pendaftaran Sukan Tani</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset('css/bootsrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
   </head>
@@ -91,7 +90,7 @@
                 @if(Auth::user()->agensi->id == 1)
                   <li><a href="{{ route('tagging') }}" target="_blank">ADMIN :: Senarai Tag Peserta</a></li>
                   <li><a href="{{ route('penginapan') }}" target="_blank">ADMIN :: Penginapan</a></li>
-                  <li><a href="{{ route('pdf-profiles') }}" target="_blank">ADMIN :: Profil Peserta</a></li>
+                  <li><a href="{{ route('pdf-profil') }}" target="_blank" id="profil">ADMIN :: Profil Peserta</a></li>
                 @endif
                 <li><a href="{{ route('laporan-keseluruhan') }}">Laporan Jumlah Keseluruhan Peserta</a></li>
                 <li><a href="{{ route('acara-keseluruhan') }}">Laporan Keseluruhan Penyertaan Acara</a></li>
@@ -172,8 +171,17 @@
     <!-- Placed at the end of the document so the pages load faster -->    
     <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>  
-    <script src="{{ asset('/js/app.min.js') }}"></script>
+    <!-- <script src="{{ asset('/js/app.js') }}"></script> -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script type="text/javascript">
+
+      $('#profil').click(function() {
+        swal("Info", "Proses Janaan Profil Keseluruhan Peserta akan mengambil masa yang lama...");
+      });
+      
+
+    </script>
 
     @yield('js')
   </body>

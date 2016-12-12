@@ -96,6 +96,21 @@ class PdfController extends Controller
     }
 
     //
+    // Profil
+    //
+    public function profil() {
+
+        $pesertas = Peserta::orderBy('agensi_id', 'asc')
+                    // ->where('agensi_id', '<>', 1)
+                    // ->limit(3)
+                    ->get();
+
+        view()->share('pesertas', $pesertas);
+        $pdf = Pdf::loadView('members.pdf.profile');
+        return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Profil Atlet.pdf');
+    }
+
+    //
     // Tagging
     //
     public function tag(Request $request) {

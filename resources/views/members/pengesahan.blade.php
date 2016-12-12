@@ -9,7 +9,7 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading" align="center"><h4>Perakuan Pengesahan</h4></div>
 				<div class="body" style="margin: 10px">
-					<p>Dengan ini saya mengesahkan bahawa maklumat di bawah adalah benar!</p>
+					<p>Dengan ini <strong>{{ Auth::user()->agensi->nama }}</strong> mengesahkan bahawa maklumat di bawah adalah benar dan menepati syarat-syarat Sukan Tani.</p>
 
 					@if($pengesahan->status == "TIDAK")
 						<div align="right">

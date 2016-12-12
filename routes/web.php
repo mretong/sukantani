@@ -127,9 +127,9 @@ Route::get('/pdf/peserta/{id}', [
 	'uses'	=> 'PdfController@peserta'
 ]);
 
-Route::get('/pdf/profiles', [
-	'as'	=> 'pdf-profiles',
-	'uses'	=> 'PesertaController@profiles'
+Route::get('/pdf/laporan/profil', [
+	'as'	=> 'pdf-profil',
+	'uses'	=> 'PdfController@profil'
 ]);
 
 Route::post('/pdf/tag', [

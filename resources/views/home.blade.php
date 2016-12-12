@@ -145,13 +145,7 @@ input {
     </div>
 </div>
 
-<script type="text/javascript">
-    
-$('input[type=text]').keyup(function() {
-    $(this).val($(this).val().toUpperCase());
-});
 
-</script>
 
 
 @endsection
