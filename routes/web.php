@@ -181,10 +181,14 @@ Route::get('/laporan/penginapan', [
 	'uses'	=> 'LaporanController@penginapan'
 ]);
 
-
 Route::get('/senarai/semak', [
 	'as'	=> 'senarai-semak',
 	'uses'	=> 'LaporanController@senaraiSemak'
+]);
+
+Route::get('/summary', [
+	'as'	=> 'summary',
+	'uses'	=> 'SummaryController@index'
 ]);
 
 

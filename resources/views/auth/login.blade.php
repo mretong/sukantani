@@ -73,7 +73,7 @@
 
     swal({
       title: "<strong>Peringatan Mesra</strong>",
-      text: "Pendaftaran Online akan dibuka pada 15 Disember 2016 sehingga 2 Disember 2017.",
+      text: "Pendaftaran Online akan dibuka pada 15 Disember 2016 sehingga 2 Januari 2017.",
       html: true
     });
 

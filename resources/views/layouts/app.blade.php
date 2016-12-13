@@ -4,21 +4,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="images/mada.ico">
-
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <meta name="description" content="Sistem Pendaftaran Karnival Sukan MOA">
+    <meta name="author" content="Suhairi Abdul Hamid">
+    <link rel="icon" href="{{ asset('images/mada.ico') }}">
 
     <!-- PACE JS -->
     <script src="{{ asset('/js/pace.min.js') }}"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/pace.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/pace.min.css') }}">
 
     <!-- Sweet Alert -->
     <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet">
     <script src="{{ asset('/js/sweetalert-dev.js') }}"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style type="text/css">
     
@@ -34,14 +34,9 @@
 
     </style>
 
-    
-
-
     <title>MADA :: Sistem Pendaftaran Sukan Tani</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 
   </head>
 
@@ -91,10 +86,12 @@
                   <li><a href="{{ route('tagging') }}" target="_blank">ADMIN :: Senarai Tag Peserta</a></li>
                   <li><a href="{{ route('penginapan') }}" target="_blank">ADMIN :: Penginapan</a></li>
                   <li><a href="{{ route('pdf-profil') }}" target="_blank" id="profil">ADMIN :: Profil Peserta</a></li>
+                  <li><a href="{{ route('summary') }}">ADMIN :: Rumusan</a></li>
                 @endif
                 <li><a href="{{ route('laporan-keseluruhan') }}">Laporan Jumlah Keseluruhan Peserta</a></li>
                 <li><a href="{{ route('acara-keseluruhan') }}">Laporan Keseluruhan Penyertaan Acara</a></li>
                 <li><a href="{{ route('senarai-semak') }}">Senarai Semak</a></li>
+                
               </ul>
             </li>
 
@@ -109,7 +106,7 @@
             </li>
             @endif
             <li><a href="{{ route('nota')}}">Nota</a></li>
-            <li><a href="{{ url('/pengesahan')}}">Pengesahan</a></li>
+            <!-- <li><a href="{{ url('/pengesahan')}}">Pengesahan</a></li> -->
 
 
           </ul>

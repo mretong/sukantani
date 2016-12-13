@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Sistem Pendaftaran Karnival Sukan MOA">
+    <meta name="author" content="Suhairi Abdul Hamid">
+    <link rel="icon" href="{{ asset('images/mada.ico') }}">
+
+    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <link href="{{ asset('css/bootsrap.min.css') }}" rel="stylesheet">
+
+    <style type="text/css">
+        .page-break {
+            page-break-after: always;
+        }
+    </style>
+
+    <title>MADA :: Sistem Pendaftaran Sukan Tani</title>
+
+  </head>
+
+  <body>    
+
+  <div class="alert alert-danger">Hello, World!</div>
+    @yield('content')
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->    
+    <!-- <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script> -->
+    
+    <!-- <script src="{{ asset('/js/app.min.js') }}"></script> -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  </body>
+</html>

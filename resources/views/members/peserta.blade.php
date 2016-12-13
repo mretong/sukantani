@@ -173,7 +173,7 @@ $('#penyertaan').change(function() {
 	      title: "<strong>Peringatan Mesra</strong>",
 	      text: "Bagi Penyertaan sebagai Pengurus atau Jurulatih, hanya satu acara dibenarkan.",
 	      html: true
-    });
+    	});
 	}
 })
 

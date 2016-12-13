@@ -25,7 +25,7 @@ class PdfController extends Controller
     
     public function kontinjen($agensi_id) {
 
-        return 'kontinjen';
+        // return 'kontinjen';
     	if(Auth::user()->agensi_id != $agensi_id) {
     		Session::flash('error', 'Gagal. Tiada hak akses.');
     		return back();
@@ -39,10 +39,11 @@ class PdfController extends Controller
             return back();
         }
 		
-		view()->share('kontinjen', $kontinjen);
+		// view()->share('kontinjen', $kontinjen);
 
-		$pdf = PDF::loadView('members.pdf.kontinjen', $kontinjen);
-		return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Maklumat Kontinjen.pdf');
+		$pdf = PDF::loadView('members.pdf.kontinjen', ['kontinjen' => $kontinjen]);
+        // return view('members.pdf.kontinjen', compact('kontinjen'));
+		return $pdf->stream(Auth::user()->agensi->kod . ' - Maklumat Kontinjen.pdf');
     }
 
     public function acara($id) {
@@ -70,7 +71,7 @@ class PdfController extends Controller
 
         // return view('members.pdf.acara', compact('participants', 'acara'));
         $pdf = PDF::loadView('members.pdf.acara');
-        return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Maklumat Acara.pdf');
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Maklumat Acara.pdf');
     }
 
     //
@@ -92,7 +93,7 @@ class PdfController extends Controller
 
         view()->share('peserta', $peserta);
         $pdf = Pdf::loadView('members.pdf.peserta-info');
-        return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Profil Atlet.pdf');
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Profil Atlet.pdf');
     }
 
     //
@@ -107,7 +108,7 @@ class PdfController extends Controller
 
         view()->share('pesertas', $pesertas);
         $pdf = Pdf::loadView('members.pdf.profile');
-        return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Profil Atlet.pdf');
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Profil Keseluruhan Atlet.pdf');
     }
 
     //
@@ -135,7 +136,7 @@ class PdfController extends Controller
         view()->share('agency', $agency);
 
         $pdf = PDF::loadView('members.pdf.tagging');
-        return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Maklumat Acara.pdf');
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Maklumat Acara.pdf');
     }
 
     //
@@ -162,7 +163,7 @@ class PdfController extends Controller
 
         $pdf = Pdf::loadView('members.pdf.laporan.keseluruhan');
 
-        return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Laporan Peserta Keseluruhan.pdf');
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Laporan Peserta Keseluruhan.pdf');
 
     }
 
@@ -180,6 +181,6 @@ class PdfController extends Controller
         $pdf = Pdf::loadView('members.pdf.laporan.penginapan');
         // return view('members.pdf.laporan.penginapan', compact('acaras', 'agencies'));
 
-        return $pdf->stream(Auth::user()->agensi->kod . ' ' . time() . ' - Ringkasan Penginapan.pdf');
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Ringkasan Penginapan.pdf');
     }
 }
