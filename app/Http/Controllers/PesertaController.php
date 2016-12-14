@@ -48,21 +48,21 @@ class PesertaController extends Controller
 
     		if($nokp != null) {
     			Session::flash('error', 'Peserta dengan No KP ini telah wujud.');
-    			return redirect('/peserta');
+    			return back()->withInput($request->all());
     		}
     	}
 
     	$validation = Validator::make($request->all(), [
     		'nama'		=> 'required|min:3',
             'nokp'      => 'required|min:7',
-    		'notel'		=> 'required|min:7',
+    		// 'notel'		=> 'required|min:7',
             'jantina'   => 'required',
     		'agensi_id'	=> 'required',
     	]);
 
     	if($validation->fails()){
-    		Session::flash('error', 'Ruangan nama, nokp, acara dan agensi adalah wajib diisi. <br />Perlu diisi dengan format yang betul');
-    		return redirect('/peserta');
+    		Session::flash('error', 'Ruangan nama, nokp, gambar, acara dan agensi adalah wajib diisi. <br />Perlu diisi dengan format yang betul');
+    		return back()->withInput($request->all());
     	}
 
         // Check if there was already a pengurus or jurulatih
@@ -206,7 +206,7 @@ class PesertaController extends Controller
         $validation = Validator::make($request->all(), [
             'nama'      => 'required|min:3',
             'nokp'      => 'required|min:7',
-            'notel'     => 'required|min:7',
+            // 'notel'     => 'required|min:7',
             'jantina'   => 'required',
             'agensi_id' => 'required',
         ]);
@@ -268,7 +268,7 @@ class PesertaController extends Controller
 
         $peserta->nama          = $request->get('nama');
         $peserta->nokp          = $request->get('nokp');
-        $peserta->notel          = $request->get('notel');
+        $peserta->notel         = $request->get('notel');
         $peserta->jantina       = $request->get('jantina');
         $peserta->noPekerja     = $request->get('noPekerja');
         $peserta->tarafJawatan  = $request->get('tarafJawatan');
