@@ -11,7 +11,6 @@
 
 			<table class="table table-responsive">
 			@foreach($acaras as $acara)
-
 			
 				<tr>
 					<td colspan="3"><strong>#{{ $loop->iteration }} Acara {{ $acara->nama }}</strong></td>
@@ -60,7 +59,7 @@
 					<tr>
 						<td colspan="3"><strong>Ringkasan Senarai Semak</strong></td>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<td valign="middle">STATUS PENGESAHAN</td>		
 							@if(strtoupper($ringkasan['pengesahan']) == "YA")
 								<td valign="middle">{{ strtoupper($ringkasan['pengesahan']) }}</td>
@@ -72,7 +71,7 @@
 							@endif
 
 						</td>
-					</tr>
+					</tr> -->
 					<tr>
 						<td>KESELURUHAN</td>
 						<td colspan="2">{{ $ringkasan['jumlahPeserta'] }}</td>

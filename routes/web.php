@@ -208,8 +208,6 @@ Route::get('/summary', [
 	'uses'	=> 'SummaryController@index'
 ]);
 
-
-
 //
 // Settings
 //
@@ -252,4 +250,3 @@ Route::post('/pengesahan', [
 	'as'	=> 'pengesahan',
 	'uses'	=> 'PengesahanController@indexPost'
 ]);
-
