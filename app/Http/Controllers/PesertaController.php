@@ -117,6 +117,8 @@ class PesertaController extends Controller
         $count = Peserta::where('agensi_id', Auth::user()->id)->count();
         $count++;
 
+        // dd($count);
+
         $counter = '';
         if($count < 10)
             $counter = '00' . $count;
@@ -223,9 +225,12 @@ class PesertaController extends Controller
         if($request->get('role') != 'ATLET') {
             
             // check if acara more than 1
-            if(count($request->get('acara')) > 1) {
-                Session::flash('error', 'Bagi penyertaan Pengurus dan Jurulatih, hanya satu acara dibenarkan.');
-                return Redirect::back()->withInput($request->all());
+            // role asal bukan pengurus/ jurulatih
+            if($peserta->role != $request->get('role')) {
+                if(count($request->get('acara')) > 1) {
+                    Session::flash('error', 'Bagi penyertaan Pengurus dan Jurulatih, hanya satu acara dibenarkan.');
+                    return Redirect::back()->withInput($request->all());
+                }
             }
 
             //check if there was a pengurus or jurulatih
@@ -258,8 +263,6 @@ class PesertaController extends Controller
         if(!empty($request->file('photo'))) {
             $destination = 'images/peserta/';
             $filename = $destination . time() . '-' . $request->get('nama') . '.' . $request->file('photo')->getClientOriginalExtension();
-
-            // return $destination;
 
             if($request->file('photo')->move($destination, $filename));
         }
