@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Kontinjen;
+
 use Auth;
-
 use Session;
+use Validator;
 
+use App\Kontinjen;
 use App\Peserta;
 
 class HomeController extends Controller
@@ -29,39 +30,149 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $kontinjen = Kontinjen::where('agensi_id', Auth::User()->agensi_id)->first();
+        $ketua      = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
+                        ->where('role', 'KETUA')
+                        ->first();
+        $timbalan   = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
+                        ->where('role', 'TIMBALAN')
+                        ->first();
+        $urusetias   = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
+                        ->where('role', '<>', 'KETUA')
+                        ->where('role', '<>', 'TIMBALAN')
+                        ->get();
 
-        return view('home', compact('kontinjen'));
+        // dd($urusetias);
+
+        return view('home', compact('urusetias', 'ketua', 'timbalan'));
     }
 
     public function kontinjenPost(Request $request) {
 
-        $kontinjen = Kontinjen::where('agensi_id', $request->get('agensi_id'))->first();
+        // return $request->all();
 
-        // dd($kontinjen);
+        // Validation
 
-        if($kontinjen == null)
-            $kontinjen = Kontinjen::create($request->all());
-        else {
-            $kontinjen = Kontinjen::where('agensi_id', $request->get('agensi_id'))
-                ->update([
-                'ketua'         => strtoupper($request->get('ketua')),
-                'timbalan'      => strtoupper($request->get('timbalan')),
-                'urusetia1'     => strtoupper($request->get('urusetia1')),
-                'urusetia2'     => strtoupper($request->get('urusetia2')),
-                'urusetia3'     => strtoupper($request->get('urusetia3')),
-                'urusetia4'     => strtoupper($request->get('urusetia4')),
-                'urusetia5'     => strtoupper($request->get('urusetia5')),
-                'urusetia6'     => strtoupper($request->get('urusetia6')),
-                'urusetia7'     => strtoupper($request->get('urusetia7')),
-                'urusetia8'     => strtoupper($request->get('urusetia8')),
-                'urusetia9'     => strtoupper($request->get('urusetia9')),
-                'urusetia10'    => strtoupper($request->get('urusetia10'))
-            ]);
+        $validation = Validator::make($request->all(), [
+                        'nama'      => 'required|min:3',
+                        'role'      => 'required',
+                        'nokp'      => 'required',
+                        'notel'     => 'required',
+                        'jantina'   => 'required'
+
+                    ]);
+
+        if($validation->fails()){
+            Session::flash('error', 'Gagal. Sila isi semua ruangan yang wajib dengan format yang betul.');
+            return back()->withInput($request->all());
         }
 
-        Session::flash('success', 'Maklumat Kontinjen telah dikemaskini.');
+        // return $request->all();
 
-        return redirect('/home');
+        $kontinjen = Kontinjen::where('nokp', $request->get('nokp'))->first();
+
+        $update = false;
+        if($kontinjen != null)
+            $update = true;
+
+
+
+        // Check if role ketua already exist
+        // Check if role timbalan already exist
+        // Check if role urusetia exceed limit
+
+        if(!$update) {
+
+            $countKetua = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
+                            ->where('role', 'KETUA')
+                            ->count();
+
+            if($countKetua > 0 && $request->get('role') == 'KETUA') {
+                Session::flash('error', 'Gagal. Mengikut rekod, kontinjen ini telah mempunyai Ketua Kontinjen. Sila kemaskini untuk melakukan perubahan.');
+                return back()->withInput($request->all());
+
+            }
+
+            $countTimbalan = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
+                            ->where('role', 'TIMBALAN')
+                            ->count();
+
+            if($countTimbalan > 0&& $request->get('role') == 'TIMBALAN') {
+                Session::flash('error', 'Gagal. Mengikut rekod, kontinjen ini telah mempunyai Timbalan Ketua Kontinjen. Sila kemaskini untuk melakukan perubahan.');
+                return back()->withInput($request->all());
+            }
+
+            $countUrusetia = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
+                            ->where('role', 'URUSETIA')
+                            ->count();
+
+            if($countUrusetia > 10 && $request->get('role') == 'URUSETIA') {
+                Session::flash('error', 'Gagal. Mengikut rekod, kontinjen ini telah mempunyai had 10 urusetia. Sila kemaskini/hapus untuk melakukan perubahan.');
+                return back()->withInput($request->all());
+            }
+
+            //
+            // CREATE
+            //
+
+            $kontinjen = Kontinjen::create($request->all());      
+            Session::flash('success', 'Berjaya. Maklumat Kontinjen telah didaftarkan.');
+
+            return redirect()->route('home');
+
+        } else {
+
+            $kontinjen->nama    = $request->get('nama');
+            $kontinjen->role    = $request->get('role');
+            $kontinjen->nokp    = $request->get('nokp');
+            $kontinjen->notel   = $request->get('notel');
+            $kontinjen->jantina = $request->get('jantina');
+
+            if($kontinjen->save()) {
+
+                // return 'here';
+
+                Session::flash('success', 'Berjaya. Maklumat Kontinjen telah dikemaskini.');
+                return redirect()->route('home');
+
+            } else {
+
+                Session::flash('error', 'Gagal. Maklumat Kontinjen gagal dikemaskini.');
+                return back()->withInput($request->all());
+            }
+        }        
     }
+
+    public function hapus($id) {
+
+        $kontinjen = Kontinjen::where('id', $id)->first();
+
+        if($kontinjen->delete()){
+            Session::flash('success', 'Berjaya. Maklumat Kontinjen ini telah dihapus.');
+            return back();
+        } else {
+            Session::flash('error', 'Gagal. Maklumat Kontinjen ini gagal dihapus.');
+            return back();
+        }        
+    }
+
+    public function kemaskini($id) {
+
+        $ketua      = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
+                        ->where('role', 'KETUA')
+                        ->first();
+        $timbalan   = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
+                        ->where('role', 'TIMBALAN')
+                        ->first();
+        $urusetias   = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
+                        ->where('role', '<>', 'KETUA')
+                        ->where('role', '<>', 'TIMBALAN')
+                        ->get();
+
+        $kontinjen = Kontinjen::where('id', $id)->first();
+
+        return view('home', compact('kontinjen', 'ketua', 'timbalan', 'urusetias'));
+
+    }
+
+
 }

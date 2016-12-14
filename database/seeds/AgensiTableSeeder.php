@@ -32,10 +32,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -60,10 +60,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -88,10 +88,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -117,10 +117,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -146,10 +146,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -175,10 +175,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -204,10 +204,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -233,10 +233,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -262,10 +262,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -291,10 +291,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -320,10 +320,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -349,10 +349,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -378,10 +378,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama' => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama' => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,
@@ -407,10 +407,10 @@ class AgensiTableSeeder extends Seeder
             'agensi_id'     => $agensi->id
         ]);
 
-        Kontinjen::create([
-            'nama'  => $agensi->nama,
-            'agensi_id' => $agensi->id
-        ]);
+        // Kontinjen::create([
+        //     'nama'  => $agensi->nama,
+        //     'agensi_id' => $agensi->id
+        // ]);
 
         Pengesahan::create([
             'agensi_id' => $agensi->id,

@@ -20,12 +20,29 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+// KONTINJEN
+
+Route::get('/home', [
+	'as'	=> 'home',
+	'uses'	=> 'HomeController@index'
+]);
 
 Route::post('/home', [
 	'as'	=> 'kontinjen-post',
 	'uses'	=> 'HomeController@kontinjenPost'
 ]);
+
+Route::get('/home/hapus/{id}', [
+	'as'	=> 'kontinjen-hapus',
+	'uses'	=> 'HomeController@hapus'
+]);
+
+Route::get('/home/kemaskini/{id}', [
+	'as'	=> 'kontinjen-kemaskini',
+	'uses'	=> 'HomeController@kemaskini'
+]);
+
+
 
 // PESERTA
 

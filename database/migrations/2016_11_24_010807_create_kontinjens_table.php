@@ -16,18 +16,10 @@ class CreateKontinjensTable extends Migration
         Schema::create('kontinjens', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->string('ketua')->nullable();
-            $table->string('timbalan')->nullable();
-            $table->string('urusetia1')->nullable();
-            $table->string('urusetia2')->nullable();
-            $table->string('urusetia3')->nullable();
-            $table->string('urusetia4')->nullable();
-            $table->string('urusetia5')->nullable();
-            $table->string('urusetia6')->nullable();
-            $table->string('urusetia7')->nullable();
-            $table->string('urusetia8')->nullable();
-            $table->string('urusetia9')->nullable();
-            $table->string('urusetia10')->nullable();
+            $table->string('role', 20); // Ketua Kontinjen, Timbalan Ketua Kontinjen dan Urusetia
+            $table->string('nokp', 15);
+            $table->string('notel');
+            $table->string('jantina', 10);
             $table->string('agensi_id');
         });
     }

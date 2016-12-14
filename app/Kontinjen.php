@@ -8,11 +8,16 @@ class Kontinjen extends Model
 {
     protected $table 	= 'kontinjens';
     protected $id		= 'id';
-    protected $fillable = ['nama', 'ketua', 'timbalan', 'urusetia1', 'urusetia2', 'urusetia3', 'urusetia4', 'urusetia5', 'urusetia6', 'urusetia7', 'urusetia8', 'urusetia9', 'urusetia10', 'agensi_id'];
+    protected $fillable = ['nama', 'role', 'nokp', 'notel', 'jantina', 'agensi_id'];
 
     public $timestamps 	= false;
 
     public function agensi() {
     	return $this->belongsTo('App\Agensi');
+    }
+
+    public function setNamaAttribute($value) {
+
+    	$this->attributes['nama'] = strtoupper(strtolower($value));
     }
 }
