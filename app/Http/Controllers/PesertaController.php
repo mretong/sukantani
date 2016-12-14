@@ -215,8 +215,8 @@ class PesertaController extends Controller
             Session::flash('error', 'Ruangan nama, nokp, acara dan agensi adalah wajib diisi. <br />Perlu diisi dengan format yang betul');
             return redirect('/peserta');
         }    
-        
 
+        $peserta = Peserta::where('id', $request->get('id'))->first();
         // Check if there was already a pengurus or jurulatih
         // dd(count($request->get('acara')));
 
