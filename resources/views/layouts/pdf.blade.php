@@ -32,6 +32,12 @@
       background-size: cover;
     }
 
+
+    .page-break {
+      page-break-after: always;
+    }
+
+
     </style>
 
     <title>MADA :: Sistem Pendaftaran Sukan Tani</title>

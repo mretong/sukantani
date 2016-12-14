@@ -14,6 +14,7 @@ use App\Peserta;
 use App\Agensi;
 
 use PDF;
+use View;
 
 
 
@@ -66,6 +67,7 @@ class PdfController extends Controller
             }            
         }
 
+        // dd(count($participants));
         view()->share('participants', $participants);
         view()->share('acara', $acara);
 
@@ -92,7 +94,12 @@ class PdfController extends Controller
         }
 
         view()->share('peserta', $peserta);
-        $pdf = Pdf::loadView('members.pdf.peserta-info');
+        $html = View::make('members.pdf.peserta-info', $peserta);
+        $pdf = Pdf::loadHTML($html);
+
+        // return public_path(); 
+        // return $peserta->photo;
+        // return view('members.pdf.peserta-info', compact('peserta'));
         return $pdf->stream(Auth::user()->agensi->kod . ' - Profil Atlet.pdf');
     }
 
@@ -162,9 +169,7 @@ class PdfController extends Controller
         view()->share('pesertas', $pesertas);
 
         $pdf = Pdf::loadView('members.pdf.laporan.keseluruhan');
-
-        return $pdf->stream(Auth::user()->agensi->kod . ' - Laporan Peserta Keseluruhan.pdf');
-
+        return $pdf->download(Auth::user()->agensi->kod . ' - Laporan Peserta Keseluruhan.pdf');
     }
 
     //

@@ -22,7 +22,7 @@ input {
 				<table class="table table-condensed table-striped table-hover">
 					<tr>
 						<td colspan=2>
-							<img src="{{ asset($peserta->photo) }}" height="50" width="40"><br /><br /><br /><br />
+							<img src="<?= public_path(); ?>/{{ $peserta->photo }}" height="150" width="140"><br /><br /><br /><br />
 						</td>
 					</tr>
 					<tr>
