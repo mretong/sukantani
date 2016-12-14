@@ -114,10 +114,8 @@ class PesertaController extends Controller
             return back()->withInput($request->all());
         }
 
-        $count = Peserta::where('agensi_id', Auth::user()->id)->count();
+        $count = Peserta::where('agensi_id', Auth::user()->agensi->id)->count();
         $count++;
-
-        // dd($count);
 
         $counter = '';
         if($count < 10)
