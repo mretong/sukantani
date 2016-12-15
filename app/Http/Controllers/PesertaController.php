@@ -47,7 +47,7 @@ class PesertaController extends Controller
     		$nokp = Peserta::where('nokp', $request->get('nokp'))->first();
 
     		if($nokp != null) {
-    			Session::flash('error', 'Peserta dengan No KP ini telah wujud.');
+    			Session::flash('error', 'Peserta dengan No KP ini telah wujud. Sila buat carian untuk pengemaskinian. (eg: penambahan atau pengurangan acara)');
     			return back()->withInput($request->all());
     		}
     	}
@@ -61,7 +61,7 @@ class PesertaController extends Controller
     	]);
 
     	if($validation->fails()){
-    		Session::flash('error', 'Ruangan nama, nokp, gambar, acara dan agensi adalah wajib diisi. <br />Perlu diisi dengan format yang betul');
+    		Session::flash('error', 'Ruangan nama, nokp, jantina, gambar,  dan acara adalah wajib diisi. <br />Perlu diisi dengan format yang betul');
     		return back()->withInput($request->all());
     	}
 
@@ -226,7 +226,7 @@ class PesertaController extends Controller
             // role asal bukan pengurus/ jurulatih
             if($peserta->role != $request->get('role')) {
                 if(count($request->get('acara')) > 1) {
-                    Session::flash('error', 'Bagi penyertaan Pengurus dan Jurulatih, hanya satu acara dibenarkan.');
+                    Session::flash('error', 'Setiap acara dihadkan kepada seorang Pengurus dan seorang Jurulatih sahaja.');
                     return Redirect::back()->withInput($request->all());
                 }
             }
