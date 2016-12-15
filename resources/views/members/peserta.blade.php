@@ -144,7 +144,14 @@ input {
 
 				{!! Form::hidden('agensi_id', Auth::user()->agensi_id) !!}
 
-				<div align="right"><button class="btn btn-primary">Tambah Peserta</button></div>
+				<br />
+				<div align="right">
+
+					{!! Form::reset('Reset', ['class' => 'btn btn-danger']) !!}
+					{!! Form::submit('Daftar Peserta', ['class' => 'btn btn-primary']) !!}
+					
+					
+				</div>
 
                 {!! Form::close() !!}
                 </div>
