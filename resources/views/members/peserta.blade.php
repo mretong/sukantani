@@ -102,20 +102,20 @@ input {
                 </div>
 
                 <div class="form-group">
-                	{!! Form::label('Nama Penuh') !!}	
+                	{!! Form::label('*Nama Penuh') !!}	
                 	{!! Form::text('nama', '', ['class' => 'form-control', 'autofocus' => 'on']) !!}
             	</div>
 
-				{!! Form::label('No Kad Pengenalan') !!}	
+				{!! Form::label('*No Kad Pengenalan') !!}	
 				{!! Form::text('nokp', '', ['class' => 'form-control', 'placeholder' => 'Contoh : 710150025697']) !!}
 
 				{!! Form::label('No Telefon') !!}	
 				{!! Form::text('notel', '', ['class' => 'form-control', 'placeholder' => 'Contoh : 0123456789']) !!}
 
-				{!! Form::label('Jantina') !!}	
+				{!! Form::label('*Jantina') !!}	
 				{!! Form::select('jantina', ['Jantina', 'LELAKI' => 'LELAKI', 'WANITA' => 'WANITA'], '', ['class' => 'form-control']) !!}
 
-				{!! Form::label('Taraf Jawatan') !!}
+				{!! Form::label('*Taraf Jawatan') !!}
 				{!! Form::text('tarafJawatan', '', ['class' => 'form-control', 'placeholder' => 'Contoh : TETAP']) !!}
 
 				{!! Form::label('Gred jawatan') !!}	
@@ -127,10 +127,10 @@ input {
 				{!! Form::label('Tarikh lantikan') !!}	
 				{!! Form::text('tarikhLantikan', '', ['class' => 'form-control', 'placeholder' => 'Contoh: 16082008']) !!}
 
-				{!! Form::label('Penyertaan') !!}
+				{!! Form::label('*Penyertaan') !!}
 				{!! Form::select('role', ['ATLET' => 'ATLET', 'PENGURUS' => 'PENGURUS', 'JURULATIH' => 'JURULATIH'], '', ['class' => 'form-control', 'id' => 'penyertaan']) !!}
 
-				{!! Form::label('Acara') !!}
+				{!! Form::label('*Acara') !!}
 				@foreach($games as $game)
 					 <br />{!! Form::checkbox('acara[]', $game->id) !!} {{ $game->nama }}
 				@endforeach
@@ -139,7 +139,7 @@ input {
 				<!-- {!! Form::label('Agensi') !!}	 -->
 				{!! Form::hidden('agensi_id', Auth::user()->agensi->kod) !!}
 
-				{!! Form::label('Gambar berukuran passpot') !!}	
+				{!! Form::label('*Gambar berukuran passpot') !!}	
 				{!! Form::file('photo', '', ['class' => 'form-control']) !!}
 
 				{!! Form::hidden('agensi_id', Auth::user()->agensi_id) !!}
