@@ -40,7 +40,7 @@
 
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="icon-key"></i> </span>
+                                    <span class="input-group-addon"><i class="fa fa-key"></i> </span>
                                     <input id="password" type="password" class="form-control" name="password" required>
                                 </div>
 

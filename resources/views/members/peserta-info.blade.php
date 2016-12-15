@@ -13,7 +13,7 @@ input {
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-6">
-        	<div align="right"><span class="glyphicon glyphicon-download-alt"> </span> <a href="{{ route('pdf-peserta', $peserta->id) }}">PDF</a>&nbsp;&nbsp;</div>
+        	<div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-peserta', $peserta->id) }}">PDF</a>&nbsp;&nbsp;</div>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>{{ Auth::User()->agensi->kod }} :: {{ Auth::User()->agensi->nama }}</strong></div>
 
