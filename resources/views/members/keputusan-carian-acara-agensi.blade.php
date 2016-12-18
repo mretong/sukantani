@@ -4,20 +4,16 @@
 
 
 <div class="container">
-<h3>{{ Auth::user()->agensi->kod }} - {{ Auth::user()->agensi->nama }}</h3>
+<h3>{{ $agensi->kod }} - {{ $agensi->nama }}</h3>
 	<div class="col-xs-8">		
 		
 		<div class="panel panel-primary">
 			<div class="panel-heading"><h4>Keputusan Carian Acara dan Agensi</h4></div>
 			<div class="panel-body">
 			
-			<?php $count = 0; ?>
-			@foreach($acaras as $acara)
-
-				<?php $count++; ?>
 				<table class="table table-condensed table-striped">
 				<tr>
-					<td colspan="12"><h4>#{{ $count }} - Acara {{ ucWords(strtolower($acara->nama)) }}</h4></td>
+					<td colspan="12"><h4>Acara {{ ucWords(strtolower($acara->nama)) }}</h4></td>
 				</tr>
 				<tr>
 					<td>Bil</td>
@@ -29,13 +25,9 @@
 					<td>No Atlet</td>
 					<td>Pilihan</td>
 				</tr>
-				<?php $bil = 0; ?>
-				@foreach($acara->peserta as $peserta)
-
-					@if($peserta->agensi->id == Auth::user()->agensi->id)
-					<?php $bil++; ?>
+				@foreach($pesertas as $peserta)
 					<tr>
-						<td>{{ $bil }}</td>
+						<td>{{ $loop->iteration }}</td>
 						<td>							
 							{{ $peserta->nama }} <br />
 							@if($peserta->role == 'PENGURUS' || $peserta->role == 'JURULATIH')
@@ -55,14 +47,8 @@
 							<a href="{{ route('acara-hapus', [$peserta->id, $acara->id]) }}" title="Gugur dari Acara"><span class="btn alert-danger">Gugur</span></a>
 						</td>
 					</tr>
-					@endif
-
 				@endforeach
-
 				</table>
-			@endforeach
-
-
 
 			</div>
 		</div>
@@ -80,15 +66,11 @@
 					<td><strong>Acara</strong></td>
 					<td><strong>Had Peserta</strong></td>
 				</tr>
-				@foreach($acaras as $acara)
-					<tr>
-						<td>{{ $loop->index + 1 }}</td>
-						<td>{{ $acara->nama }}</td>
-						<td>{{ $acara->limit }}</td>
-					</tr>
-
-
-				@endforeach
+				<tr>
+					<td>1. </td>
+					<td>{{ $acara->nama }}</td>
+					<td>{{ $acara->limit }}</td>
+				</tr>
 				</table>
 
 

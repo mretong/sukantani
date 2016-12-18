@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -112,7 +113,7 @@
             </li>
             @endif
             <li><a href="{{ route('nota')}}">Nota</a></li>
-            <!-- <li><a href="{{ url('/pengesahan')}}">Pengesahan</a></li> -->
+            <li><a href="{{ route('peta')}}">Peta Lokasi</a></li>
 
 
           </ul>

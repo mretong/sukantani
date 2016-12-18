@@ -54,7 +54,6 @@ class CarianController extends Controller
 
     public function carianAcaraAgensi() {
 
-        
         $games = Acara::orderBy('nama', 'asc')->pluck('nama', 'id');
         $agencies = Agensi::orderBy('nama', 'asc')->pluck('nama', 'id');
 
@@ -65,25 +64,20 @@ class CarianController extends Controller
 
     public function keputusanCarianAcaraAgensi(Request $request) {
 
-        // return $request->all();  
+        $agensi = Agensi::where('id', $request->get('agensi_id'))->first();
+        $acara = Acara::where('id', $request->get('acara_id'))->first();
 
-        $acaras = Acara::where('id', $request->get('acara_id'))
-                    ->get();
+        $pesertas = collect();
+        $count = 0;
 
-        $pesertas = Array();
+        foreach($acara->peserta as $temp) {
 
-        foreach($acaras as $acara) {
+            if($temp->agensi_id == $agensi->id)
+                $pesertas->push($temp);
 
-            foreach($acara->peserta as $peserta){
-
-                if($peserta->agensi->id == $request->get('agensi_id'))
-                    array_push($pesertas, $peserta);
-            }
- 
-            // dd($pesertas);
         }
 
-        return view('members.keputusan-carian-acara-agensi', compact('acaras', 'pesertas'));
+        return view('members.keputusan-carian-acara-agensi', compact('pesertas', 'acara', 'agensi'));
         
     }
 }					

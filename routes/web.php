@@ -239,6 +239,14 @@ Route::get('/nota', [
 ]);
 
 //
+// Peta
+//
+Route::get('/peta', [
+	'as'	=> 'peta',
+	'uses'	=> 'PetaController@index'
+]);
+
+//
 // Pengesahan
 //
 Route::get('/pengesahan', [
