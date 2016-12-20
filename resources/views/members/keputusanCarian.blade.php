@@ -39,7 +39,7 @@
                 	<!-- @include('members.includes._carian_form') -->
 
                 	<br /><br />
-                    <div align="right"><span class="glyphicon glyphicon-download-alt"><a href="{{ route('pdf-acara', $acara->id) }}" target="_blank"> PDF </a></span></div>
+                    <div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-acara', $acara->id) }}" target="_blank"> PDF </a></span></div>
                 	<div align="left">
                 		<h3>Senarai Atlet Mengikut Acara {{ ucwords(strtolower($acara->nama)) }}</h3>
             		</div>

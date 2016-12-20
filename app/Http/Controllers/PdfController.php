@@ -159,6 +159,44 @@ class PdfController extends Controller
         return $pdf->download(Auth::user()->agensi->kod . ' - Laporan Peserta Keseluruhan.pdf');
     }
 
+    public function laporanAcaraKeseluruhan() {
+        $acaras = Acara::orderBy('nama', 'asc')->get();
+
+        // ### TESTING ###
+        // $pesertas = null;
+        // foreach($acaras as $acara) {
+
+        //     $collection = collect($acara->peserta);
+        //     $collection = $collection->sortByDesc('role');
+        //     $collection = $collection->filter(function($peserta) {
+        //                     if($peserta->agensi_id == Auth::user()->agensi->id)
+        //                         return true;
+        //                     });
+        //     $pesertas   = $collection->take(3);
+
+        //     echo "<br /><br />";
+        //     echo "Acara : " . $acara->nama . "<br />";
+
+        //     $bil = 1;
+        //     foreach($pesertas as $peserta){
+                
+        //         echo $bil++ . "<br />";
+        //         echo "Nama : " . $peserta->nama . "<br />";
+        //         echo "Agensi : " . $peserta->agensi->nama . "<br />";
+        //     }
+
+        // }
+
+        // return;
+        // dd($pesertas->toArray());
+
+        // ### END OF TESTING ###
+
+        // return view('members.pdf.laporan.acara-keseluruhan', compact('acaras'));
+        $pdf = Pdf::loadView('members.pdf.laporan.acara-keseluruhan', ['acaras' => $acaras]);
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Laporan Keseluruhan Peserta Mengikut Acara.pdf');
+    }
+
     //
     // ADMIN :: Penginapan
     //

@@ -49,7 +49,7 @@ input {
                                 <td>{{ $contingent->jantina }}</td>
                                 <td>
                                     <a href="{{ route('kontinjen-kemaskini', $contingent->id) }}"><button class="btn alert-info">Kemaskini</button></a>
-                                    <a href="{{ route('kontinjen-hapus', $contingent->id) }}"><button class="btn alert-danger">Hapus</button></a>
+                                    <a href="{{ route('kontinjen-hapus', $contingent->id) }}"><button class="btn alert-danger">Gugur</button></a>
                                 </td>
                             </tr>
                         @empty

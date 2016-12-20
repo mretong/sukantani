@@ -22,7 +22,7 @@ input {
 				<table class="table table-condensed table-striped table-hover">
 					<tr>
 						<td colspan=2>
-							<img src="<?= public_path(); ?>/{{ $peserta->photo }}" height="150" width="140"><br /><br /><br /><br />
+							<img src="<?= public_path(); ?>/{{ $peserta->photo }}" height="150" width="140"><br /><br />
 						</td>
 					</tr>
 					<tr>
@@ -54,6 +54,11 @@ input {
 						<td><strong>Taraf Jawatan</strong></td>
 						<td>{{ $peserta->tarafJawatan }}</td>
 					</tr>
+					<tr>
+						<td><strong>Penyertaan Sebagai</strong></td>
+						<td>{{ $peserta->role }}</td>
+					</tr>
+
 
 					
 					<tr>

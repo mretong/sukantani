@@ -52,6 +52,10 @@ input {
 						<td><strong>Taraf Jawatan</strong></td>
 						<td>{{ $peserta->tarafJawatan }}</td>
 					</tr>
+					<tr>
+						<td><strong>Penyertaan Sebagai</strong></td>
+						<td>{{ $peserta->role }}</td>
+					</tr>
 
 					
 					<tr>

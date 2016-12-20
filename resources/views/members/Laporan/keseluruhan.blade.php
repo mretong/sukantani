@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
-        	<div align="right"><span class="glyphicon glyphicon-download-alt"> </span> 
+        	<div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> 
         	<a href="{{ route('pdf-laporan-keseluruhan', Auth::user()->agensi->id) }}" target="_blank">PDF</a>&nbsp;&nbsp;
         	<a href="{{ route('excel-keseluruhan', Auth::user()->agensi->id) }}" target="_blank">Excel</a>&nbsp;&nbsp;
 
@@ -32,8 +32,13 @@
 					<tr>
 						<td>{{ $loop->index + 1 }}</td>
 						<td>{{ $peserta->vege }}</td>
-						<td>{{ $peserta->nama }}</td>
-						<td>{{ $peserta->nokp }}</td>
+						<td>
+							<a href="{{ route('peserta-kemaskini', $peserta->id) }}" title="Klik untuk kemaskini peserta"> {{ $peserta->nama }}</a>
+						</td>
+						<td>
+							{{ $peserta->nokp }} <br />
+							{{ $peserta->notel }}
+						</td>
 						<td>{{ $peserta->jantina }}</td>
 						<td>{{ $peserta->tarafJawatan }}</td>
 						<td>{{ $peserta->gredJawatan }}</td>

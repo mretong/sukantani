@@ -164,6 +164,11 @@ Route::get('/pdf/laporan/penginapan', [
 	'uses'	=> 'PdfController@penginapan'
 ]);
 
+Route::get('/pdf/laporan/acara-keseluruhan', [
+	'as'	=> 'pdf-acara-keseluruhan',
+	'uses'	=> 'PdfController@laporanAcaraKeseluruhan'
+]);
+
 
 
 //
