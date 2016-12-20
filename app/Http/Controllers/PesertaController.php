@@ -203,6 +203,7 @@ class PesertaController extends Controller
 
     public function kemaskiniPost(Request $request) {
 
+        // ### VALIDATION ###
         // INPUT VALIDATION
         $validation = Validator::make($request->all(), [
             'nama'      => 'required|min:3',
@@ -220,36 +221,50 @@ class PesertaController extends Controller
         // LOGIC VALIDATION
 
         // Check if the acara already has a pengurus or jurulatih
-        $peserta = Peserta::where('id', $request->get('id'))->first();
+        $corresponsingPeserta = Peserta::where('id', $request->get('id'))->first();
 
         if($request->get('role') != 'ATLET') {
-            // return $request->all();
+
+            // check if the peserta has more than one acara
+            if(count($request->get('acara')) > 1) {
+                Session::flash('error', 'Sistem tidak dapat mengemaskini peserta ini sebagai ' . $request->get('role') . ' kerana peserta ini mempunyai lebih dari satu acara. Sila pilih peserta lain sebagai ' . $request->get('role') . ' atau letakkan peserta ini sebagai ATLET dahulu dan buat pengemaskinian semasa hari pendaftaran.');
+                return back()->withInput($request->all());
+            }
+
             // check if there is a someone with that role already
             $pesertas = Peserta::where('agensi_id', $request->get('agensi_id'))
                         ->where('role', $request->get('role'))
                         ->get();
 
-            // check the existent of the role for that acara
+            $acaraID = $request->get('acara');
+            $acaraID = $acaraID[0];
+            echo "Acara ID : " . $acaraID . "<br /><br />";
+
+
             foreach($pesertas as $peserta) {
 
                 foreach($peserta->acara as $acara) {
 
-                    $collection = collect($acara);
-                    $acara = $collection->only(['id']);
 
-                    $acara = $acara->toArray();
+                    // echo 'Looping Peserta ID : ' . $peserta->id . '<br />';
+                    // echo 'Acara Peserta ID : ' . $acara->id . '<br />';
 
-                    if(in_array($acara['id'], $request->get('acara')))
-                        $roleExist = true;
+                    if($acara->id == $acaraID){
 
-                    // if true, check if the current peserta is the one with the role
-                    if($roleExist && $peserta->id != $request->get('id')) {
-                        Session::flash('error', 'Acara ini sudah mempunyai seorang ' . $request->get('role') . '.');
-                        return back()->withInput($request->all());
+                        // echo 'CORR ID : ' . $corresponsingPeserta . '<br />';
+                        // echo 'Loop Peserta : ' . $peserta->id . '<br /><br />';
+
+                        // check if the the role belongs to corresponding peserta
+                        if($peserta->id != $corresponsingPeserta->id) {
+                            Session::flash('error', 'Sistem tidak dapat mengemaskini peserta ini sebagai ' . $request->get('role') . ' kerana acara ini telah mempunyai ' . $request->get('role') . '. Sila pilih peserta lain sebagai ' . $request->get('role') . ' atau letakkan peserta ini sebagai atlet dahulu dan buat pengemaskinian semasa hari pendaftaran.');
+                            return back()->withInput($request->all());
+                        }
                     }
-                }            
-            }
+                }
+            }              
         }
+
+        // ### END OF VALIDATION ###
 
         // Proses Kemaskini
 

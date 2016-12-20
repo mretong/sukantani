@@ -165,7 +165,7 @@ $('#penyertaan').change(function() {
 	if(val != 'ATLET'){
 		swal({
 	      title: "<strong>Peringatan Mesra</strong>",
-	      text: "Bagi Penyertaan sebagai Pengurus atau Jurulatih, hanya satu acara dibenarkan.",
+	      text: "Bagi Penyertaan sebagai Pengurus atau Jurulatih, hanya satu acara dibenarkan. <br /> Atau jadikan peserta ini sebagai ATLET dan kemaskini semasa sessi pendaftaran nanti.",
 	      html: true
     });
 	}
