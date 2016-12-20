@@ -70,6 +70,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pendaftaran <span class="caret"></span></a>
               <ul class="dropdown-menu">
+                <li><a href="{{ route('home')}}">Kontinjen</a></li>
                 <li><a href="{{ route('peserta')}}">Atlet</a></li>
               </ul>
             </li>
@@ -111,8 +112,9 @@
                 <li><a href="{{ route('setting3') }}">Remove peserta with no acara</a></li>
               </ul>
             </li>
-            @endif
             <li><a href="{{ route('nota')}}">Nota</a></li>
+            @endif
+            
             <li><a href="{{ route('peta')}}">Peta Lokasi</a></li>
 
 

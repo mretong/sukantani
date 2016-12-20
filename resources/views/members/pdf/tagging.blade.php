@@ -18,78 +18,19 @@
                         <td><strong>Jawatan</strong></td>
                         <td><strong>No Atlet/Pegawai</strong></td>
                     </tr>
+                    @forelse($contingents as $contingent)
                     <tr>
-                        <td>1. </td>
-                        <td>{{ $contingent->ketua }}</td>
-                        <td>Ketua Kontinjen</td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $contingent->nama }}</td>
+                        <td>{{ $contingent->role }}</td>
                         <td align="center">{{ $agency->kod2 }}01</td>
                     </tr>
+                    @empty
                     <tr>
-                        <td>2. </td>
-                        <td>{{ $contingent->timbalan }}</td>
-                        <td>Timbalan Ketua Kontinjen</td>
-                        <td align="center">{{ $agency->kod2 }}02</td>
+                        <td colspan="4"><div class="alert alert-danger">Tiada Maklumat.</div></td>
                     </tr>
-                    <tr>
-                        <td>3. </td>
-                        <td>{{ $contingent->urusetia1 }}</td>
-                        <td>Urusetia</td>
-                        <td align="center">{{ $agency->kod2 }}03</td>
-                    </tr>
-                    <tr>
-                        <td>4. </td>
-                        <td>{{ $contingent->urusetia2 }}</td>
-                        <td>Urusetia</td>
-                        <td align="center">{{ $agency->kod2 }}04</td>
-                    </tr>
-                    <tr>
-                        <td>5. </td>
-                        <td>{{ $contingent->urusetia3 }}</td>
-                        <td>Urusetia</td>
-                        <td align="center">{{ $agency->kod2 }}05</td>
-                    </tr>
-                    <tr>
-                        <td>6. </td>
-                        <td>{{ $contingent->urusetia4 }}</td>
-                        <td>Urusetia</td>
-                        <td align="center">{{ $agency->kod2 }}06</td>
-                    </tr>
-                    <tr>
-                        <td>7. </td>
-                        <td>{{ $contingent->urusetia5 }}</td>
-                        <td>Urusetia</td>
-                        <td align="center">{{ $agency->kod2 }}07</td>
-                    </tr>
-                    <tr>
-                        <td>8. </td>
-                        <td>{{ $contingent->urusetia6 }}</td>
-                        <td>Urusetia</td>
-                        <td align="center">{{ $agency->kod2 }}08</td>
-                    </tr>
-                    <tr>
-                        <td>9. </td>
-                        <td>{{ $contingent->urusetia7 }}</td>
-                        <td>Urusetia</td>
-                        <td align="center">{{ $agency->kod2 }}09</td>
-                    </tr>
-                    <tr>
-                        <td>10. </td>
-                        <td>{{ $contingent->urusetia8 }}</td>
-                        <td>Urusetia</td>
-                        <td align="center">{{ $agency->kod2 }}10</td>
-                    </tr>
-                    <tr>
-                        <td>11. </td>
-                        <td>{{ $contingent->urusetia9 }}</td>
-                        <td>Urusetia</td>
-                        <td align="center">{{ $agency->kod2 }}11</td>
-                    </tr>
-                    <tr>
-                        <td>12. </td>
-                        <td>{{ $contingent->urusetia10 }}</td>
-                        <td>Urusetia</td>
-                        <td align="center">{{ $agency->kod2 }}12</td>
-                    </tr>
+
+                    @endforelse
                 </table>
 
 

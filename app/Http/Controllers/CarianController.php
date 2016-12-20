@@ -67,15 +67,11 @@ class CarianController extends Controller
         $agensi = Agensi::where('id', $request->get('agensi_id'))->first();
         $acara = Acara::where('id', $request->get('acara_id'))->first();
 
-        $pesertas = collect();
-        $count = 0;
-
-        foreach($acara->peserta as $temp) {
-
-            if($temp->agensi_id == $agensi->id)
-                $pesertas->push($temp);
-
-        }
+        $pesertas = $acara->peserta->filter(function($peserta) {
+            
+            if($peserta->agensi_id == \Request::get('agensi_id'))
+                return true;
+        });
 
         return view('members.keputusan-carian-acara-agensi', compact('pesertas', 'acara', 'agensi'));
         

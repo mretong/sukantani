@@ -30,20 +30,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $ketua      = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
-                        ->where('role', 'KETUA')
-                        ->first();
-        $timbalan   = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
-                        ->where('role', 'TIMBALAN')
-                        ->first();
-        $urusetias   = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
-                        ->where('role', '<>', 'KETUA')
-                        ->where('role', '<>', 'TIMBALAN')
+        $contingents = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
+                        ->orderBy('role', 'asc')
                         ->get();
 
-        // dd($urusetias);
-
-        return view('home', compact('urusetias', 'ketua', 'timbalan'));
+        return view('home', compact('contingents'));
     }
 
     public function kontinjenPost(Request $request) {
@@ -157,20 +148,17 @@ class HomeController extends Controller
 
     public function kemaskini($id) {
 
-        $ketua      = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
-                        ->where('role', 'KETUA')
-                        ->first();
-        $timbalan   = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
-                        ->where('role', 'TIMBALAN')
-                        ->first();
-        $urusetias   = Kontinjen::where('agensi_id', Auth::User()->agensi_id)
-                        ->where('role', '<>', 'KETUA')
-                        ->where('role', '<>', 'TIMBALAN')
+        $contingents = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
+                        ->orderBy('role', 'asc')
                         ->get();
 
-        $kontinjen = Kontinjen::where('id', $id)->first();
+        $kontinjen = Kontinjen::where('id', $id)
+                        ->first();
 
-        return view('home', compact('kontinjen', 'ketua', 'timbalan', 'urusetias'));
+        // dd($contingent);
+
+
+        return view('home', compact('contingents', 'kontinjen'));
 
     }
 

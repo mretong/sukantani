@@ -26,24 +26,11 @@ class PdfController extends Controller
     
     public function kontinjen($agensi_id) {
 
-        // return 'kontinjen';
-    	if(Auth::user()->agensi_id != $agensi_id) {
-    		Session::flash('error', 'Gagal. Tiada hak akses.');
-    		return back();
-    	}
-
-    	$kontinjen = Kontinjen::where('agensi_id', $agensi_id)
-    				->first();
-
-        if($kontinjen == null) {
-            Session::flash('error', 'Gagal. Tiada Maklumat Kontinjen.');
-            return back();
-        }
-		
-		// view()->share('kontinjen', $kontinjen);
-
-		$pdf = PDF::loadView('members.pdf.kontinjen', ['kontinjen' => $kontinjen]);
-        // return view('members.pdf.kontinjen', compact('kontinjen'));
+        $contingents = Kontinjen::where('agensi_id', $agensi_id)
+                        ->orderBy('role', 'asc')
+                        ->get();
+	
+		$pdf = PDF::loadView('members.pdf.kontinjen', ['contingents' => $contingents]);
 		return $pdf->stream(Auth::user()->agensi->kod . ' - Maklumat Kontinjen.pdf');
     }
 
@@ -71,7 +58,6 @@ class PdfController extends Controller
         view()->share('participants', $participants);
         view()->share('acara', $acara);
 
-        // return view('members.pdf.acara', compact('participants', 'acara'));
         $pdf = PDF::loadView('members.pdf.acara');
         return $pdf->stream(Auth::user()->agensi->kod . ' - Maklumat Acara.pdf');
     }
@@ -125,13 +111,14 @@ class PdfController extends Controller
 
         $agency = Agensi::where('id', $request->id)->first();
 
-        $contingent = Kontinjen::where('agensi_id', $request->id)->first();
-        // dd($contingents);
+        $contingents = Kontinjen::where('agensi_id', $request->id)
+                        ->orderBy('role', 'asc')
+                        ->get();
 
-        if($contingent == null) {
-            Session::flash('error', 'Gagal. ' . Auth::user()->agensi->kod . ' belum mengisi ruangan kontinjen.');
-            return back();
-        }
+        // if($contingents == null) {
+        //     Session::flash('error', 'Gagal. ' . Auth::user()->agensi->kod . ' belum mengisi ruangan kontinjen.');
+        //     return back();
+        // }
 
         $participants = Peserta::where('agensi_id', $request->id)
                         ->orderBy('nama', 'asc')
@@ -139,7 +126,7 @@ class PdfController extends Controller
 
 
         view()->share('participants', $participants);
-        view()->share('contingent', $contingent);
+        view()->share('contingents', $contingents);
         view()->share('agency', $agency);
 
         $pdf = PDF::loadView('members.pdf.tagging');

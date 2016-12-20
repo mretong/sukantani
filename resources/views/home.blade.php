@@ -37,73 +37,26 @@ input {
                         </tr>
                         <!-- CODING HERE -->
 
-                        @if($ketua == null && $timbalan == null && $urusetias == null)
+                        @forelse($contingents as $contingent)
                             <tr>
-                                <td colspan="6"><font color="red"><strong>Tiada Data</strong></font></td>
-                            </tr>
-                        @endif
-
-
-                        <?php $bil = 0; ?>
-                        @if($ketua != null)
-
-                        <?php $bil++; ?>
-                        <tr>
-                            <td>{{ $bil }}</td>
-                            <td>
-                                {{ $ketua->nama }} <br />
-                                <font color="green"><strong><small>{{ $ketua->role }} KONTINJEN</small></strong></font>
-                            </td>
-                            <td>{{ $ketua->nokp }}</td>
-                            <td>{{ $ketua->notel }}</td>
-                            <td>{{ $ketua->jantina }}</td>
-                            <td>
-                                <a href="{{ route('kontinjen-kemaskini', $ketua->id) }}"><button class="btn alert-info">Kemaskini</button></a>
-                                <a href="{{ route('kontinjen-hapus', $ketua->id) }}"><button class="btn alert-danger">Hapus</button></a>
-
-                            </td>
-                        </tr>
-                        @endif
-                        @if($timbalan != null)
-
-                        <?php $bil++; ?>
-                        <tr>
-                            <td>{{ $bil }}</td>
-                            <td>
-                                {{ $timbalan->nama }} <br />
-                                <font color="green"><strong><small>{{ $timbalan->role }} KETUA KONTINJEN</small></strong></font>
-                            </td>
-                            <td>{{ $timbalan->nokp }}</td>
-                            <td>{{ $timbalan->notel }}</td>
-                            <td>{{ $timbalan->jantina }}</td>
-                            <td>
-                                <a href="{{ route('kontinjen-kemaskini', $timbalan->id) }}"><button class="btn alert-info">Kemaskini</button></a>
-                                <a href="{{ route('kontinjen-hapus', $timbalan->id) }}"><button class="btn alert-danger">Hapus</button></a>
-                            </td>
-                        </tr>
-                        @endif
-
-                        @if($urusetias != null)
-                            @foreach($urusetias as $urusetia)
-                            <?php $bil++; ?>
-                            <tr>
-                                <td>{{ $bil }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    {{ $urusetia->nama }} <br />
-                                    <font color="green"><strong><small>{{ $urusetia->role }} {{ $loop->iteration }}</small></strong></font>
+                                    {{ $contingent->nama }}<br />
+                                    <strong><small><font color="green">{{ $contingent->role }}</font></small></strong>
                                 </td>
-                                <td>{{ $urusetia->nokp }}</td>
-                                <td>{{ $urusetia->notel }}</td>
-                                <td>{{ $urusetia->jantina }}</td>
+                                <td>{{ $contingent->nokp }}</td>
+                                <td>{{ $contingent->notel }}</td>
+                                <td>{{ $contingent->jantina }}</td>
                                 <td>
-                                    <a href="{{ route('kontinjen-kemaskini', $urusetia->id) }}"><button class="btn alert-info">Kemaskini</button></a>
-                                    <a href="{{ route('kontinjen-hapus', $urusetia->id) }}"><button class="btn alert-danger">Hapus</button></a>
+                                    <a href="{{ route('kontinjen-kemaskini', $contingent->id) }}"><button class="btn alert-info">Kemaskini</button></a>
+                                    <a href="{{ route('kontinjen-hapus', $contingent->id) }}"><button class="btn alert-danger">Hapus</button></a>
                                 </td>
                             </tr>
-                            @endforeach
-                        @endif
-
-
+                        @empty
+                            <tr>
+                                <td colspan="6"><div class="alert alert-danger">Tiada Maklumat</div></td>
+                            </tr>
+                        @endforelse
 
                         <!-- END CODING HERE -->
                     </table>

@@ -63,12 +63,9 @@
                                 <?php $bil++; ?>
                                 <tr>
                                     <td>{{ $bil }}</td>
-                                    <td>
-                                        @if($peserta->role == 'PENGURUS' || $peserta->role == 'JURULATIH')
-                                            <font color="green"><strong>{{ $peserta->role }}</strong></font><br />
-                                        @endif
-
-                                        {{ $peserta->nama }}
+                                    <td>                                        
+                                        {{ $peserta->nama }} <br />
+                                        <font color="green"><strong>{{ $peserta->role }}</strong></font>
                                     </td>
                                     <td>{{ $peserta->nokp }}</td>
                                     <td>{{ $peserta->noPekerja }}</td>

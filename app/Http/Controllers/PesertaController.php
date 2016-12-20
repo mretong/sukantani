@@ -203,6 +203,7 @@ class PesertaController extends Controller
 
     public function kemaskiniPost(Request $request) {
 
+        // INPUT VALIDATION
         $validation = Validator::make($request->all(), [
             'nama'      => 'required|min:3',
             'nokp'      => 'required|min:7',
@@ -211,45 +212,42 @@ class PesertaController extends Controller
             'agensi_id' => 'required',
         ]);
 
-        if($validation->fails()){
+        if($validation->fails()) {
             Session::flash('error', 'Ruangan nama, nokp, acara dan agensi adalah wajib diisi. <br />Perlu diisi dengan format yang betul');
             return redirect('/peserta');
         }    
 
+        // LOGIC VALIDATION
+
+        // Check if the acara already has a pengurus or jurulatih
         $peserta = Peserta::where('id', $request->get('id'))->first();
-        // Check if there was already a pengurus or jurulatih
-        // dd(count($request->get('acara')));
 
         if($request->get('role') != 'ATLET') {
-            
-            // check if acara more than 1
-            // role asal bukan pengurus/ jurulatih
-            if($peserta->role != $request->get('role')) {
-                if(count($request->get('acara')) > 1) {
-                    Session::flash('error', 'Setiap acara dihadkan kepada seorang Pengurus dan seorang Jurulatih sahaja.');
-                    return Redirect::back()->withInput($request->all());
-                }
-            }
-
-            //check if there was a pengurus or jurulatih
-            $pesertas = Peserta::where('agensi_id', Auth::user()->agensi->id)
+            // return $request->all();
+            // check if there is a someone with that role already
+            $pesertas = Peserta::where('agensi_id', $request->get('agensi_id'))
                         ->where('role', $request->get('role'))
                         ->get();
 
-            if(!$pesertas->isEmpty()) {
-                foreach($pesertas as $peserta) {
+            // check the existent of the role for that acara
+            foreach($pesertas as $peserta) {
 
-                    foreach($peserta->acara as $acara) {
-                  
-                        if(in_array($acara->id, $request->get('acara'))) {
+                foreach($peserta->acara as $acara) {
 
-                            if($peserta->role == $request->get('role')) {
-                                Session::flash('error', $request->get('role') . ' bagi acara ini telah ada. Sila rujuk Laporan Keseluruhan Penyertaan Acara bagi pengemaskinian');
-                                return Redirect::back()->withInput($request->all());
-                            }
-                        }
+                    $collection = collect($acara);
+                    $acara = $collection->only(['id']);
+
+                    $acara = $acara->toArray();
+
+                    if(in_array($acara['id'], $request->get('acara')))
+                        $roleExist = true;
+
+                    // if true, check if the current peserta is the one with the role
+                    if($roleExist && $peserta->id != $request->get('id')) {
+                        Session::flash('error', 'Acara ini sudah mempunyai seorang ' . $request->get('role') . '.');
+                        return back()->withInput($request->all());
                     }
-                }     
+                }            
             }
         }
 
