@@ -10,15 +10,15 @@
 			<div class="row">
 				<div class="col-xs-3 col-xs-offset-1">
 					<div class="panel panel-primary">
-						<div class="panel-heading"><h4>{{ $collection['agensi'] }}</h4></div>
+						<div class="panel-heading"><h4 class="panel-title">{{ $collection['agensi'] }}</h4></div>
 						<div class="panel-body">
 
-							<table class="table">
+							<table class="table table-condensed table-striped">
 							<tr>
-								<td>Perkara</td>
-								<td>Lelaki</td>
-								<td>Wanita</td>
-								<td>Jumlah</td>
+								<td><strong>Perkara</strong></td>
+								<td><strong>Lelaki</strong></td>
+								<td><strong>Wanita</strong></td>
+								<td><strong>Jumlah</strong></td>
 							</tr>
 							<tr>
 								<td>Kontinjen</td>
@@ -43,15 +43,15 @@
 		@else
 			<div class="col-xs-3 col-xs-offset-1">
 				<div class="panel panel-primary">
-					<div class="panel-heading"><h4>{{ $collection['agensiKod'] }}</h4></div>
+					<div class="panel-heading"><h4 class="panel-title">{{ $collection['agensiKod'] }}</h4></div>
 					<div class="panel-body">
 
-						<table class="table">
+						<table class="table table-condensed table-striped">
 							<tr>
-								<td>Perkara</td>
-								<td>Lelaki</td>
-								<td>Wanita</td>
-								<td>Jumlah</td>
+								<td><strong>Perkara</strong></td>
+								<td><strong>Lelaki</strong></td>
+								<td><strong>Wanita</strong></td>
+								<td><strong>Jumlah</strong></td>
 							</tr>
 							<tr>
 								<td>Kontinjen</td>
