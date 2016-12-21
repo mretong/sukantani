@@ -21,7 +21,7 @@
 					<?php $count++; ?>
 					<table class="table table-condensed table-striped">
 					<tr>
-						<td colspan="12"><h4>#{{ $count }} - Acara {{ ucWords(strtolower($acara->nama)) }}</h4></td>
+						<td colspan="8"><h4>#{{ $count }} - Acara {{ ucWords(strtolower($acara->nama)) }}</h4></td>
 					</tr>
 					<tr>
 						<td>Bil</td>
@@ -32,7 +32,6 @@
 						<td>Gred Jawatan</td>
 						<td>Taraf Jawatan</td>
 						<td>No Atlet</td>
-						<td></td>
 					</tr>
 					<?php 
 						$bil = 0;

@@ -115,7 +115,7 @@
             <li><a href="{{ route('nota')}}">Nota</a></li>
             @endif
             
-            <li><a href="{{ route('peta')}}">Peta Lokasi</a></li>
+            <!-- <li><a href="{{ route('peta')}}">Peta Lokasi</a></li> -->
 
 
           </ul>
