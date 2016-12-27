@@ -29,7 +29,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -57,7 +58,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -85,7 +87,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -114,7 +117,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -143,7 +147,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -172,7 +177,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -201,7 +207,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -230,7 +237,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -259,7 +267,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -288,7 +297,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -317,7 +327,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -346,7 +357,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -375,7 +387,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([
@@ -404,7 +417,8 @@ class AgensiTableSeeder extends Seeder
             'name'          => strtoupper($agensi->nama),
             'email'         => 'admin@' . strtolower($agensi->kod) . '.gov.my',
             'password'      => bcrypt($secret),
-            'agensi_id'     => $agensi->id
+            'agensi_id'     => $agensi->id,
+            'status'        => '1'
         ]);
 
         // Kontinjen::create([

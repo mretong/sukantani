@@ -17,7 +17,8 @@ class UsersTableSeeder extends Seeder
             'name'          => strtoupper('suhairi'),
             'email'         => 'suhairi81@gmail.com',
             'password'      => bcrypt('suhairi'),
-            'agensi_id'     => '1'
+            'agensi_id'     => '1',
+            'status'        => '1'
         ]);
     }
 }
