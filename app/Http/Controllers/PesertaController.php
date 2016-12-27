@@ -114,15 +114,17 @@ class PesertaController extends Controller
         }
 
 
-
         $count = Peserta::where('agensi_id', Auth::user()->agensi->id)->count();
 
-        if($count > 0)
+
+        if($count <= 0)
             $count++;
         else {
-            Session::flash('error', 'Gagal. Sistem Pendaftaran peserta ditangguh buat sementara waktu dan akan berjalan seperti biasa pada 27 Disember 2016, pada pukul 4.00 pm. Harap maaf atas kesulitan.');
-            return back();
+            $noAtlet = Peserta::where('agensi_id', Auth::user()->agensi->id)->max('noAtlet');
+            $count = (int)substr($noAtlet, -3);
         }
+
+        $count++;
 
         $counter = '';
         if($count < 10)
@@ -173,6 +175,7 @@ class PesertaController extends Controller
     	$peserta = Peserta::where('id', $id)->delete();
         $penyertaan = Penyertaan::where('peserta_id', $id)->delete();
 
+        dd($peserta);
     	if($peserta){
             $transaksi = new Transaksi;
             $transaksi->agensi_id = $peserta->agensi_id;
