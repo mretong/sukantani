@@ -64,7 +64,7 @@
                                 <tr>
                                     <td>{{ $bil }}</td>
                                     <td>                                        
-                                        <a href="{{ route('peserta-info', $participant->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank">{{ $peserta->nama }} </a><br />
+                                        <a href="{{ route('peserta-info', $peserta->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank">{{ $peserta->nama }} </a><br />
                                         <font color="green"><strong>{{ $peserta->role }}</strong></font>
                                     </td>
                                     <td>{{ $peserta->nokp }}</td>
