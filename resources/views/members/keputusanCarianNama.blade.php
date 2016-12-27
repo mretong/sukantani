@@ -37,7 +37,10 @@
 									{{ $participant->noAtlet }} 
 
 									</td>
-									<td>{{ $participant->nokp }}</td>
+									<td>
+										<strong><font color="blue">{{ $participant->agensi->kod }}</font></strong> <br />
+										{{ $participant->nokp }}
+									</td>
 									<td>{{ $participant->jantina }}</td>
 									<td>{{ $participant->tarafJawatan }}</td>
 									<td>{{ $participant->gredJawatan }}</td>

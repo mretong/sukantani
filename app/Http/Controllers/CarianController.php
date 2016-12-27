@@ -42,12 +42,21 @@ class CarianController extends Controller
 
     public function carianNamaResult(Request $request) {
 
-        $count = $participants = Peserta::where('nama', 'like', '%' . $request->get('nama') . '%')
+        
+
+        if(Auth::user()->agensi->id == 1) {
+            $count = $participants = Peserta::where('nama', 'like', '%' . $request->get('nama') . '%')
+                    ->count();
+            $participants = Peserta::where('nama', 'like', '%' . $request->get('nama') . '%')
+                    ->paginate(10);
+        } else {
+            $count = $participants = Peserta::where('nama', 'like', '%' . $request->get('nama') . '%')
                     ->where('agensi_id', Auth::user()->agensi->id)
                     ->count();
-        $participants = Peserta::where('nama', 'like', '%' . $request->get('nama') . '%')
+            $participants = Peserta::where('nama', 'like', '%' . $request->get('nama') . '%')
                     ->where('agensi_id', Auth::user()->agensi->id)
                     ->paginate(10);
+        }
 
         return view('members.keputusanCarianNama', compact('participants', 'count'));
     }
