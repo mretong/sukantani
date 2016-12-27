@@ -113,8 +113,16 @@ class PesertaController extends Controller
             return back()->withInput($request->all());
         }
 
+
+
         $count = Peserta::where('agensi_id', Auth::user()->agensi->id)->count();
-        $count++;
+
+        if($count > 0)
+            $count++;
+        else {
+            Session::flash('error', 'Gagal. Sistem Pendaftaran peserta ditangguh buat sementara waktu dan akan berjalan seperti biasa pada 27 Disember 2016, pada pukul 4.00 pm. Harap maaf atas kesulitan.');
+            return back();
+        }
 
         $counter = '';
         if($count < 10)
