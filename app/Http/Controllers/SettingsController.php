@@ -105,4 +105,23 @@ class SettingsController extends Controller
         Session::flash('success', 'Berjaya. Semua peserta yang tiada acara telah dihapuskan.');
         return redirect('/home');
     }
+
+    //
+    // Display duplicated no atlet
+    //
+    public function setting4() {
+
+        $pesertas = \DB::table('peserta')
+                      ->selectRaw('noAtlet, COUNT(noAtlet) as count')
+                      ->groupBy('noAtlet')
+                      ->orderBy('count', 'desc')
+                      ->get();
+
+        $collections = $pesertas->filter(function($peserta) {
+                            if($peserta->count > 1)
+                                return true;
+                        });
+
+        return view('members.duplicate', compact('collections'));
+    }
 }

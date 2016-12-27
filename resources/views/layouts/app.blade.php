@@ -111,6 +111,7 @@
                 <li><a href="{{ route('setting1') }}">Remove peserta_id not_in peserta</a></li>
                 <li><a href="{{ route('setting2') }}">Remove penyertaan that exceed limit</a></li>
                 <li><a href="{{ route('setting3') }}">Remove peserta with no acara</a></li>
+                <li><a href="{{ route('setting4') }}">Display duplicated No Atlet</a></li>
               </ul>
             </li>
             <li><a href="{{ route('nota')}}">Nota</a></li>

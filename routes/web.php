@@ -240,6 +240,12 @@ Route::get('/setting/3', [
 	'uses'	=> 'SettingsController@setting3'
 ]);
 
+// Find duplication of no Atlet
+Route::get('setting/4', [
+	'as'	=> 'setting4',
+	'uses'	=> 'SettingsController@setting4'
+]);
+
 //
 // Nota
 //
