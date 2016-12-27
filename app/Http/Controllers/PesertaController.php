@@ -16,6 +16,8 @@ use App\Acara;
 use App\Penyertaan;
 use App\Pengurus;
 
+use App\Transaksi;
+
 class PesertaController extends Controller
 {
 	public function __construct() {
@@ -40,9 +42,6 @@ class PesertaController extends Controller
 
     public function pesertaPost(Request $request) {
 
-        // return $request->all();
-
-    	// dd($_FILES);
     	if($request->get('nokp') != '') {
     		$nokp = Peserta::where('nokp', $request->get('nokp'))->first();
 
@@ -144,7 +143,14 @@ class PesertaController extends Controller
 		]);
 
 	   $peserta->acara()->attach($request->input('acara'));
-       
+
+
+       $transaksi = new Transaksi;
+       $transaksi->agensi_id = $peserta->agensi_id;
+       $transaksi->peserta_id = $peserta->id;
+       $transaksi->catatan = "PENDAFTARAN " . $peserta->nama . " dari agensi " . $peserta->agensi->nama . ".";
+       $transaksi->save();
+
   	
     	Session::flash('success', 'Berjaya. Peserta telah direkodkan.');
 
@@ -159,8 +165,14 @@ class PesertaController extends Controller
     	$peserta = Peserta::where('id', $id)->delete();
         $penyertaan = Penyertaan::where('peserta_id', $id)->delete();
 
-    	if($peserta)
+    	if($peserta){
+            $transaksi = new Transaksi;
+            $transaksi->agensi_id = $peserta->agensi_id;
+            $transaksi->peserta_id = $peserta->id;
+            $transaksi->catatan = "HAPUS " . $peserta->nama . " dari agensi " . $peserta->agensi->nama . ".";
+            $transaksi->save();
     		Session::flash('success', 'Berjaya. Peserta telah dihapus.');
+        }
     	else
     		Session::flash('error', 'Gagal. Peserta gagal dihapus.');
 
@@ -310,8 +322,15 @@ class PesertaController extends Controller
         }
 
 
-        if($peserta->update())
+        if($peserta->update()) {
+
+            $transaksi = new Transaksi;
+            $transaksi->agensi_id = $peserta->agensi_id;
+            $transaksi->peserta_id = $peserta->id;
+            $transaksi->catatan = "KEMASKINI " . $peserta->nama . " dari agensi " . $peserta->agensi->nama . ".";
+            $transaksi->save();
             Session::flash('success', 'Berjaya. Peserta telah dikemaskini');
+        }
         else
             Session::flash('error', 'Gagal. Peserta gagal dikemaskini');
 

@@ -95,6 +95,7 @@
                   <li><a href="{{ route('penginapan') }}" target="_blank">ADMIN :: Penginapan</a></li>
                   <li><a href="{{ route('pdf-profil') }}" target="_blank" id="profil">ADMIN :: Profil Peserta</a></li>
                   <li><a href="{{ route('summary') }}">ADMIN :: Rumusan</a></li>
+                  <li><a href="{{ route('transaksi') }}">ADMIN :: Transaksi</a></li>
                 @endif
                 <li><a href="{{ route('laporan-keseluruhan') }}">Laporan Jumlah Keseluruhan Peserta</a></li>
                 <li><a href="{{ route('acara-keseluruhan') }}">Laporan Keseluruhan Penyertaan Acara</a></li>

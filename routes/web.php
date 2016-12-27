@@ -213,6 +213,11 @@ Route::get('/summary', [
 	'uses'	=> 'SummaryController@index'
 ]);
 
+Route::get('/transaksi', [
+	'as'	=> 'transaksi',
+	'uses'	=> 'TransaksiController@index'
+]);
+
 //
 // Settings
 //

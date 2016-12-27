@@ -285,12 +285,12 @@ class AgensiTableSeeder extends Seeder
         // 10 => jabatan veterinar
 
         Agensi::create([
-            'nama'  => strtoupper('jabatan veterinar'),
-            'kod'   => strtoupper('dov'),
+            'nama'  => strtoupper('jabatan perkhidmatan veterinar'),
+            'kod'   => strtoupper('dvs'),
             'kod2'  => strtoupper('v')
         ]);
 
-        $agensi = Agensi::where('kod', 'dov')->first();
+        $agensi = Agensi::where('kod', 'dvs')->first();
         $secret = $agensi->kod2 . $agensi->kod;
 
         User::create([
