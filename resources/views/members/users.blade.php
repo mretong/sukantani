@@ -12,11 +12,11 @@
 
                 <table class="table table-condensed table-hover table-striped">
                 	<tr>
-                		<td>Bil</td>
-                		<td>Nama</td>
-                		<td>Agensi</td>
-                		<td>Status</td>
-                		<td>Pilihan</td>
+                		<td><strong>Bil</strong></td>
+                		<td><strong>Nama</strong></td>
+                		<td><strong>Agensi</strong></td>
+                		<td><strong>Status</strong></td>
+                		<td align="center"><strong>Pilihan</strong></td>
                 	</tr>
                 	@foreach($users as $user)
                 	<tr>
@@ -30,7 +30,7 @@
                 				<font color="red"><strong>TIDAK AKTIF</strong></font>
                 			@endif
             			</td>
-                		<td>
+                		<td align="center">
                 			@if($user->status == 1)
                 				<a href="{{ route('setting5s', $user->id) }}"><button class="btn btn-warning">NYAH AKTIFKAN</button></a>
                 			@else
