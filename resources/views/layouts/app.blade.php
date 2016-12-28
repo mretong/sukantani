@@ -83,7 +83,7 @@
 
                 @if(Auth::user()->agensi_id == 1)
                   <li><a href="{{ route('carian-acara-agensi') }}">[ Admin ] :: Carian Mengikut Agensi dan Acara</a></li>
-                  <li><a href="{{ route('carian-rumusan') }}">[ Admin ] :: Carian Rumusan Penyertaan Mengikut Agensi</a></li>
+                  <li><a href="{{ route('carian-rumusan') }}">[ Admin ] :: Carian Rumusan Penyertaan Mengikut Agensi</a></li>                  
                 @endif
               </ul>
             </li>
@@ -113,6 +113,8 @@
                 <li><a href="{{ route('setting2') }}">Remove penyertaan that exceed limit</a></li>
                 <li><a href="{{ route('setting3') }}">Remove peserta with no acara</a></li>
                 <li><a href="{{ route('setting4') }}">Display duplicated No Atlet</a></li>
+                <li><a href="{{ route('setting5') }}">Update User Login Status</a></li>
+                <!-- <li><a href="{{ route('setting6') }}">Carian No KP bermasalah Mengikut Agensi</a></li> -->
               </ul>
             </li>
             <li><a href="{{ route('nota')}}">Nota</a></li>

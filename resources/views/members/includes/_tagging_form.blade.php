@@ -2,8 +2,8 @@
 
 {!! Form::open(['route' => 'pdf-tag']) !!}
 
-{!! Form::label('Acara') !!}
-{!! Form::select('id', $agencies, '', ['class' => 'form-control', 'placeholder' => 'PILIH ACARA...']) !!}
+{!! Form::label('AGENSI') !!}
+{!! Form::select('id', $agencies, '', ['class' => 'form-control', 'placeholder' => 'PILIH AGENSI']) !!}
 
 {!! Form::label('') !!}
 <div align="right">{!! Form::submit('Ekspot ke PDF', ['class' => 'btn btn-primary']) !!}

@@ -125,6 +125,4 @@ class CarianController extends Controller
         return view('members.keputusanCarianRumusan', compact('agensi', 'collections', 'agencies'));
     }
 
-
-
 }					

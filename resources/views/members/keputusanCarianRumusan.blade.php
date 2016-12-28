@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-xs-6 col-xs-offset-1">
+        <div class="col-xs-5 col-xs-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading"><h3>Keputusan Carian</h3></div>
 
@@ -13,7 +13,7 @@
 
                     @include('members.includes._carian_rumusan')
 
-                    <br />
+                    <br /><br />
                     <div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-rumusan', $agensi->id) }}" target="_blank"> PDF </a></span></div>
                     <div align="left">
                         <h3>Rumusan Bilangan Pendaftaran Online Sehingga {{ date('d - m - Y') }}</h3>

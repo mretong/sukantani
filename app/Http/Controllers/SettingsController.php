@@ -10,6 +10,7 @@ use App\Penyertaan;
 use App\Peserta;
 use App\Acara;
 use App\Agensi;
+use App\User;
 
 
 class SettingsController extends Controller
@@ -124,4 +125,33 @@ class SettingsController extends Controller
 
         return view('members.duplicate', compact('collections'));
     }
+
+    //
+    // Update users' status. Act like a locking system.
+    //
+    public function setting5() {
+
+        $users = User::all();
+        $users = $users->filter(function($user) {
+                    if($user->id != 1)
+                        return true;
+                });
+
+        return view('members.users', compact('users'));
+    }
+
+    public function setting5s($id) {
+        
+        $user = User::where('id', $id)->first();
+
+        if($user->status == 1)
+            $user->status = 0;
+        else
+            $user->status = 1;
+
+        $user->save();
+
+        return back();
+    }
+
 }

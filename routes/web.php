@@ -128,8 +128,6 @@ Route::post('/carian/rumusan', [
 	'uses'	=> 'CarianController@rumusanPost'
 ]);
 
-
-
 //
 // Tagging
 //
@@ -262,6 +260,32 @@ Route::get('setting/4', [
 	'as'	=> 'setting4',
 	'uses'	=> 'SettingsController@setting4'
 ]);
+
+// Update users' status
+Route::get('/setting/5', [
+	'as'	=> 'setting5',
+	'uses'	=> 'SettingsController@setting5'
+]);
+
+Route::get('/setting/5/{id}', [
+	'as'	=> 'setting5s',
+	'uses'	=> 'SettingsController@setting5s'
+]);
+
+// Carian No KP bermasalah
+Route::get('/setting/nokp', [
+	'as'	=> 'setting6',
+	'uses'	=> 'SettingsController@setting6'
+]);
+
+Route::post('/setting/nokp', [
+	'as'	=> 'setting6-post',
+	'uses'	=> 'SettingsController@setting6Post'
+]);
+
+
+
+
 
 //
 // Nota
