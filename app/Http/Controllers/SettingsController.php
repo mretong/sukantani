@@ -131,11 +131,7 @@ class SettingsController extends Controller
     //
     public function setting5() {
 
-        $users = User::all();
-        $users = $users->filter(function($user) {
-                    if($user->id != 1)
-                        return true;
-                });
+        $users = User::whereNotIn('id', ['1'])->get();
 
         return view('members.users', compact('users'));
     }
