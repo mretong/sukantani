@@ -284,9 +284,6 @@ Route::post('/setting/nokp', [
 ]);
 
 
-
-
-
 //
 // Nota
 //
