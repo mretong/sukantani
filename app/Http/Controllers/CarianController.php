@@ -82,7 +82,49 @@ class CarianController extends Controller
                 return true;
         });
 
-        return view('members.keputusan-carian-acara-agensi', compact('pesertas', 'acara', 'agensi'));
-        
+        return view('members.keputusan-carian-acara-agensi', compact('pesertas', 'acara', 'agensi'));        
     }
+
+    public function rumusan() {
+
+        $agencies = Agensi::orderBy('nama', 'asc')->pluck('nama', 'id');
+
+        return view('members.carianRumusan', compact('agencies'));
+    }
+
+    public function rumusanPost(Request $request) {
+
+        // return $request->all();
+
+        $agencies = Agensi::orderBy('nama', 'asc')->pluck('nama', 'id');
+
+        $agensi = Agensi::where('id', $request->get('agensi_id'))->first();
+
+        $pesertas = Peserta::where('agensi_id', $request->get('agensi_id'))
+                        ->get();
+
+        $games = Acara::orderBy('nama', 'asc')->get();
+
+        $collections = collect([]);
+        foreach($games as $game) {
+
+            $temp = $pesertas->filter(function($peserta) use ($game) {
+
+                        $temp2 = Array();
+                        foreach($peserta->acara as $acara)
+                            array_push($temp2, $acara->id);
+
+                        if(in_array($game->id, $temp2))
+                            return true;
+
+                    });
+
+            $collections = $collections->push(['acara' => $game->nama, 'bilangan' => $temp->count()]);             
+        }
+
+        return view('members.keputusanCarianRumusan', compact('agensi', 'collections', 'agencies'));
+    }
+
+
+
 }					

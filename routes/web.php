@@ -118,6 +118,18 @@ Route::post('/carian-acara-agensi', [
 	'uses'	=> 'CarianController@keputusanCarianAcaraAgensi'
 ]);
 
+Route::get('/carian/rumusan', [
+	'as'	=> 'carian-rumusan',
+	'uses'	=> 'CarianController@rumusan'
+]);
+
+Route::post('/carian/rumusan', [
+	'as'	=> 'carian-rumusan',
+	'uses'	=> 'CarianController@rumusanPost'
+]);
+
+
+
 //
 // Tagging
 //
@@ -167,6 +179,11 @@ Route::get('/pdf/laporan/penginapan', [
 Route::get('/pdf/laporan/acara-keseluruhan', [
 	'as'	=> 'pdf-acara-keseluruhan',
 	'uses'	=> 'PdfController@laporanAcaraKeseluruhan'
+]);
+
+Route::get('/pdf/laporan/rumusan/{id}', [
+	'as'	=> 'pdf-rumusan',
+	'uses'	=> 'PdfController@rumusan'
 ]);
 
 

@@ -213,4 +213,39 @@ class PdfController extends Controller
 
         return $pdf->stream(Auth::user()->agensi->kod . ' - Ringkasan Penginapan.pdf');
     }
+
+    public function rumusan($id) {
+
+        $agensi = Agensi::where('id', $id)->first();
+
+        $pesertas = Peserta::where('agensi_id', $id)->get();
+
+        $games = Acara::orderBy('nama', 'asc')->get();
+
+        $collections = collect([]);
+        foreach($games as $game) {
+
+            $temp = $pesertas->filter(function($peserta) use ($game) {
+
+                        $temp2 = Array();
+                        foreach($peserta->acara as $acara)
+                            array_push($temp2, $acara->id);
+
+                        if(in_array($game->id, $temp2))
+                            return true;
+
+                    });
+
+            $collections = $collections->push(['acara' => $game->nama, 'bilangan' => $temp->count()]);             
+        }
+
+        // return view('members.pdf.rumusan', compact('agensi', 'collections'));
+
+        $pdf = Pdf::loadView('members.pdf.rumusan', ['agensi' => $agensi, 'collections' => $collections]);
+
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Ringkasan Bilangan Pendaftaran Online.pdf');
+    }
+
+
+
 }
