@@ -26,11 +26,13 @@ class PdfController extends Controller
     
     public function kontinjen($agensi_id) {
 
+        $agensi = Agensi::where('id', $agensi_id)->first();
+
         $contingents = Kontinjen::where('agensi_id', $agensi_id)
                         ->orderBy('role', 'asc')
                         ->get();
 	
-		$pdf = PDF::loadView('members.pdf.kontinjen', ['contingents' => $contingents]);
+		$pdf = PDF::loadView('members.pdf.kontinjen', ['contingents' => $contingents, 'agensi' => $agensi]);
 		return $pdf->stream(Auth::user()->agensi->kod . ' - Maklumat Kontinjen.pdf');
     }
 
@@ -94,14 +96,22 @@ class PdfController extends Controller
     //
     public function profil() {
 
-        $pesertas = Peserta::orderBy('agensi_id', 'asc')
-                    // ->where('agensi_id', '<>', 1)
-                    // ->limit(3)
+        $agencies = Agensi::orderBy('nama', 'asc')->pluck('nama', 'id');
+
+        return view('members.pdf.agensiProfil', compact('agencies'));      
+    }
+
+    public function profilPost(Request $request) {
+
+        $pesertas = Peserta::where('agensi_id', $request->get('agensi_id'))
+                    ->orderBy('agensi_id', 'asc')
                     ->get();
 
         view()->share('pesertas', $pesertas);
-        $pdf = Pdf::loadView('members.pdf.profile');
-        return $pdf->stream(Auth::user()->agensi->kod . ' - Profil Keseluruhan Atlet.pdf');
+        $html = View::make('members.pdf.profile', $pesertas);
+        $pdf = Pdf::loadHTML($html);
+        // return view('members.pdf.profile', compact('pesertas'));
+        return $pdf->download(Auth::user()->agensi->kod . ' - Profil Keseluruhan Setiap Atlet.pdf');
     }
 
     //

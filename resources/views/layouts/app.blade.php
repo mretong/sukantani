@@ -92,6 +92,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Laporan <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 @if(Auth::user()->agensi->id == 1)
+                  <li><a href="{{ route('kontinjen') }}" target="_blank">ADMIN :: Senarai Kontinjen</a></li>
                   <li><a href="{{ route('tagging') }}" target="_blank">ADMIN :: Senarai Tag Peserta</a></li>
                   <li><a href="{{ route('penginapan') }}" target="_blank">ADMIN :: Penginapan</a></li>
                   <li><a href="{{ route('pdf-profil') }}" target="_blank" id="profil">ADMIN :: Profil Peserta</a></li>

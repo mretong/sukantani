@@ -10,6 +10,7 @@ use Validator;
 
 use App\Kontinjen;
 use App\Peserta;
+use App\Agensi;
 
 class HomeController extends Controller
 {
@@ -30,11 +31,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $agensi = Agensi::where('id', Auth::user()->id)->first();
         $contingents = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
                         ->orderBy('role', 'asc')
                         ->get();
 
-        return view('home', compact('contingents'));
+        return view('home', compact('contingents', 'agensi'));
     }
 
     public function kontinjenPost(Request $request) {

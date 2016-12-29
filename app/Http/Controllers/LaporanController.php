@@ -12,6 +12,7 @@ use App\Peserta;
 use App\Penyertaan;
 use App\Agensi;
 use App\Pengesahan;
+use App\Kontinjen;
 
 use DB;
 
@@ -111,6 +112,25 @@ class LaporanController extends Controller
         $acaras = Acara::all();
 
         return view('members.laporan.senarai-semak', compact('ringkasan', 'acaras'));
-
     }
+
+    public function kontinjen() {
+        $agencies = Agensi::orderBy('nama', 'asc')->pluck('nama', 'id');
+
+        return view('members.kontinjen', compact('agencies'));
+    }
+
+    public function kontinjenPost(Request $request) {
+
+        // return $request->all();
+        $agensi = Agensi::where('id', $request->get('agensi_id'))->first();
+        $kontinjens = Kontinjen::where('agensi_id', $request->get('agensi_id'))
+                        ->orderBy('role', 'asc')
+                        ->get();
+
+        return view('members.laporan.kontinjen', compact('kontinjens', 'agensi'));
+    }
+
+
+
 }

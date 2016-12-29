@@ -8,7 +8,7 @@ class Agensi extends Model
 {
     protected $table 		= 'agensi';
     protected $primaryKey	= 'id';
-    public $fillable		= ['nama', 'kod'];
+    public $fillable		= ['nama', 'kod', 'kod2'];
     public $timestamps 		= false;
 
 }

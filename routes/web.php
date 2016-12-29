@@ -159,6 +159,11 @@ Route::get('/pdf/laporan/profil', [
 	'uses'	=> 'PdfController@profil'
 ]);
 
+Route::post('/pdf/peserta/profil', [
+	'as'	=> 'pdf-profil-post',
+	'uses'	=> 'PdfController@profilPost'
+]);
+
 Route::post('/pdf/tag', [
 	'as'	=> 'pdf-tag',
 	'uses'	=> 'PdfController@tag'
@@ -182,6 +187,11 @@ Route::get('/pdf/laporan/acara-keseluruhan', [
 Route::get('/pdf/laporan/rumusan/{id}', [
 	'as'	=> 'pdf-rumusan',
 	'uses'	=> 'PdfController@rumusan'
+]);
+
+Route::get('/pdf/laporan/kontinjen', [
+	'as'	=> 'pdf-laporan-kontinjen',
+	'uses'	=> 'PdfController@kontinjen'
 ]);
 
 
@@ -231,6 +241,16 @@ Route::get('/summary', [
 Route::get('/transaksi', [
 	'as'	=> 'transaksi',
 	'uses'	=> 'TransaksiController@index'
+]);
+
+Route::get('/kontinjen', [
+	'as'	=> 'kontinjen',
+	'uses'	=> 'LaporanController@kontinjen'
+]);
+
+Route::post('/kontinjen', [
+	'as'	=> 'kontinjen-post',
+	'uses'	=> 'LaporanController@kontinjenPost'
 ]);
 
 //

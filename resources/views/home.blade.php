@@ -24,7 +24,7 @@ input {
         <div class="col-xs-8">
         <div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-kontinjen', Auth::user()->agensi_id) }}" target="_blank"> PDF </a></div>
             <div class="panel panel-primary">
-                <div class="panel-heading"><h4>Maklumat Kontinjen</h4></div>
+                <div class="panel-heading"><h4>Maklumat Kontinjen {{ $agensi->kod }}</h4></div>
                 <div class="panel-body">
                     <table class="table table-hover">
                         <tr>
