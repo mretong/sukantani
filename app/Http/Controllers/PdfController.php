@@ -111,7 +111,7 @@ class PdfController extends Controller
         $html = View::make('members.pdf.profile', $pesertas);
         $pdf = Pdf::loadHTML($html);
         // return view('members.pdf.profile', compact('pesertas'));
-        return $pdf->download(Auth::user()->agensi->kod . ' - Profil Keseluruhan Setiap Atlet.pdf');
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Profil Keseluruhan Setiap Atlet.pdf');
     }
 
     //
