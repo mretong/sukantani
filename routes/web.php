@@ -253,6 +253,20 @@ Route::post('/kontinjen', [
 	'uses'	=> 'LaporanController@kontinjenPost'
 ]);
 
+Route::get('/laporan/agensi/acara', [
+	'as'	=> 'laporan-agensi-acara',
+	'uses'	=> 'LaporanController@agensiAcara'
+]);
+
+Route::post('/laporan/agensi/acara', [
+	'as'	=> 'laporan-agensi-acara-post',
+	'uses'	=> 'LaporanController@agensiAcaraPost'
+]);
+
+
+
+
+
 //
 // Settings
 //
