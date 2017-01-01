@@ -150,4 +150,45 @@ class SettingsController extends Controller
         return back();
     }
 
+    public function setting6() {
+
+        $collections = Array();
+
+        // nokp less than 12
+        $pesertas = Peserta::whereRaw('length(nokp) < 12')
+                    ->orderBy('agensi_id', 'asc')
+                    ->get();
+
+        array_push($collections, [
+                    'title' => 'No KP di bawah 12 Digit',
+                    'data'  => $pesertas->toArray()
+                ]);
+
+        // No KP greater than 12 digits
+        $pesertas = Peserta::whereRaw('length(nokp) > 12')
+                    ->orderBy('agensi_id', 'asc')
+                    ->get();
+
+        array_push($collections, [
+                    'title' => 'No KP melebihi 12 Digit',
+                    'data'  => $pesertas->toArray()
+                ]);
+
+        // No KP with three 0s consequently
+        $pesertas = Peserta::whereRaw('length(nokp) = 12')
+                    ->where('nokp', 'like', '%000%')
+                    ->orderBy('agensi_id', 'asc')
+                    ->get();
+
+        array_push($collections, [
+                    'title' => 'No KP yang tidak sah',
+                    'data'  => $pesertas->toArray()
+                ]);
+
+        return view('members.settings.nokp', compact('collections'));
+        
+
+        
+    }
+
 }

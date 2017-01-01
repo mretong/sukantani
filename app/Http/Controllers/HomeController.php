@@ -30,7 +30,8 @@ class HomeController extends Controller
      */
     public function index() {
 
-        $agensi = Agensi::where('id', Auth::user()->id)->first();
+        $agensi = Agensi::where('id', Auth::user()->agensi->id)->first();
+
         $contingents = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
                         ->orderBy('role', 'asc')
                         ->get();

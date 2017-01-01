@@ -99,6 +99,7 @@
                   <li><a href="{{ route('laporan-agensi-acara') }}" target="_blank" id="profil">ADMIN :: Laporan Senarai Peserta Agensi Mengikut Acara</a></li>
                   <li><a href="{{ route('summary') }}">ADMIN :: Rumusan</a></li>
                   <li><a href="{{ route('transaksi') }}">ADMIN :: Transaksi</a></li>
+                  <li><a href="{{ route('setting6') }}">ADMIN :: No KP bermasalah</a></li>
                 @endif
                 <li><a href="{{ route('laporan-keseluruhan') }}">Laporan Jumlah Keseluruhan Peserta</a></li>
                 <li><a href="{{ route('acara-keseluruhan') }}">Laporan Keseluruhan Penyertaan Acara</a></li>
@@ -116,7 +117,6 @@
                 <li><a href="{{ route('setting3') }}">Remove peserta with no acara</a></li>
                 <li><a href="{{ route('setting4') }}">Display duplicated No Atlet</a></li>
                 <li><a href="{{ route('setting5') }}">Update User Login Status</a></li>
-                <!-- <li><a href="{{ route('setting6') }}">Carian No KP bermasalah Mengikut Agensi</a></li> -->
               </ul>
             </li>
             <li><a href="{{ route('nota')}}">Nota</a></li>
