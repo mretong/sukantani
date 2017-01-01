@@ -12,25 +12,28 @@
 					<table class="table table-condensed table-hover table-striped">
 						@foreach($collections as $collection)
 						<tr>
-							<td colspan="4"># {{ $loop->iteration }} <strong>{{ $collection['title'] }}</strong></td>
+							<td colspan="5"># {{ $loop->iteration }} <strong>{{ strtoupper($collection['title']) }}</strong></td>
 						</tr>
 							@foreach($collection['data'] as $data)
 
 								@if($loop->first)								
 								<tr>
-									<td>Bil</td>
-									<td>Agensi</td>
-									<td>Nama</td>
-									<td>No KP</td>
-									<td>No Atlet</td>
+									<td><strong>Bil</strong></td>
+									<td><strong>Agensi</strong></td>
+									<td><strong>Nama</strong></td>
+									<td><strong>No KP</strong></td>
+									<td><strong>No Atlet</strong></td>
 								</tr>
 								@endif
 
 								<tr>
 									<td>{{ $loop->iteration }}</td>
 									<td>
-										<?php $peserta = collect($data); ?>
-										{{ $peserta->agensi }}
+										<?php
+											$agensi = new \App\Agensi;
+											$agensi = $agensi->getKod($data['agensi_id']);
+										?>
+										{{ $agensi }}
 									</td>
 									<td>{{ $data['nama'] }}</td>
 									<td>{{ $data['nokp'] }}</td>
@@ -40,7 +43,7 @@
 
 								@if($loop->last)
 								<tr>
-									<td colspan="4">&nbsp;</td>
+									<td colspan="5">&nbsp;</td>
 								</tr>
 								@endif
 
