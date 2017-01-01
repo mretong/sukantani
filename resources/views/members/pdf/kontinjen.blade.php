@@ -13,6 +13,9 @@
                             <tr>
                                 <td>{{ $contingent->role }} KONTINJEN</td>
                                 <td>{{ $contingent->nama }}</td>
+                                <td>{{ $contingent->nokp }}</td>
+                                <td>{{ $contingent->jantina }}</td>
+                                <td>{{ $contingent->notel }}</td>
                             </tr>
                         @empty
                             <tr>

@@ -7,7 +7,7 @@
 	<div class="row">
 	<div class="col-xs-8 col-xs-offset-1">
 		<div class="panel panel-primary">
-			<div class="panel-heading"><h4 class="panel-title">TRANSAKSI</h4></div>
+			<div class="panel-heading"><h4 class="panel-title">TRANSAKSI HARI INI</h4></div>
 			<div class="panel-body">
 
 				<table class="table table-condensed table-striped">
