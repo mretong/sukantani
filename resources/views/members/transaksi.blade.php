@@ -23,8 +23,8 @@
 				<tr>
 					<td>{{ $loop->iteration }}</td>
 					<td>{{ $transaction->agensi->kod }}</td>
-					<td>{{ $transaction->peserta->nama }}</td>
-					<td>{{ $transaction->peserta->nokp }}</td>
+					<td>{{ $transaction->peserta['nama'] }}</td>
+					<td>{{ $transaction->peserta['nokp'] }}</td>
 					<td>{{ $transaction->catatan }}</td>
 					<td>{{ $transaction->updated_at }}</td>
 				</tr>

@@ -11,7 +11,7 @@ class Transaksi extends Model
     protected $fillable = ['agensi_id', 'peserta_id', 'catatan'];
 
     public function peserta() {
-    	return $this->belongsTo('App\Peserta');
+        return $this->belongsTo('App\Peserta');
     }
 
     public function agensi() {
