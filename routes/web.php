@@ -243,13 +243,13 @@ Route::get('/transaksi', [
 	'uses'	=> 'TransaksiController@index'
 ]);
 
-Route::get('/kontinjen', [
-	'as'	=> 'kontinjen',
+Route::get('/laporan/kontinjen', [
+	'as'	=> 'laporan-kontinjen',
 	'uses'	=> 'LaporanController@kontinjen'
 ]);
 
-Route::post('/kontinjen', [
-	'as'	=> 'kontinjen-post',
+Route::post('/laporan/kontinjen', [
+	'as'	=> 'laporan-kontinjen-post',
 	'uses'	=> 'LaporanController@kontinjenPost'
 ]);
 

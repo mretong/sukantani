@@ -19,8 +19,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -29,8 +28,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
+
         $agensi = Agensi::where('id', Auth::user()->id)->first();
         $contingents = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
                         ->orderBy('role', 'asc')
@@ -150,6 +149,8 @@ class HomeController extends Controller
 
     public function kemaskini($id) {
 
+        $agensi = Agensi::where('id', Auth::user()->agensi->id)->first();
+
         $contingents = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
                         ->orderBy('role', 'asc')
                         ->get();
@@ -160,7 +161,7 @@ class HomeController extends Controller
         // dd($contingent);
 
 
-        return view('home', compact('contingents', 'kontinjen'));
+        return view('home', compact('contingents', 'kontinjen', 'agensi'));
 
     }
 

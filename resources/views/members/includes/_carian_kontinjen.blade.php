@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'kontinjen-post']) !!}
+{!! Form::open(['route' => 'laporan-kontinjen-post']) !!}
 
 {!! Form::label('Agensi') !!}
 {!! Form::select('agensi_id', $agencies, '', ['class' => 'form-control', 'placeholder' => 'PILIH AGENSI']) !!}
