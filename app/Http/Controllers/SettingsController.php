@@ -11,7 +11,7 @@ use App\Peserta;
 use App\Acara;
 use App\Agensi;
 use App\User;
-
+use Carbon\Carbon;
 
 class SettingsController extends Controller
 {
@@ -184,6 +184,67 @@ class SettingsController extends Controller
                     'title' => 'No KP yang tidak sah',
                     'data'  => $pesertas->toArray()
                 ]);
+
+        // Umur lebih 60 tahun
+
+        $pesertas = Peserta::orderBy('agensi_id', 'asc')->all();
+
+        $pesertas = $pesertas->filter(function($peserta) {
+                        $year = '19' . substr($peserta->nokp, 0, 2);
+                        $month = substr($peserta->nokp, 2, 2);
+                        $day = substr($peserta->nokp, 4, 2);
+                        $age = Carbon::createFromDate($year, $month, $day)->age;
+
+                        if($age > 60 && !strstr($peserta->nokp, '000'))
+                            return true;
+                    });
+
+        array_push($collections, [
+                    'title' => 'Peserta Umur melebihi 60 tahun',
+                    'data'  => $pesertas->toArray()
+                ]);
+
+        // Peserta Umur kurang 18 tahun
+
+        $pesertas = Peserta::orderBy('agensi_id', 'asc')->all();
+
+        $pesertas = $pesertas->filter(function($peserta) {
+                        $year = '19' . substr($peserta->nokp, 0, 2);
+                        $month = substr($peserta->nokp, 2, 2);
+                        $day = substr($peserta->nokp, 4, 2);
+                        $age = Carbon::createFromDate($year, $month, $day)->age;
+
+                        if($age < 18 && !strstr($peserta->nokp, '000'))
+                            return true;
+                    });
+
+        array_push($collections, [
+                    'title' => 'Peserta Umur kurang 18 tahun',
+                    'data'  => $pesertas->toArray()
+                ]);
+
+        // Lain-lain
+
+        $pesertas = Peserta::orderBy('agensi_id', 'asc')->all();
+
+        $pesertas = $pesertas->filter(function($peserta) {
+                        $year = '19' . substr($peserta->nokp, 0, 2);
+                        $month = substr($peserta->nokp, 2, 2);
+                        $day = substr($peserta->nokp, 4, 2);
+
+                        $date = Carbon::createFromDate($year, $month, $day);
+
+                        if(!strstr($peserta->nokp, '000')) {
+                            if($month == '02' && $day > 28 && !$date->isLeapYear())
+                                return true;
+
+                            if($day > 31) 
+                                return true;
+                            
+                            if($year > $date->year)
+                                return true;
+                        }                
+                    });
 
         return view('members.settings.nokp', compact('collections'));
         
