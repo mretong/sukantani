@@ -187,7 +187,7 @@ class SettingsController extends Controller
 
         // Umur lebih 60 tahun
 
-        $pesertas = Peserta::orderBy('agensi_id', 'asc')->all();
+        $pesertas = Peserta::orderBy('agensi_id', 'asc')->get();
 
         $pesertas = $pesertas->filter(function($peserta) {
                         $year = '19' . substr($peserta->nokp, 0, 2);
@@ -206,7 +206,7 @@ class SettingsController extends Controller
 
         // Peserta Umur kurang 18 tahun
 
-        $pesertas = Peserta::orderBy('agensi_id', 'asc')->all();
+        $pesertas = Peserta::orderBy('agensi_id', 'asc')->get();
 
         $pesertas = $pesertas->filter(function($peserta) {
                         $year = '19' . substr($peserta->nokp, 0, 2);
@@ -225,7 +225,7 @@ class SettingsController extends Controller
 
         // Lain-lain
 
-        $pesertas = Peserta::orderBy('agensi_id', 'asc')->all();
+        $pesertas = Peserta::orderBy('agensi_id', 'asc')->get();
 
         $pesertas = $pesertas->filter(function($peserta) {
                         $year = '19' . substr($peserta->nokp, 0, 2);
@@ -245,6 +245,11 @@ class SettingsController extends Controller
                                 return true;
                         }                
                     });
+
+        array_push($collections, [
+                    'title' => 'Lain-lain',
+                    'data'  => $pesertas->toArray()
+                ]);
 
         return view('members.settings.nokp', compact('collections'));
         
