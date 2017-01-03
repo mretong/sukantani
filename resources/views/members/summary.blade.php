@@ -28,13 +28,13 @@
 								<td>Kontinjen</td>
 								<td>{{ $collection['kontinjenLelaki'] }}</td>
 								<td>{{ $collection['kontinjenWanita'] }}</td>
-								<td>{{ $collection['kontinjen'] }}</td>
+								<td>{{ $collection['kontinjenLelaki'] + $collection['kontinjenWanita'] }}</td>
 							</tr>
 							<tr>
 								<td>Peserta</td>
 								<td>{{ $collection['pesertaLelaki'] }}</td>
 								<td>{{ $collection['pesertaWanita'] }}</td>
-								<td>{{ $collection['peserta'] }}</td>
+								<td>{{ $collection['pesertaLelaki'] + $collection['pesertaWanita'] }}</td>
 							</tr>
 						</table>
 
@@ -61,13 +61,13 @@
 								<td>Kontinjen</td>
 								<td>{{ $collection['kontinjenLelaki'] }}</td>
 								<td>{{ $collection['kontinjenWanita'] }}</td>
-								<td>{{ $collection['kontinjen'] }}</td>
+								<td>{{ $collection['kontinjenLelaki'] + $collection['kontinjenWanita'] }}</td>
 							</tr>
 							<tr>
 								<td>Peserta</td>
 								<td>{{ $collection['pesertaLelaki'] }}</td>
 								<td>{{ $collection['pesertaWanita'] }}</td>
-								<td>{{ $collection['peserta'] }}</td>
+								<td>{{ $collection['pesertaLelaki'] + $collection['pesertaWanita'] }}</td>
 							</tr>
 						</table>
 
