@@ -1,16 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.pdf')
 
 @section('content')
 
 <div class="container">
-
-	<div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-laporan-summary') }}" target="_blank"> PDF </a></span></div>
 	
 	@foreach($collections as $collection)
 
-		@if($loop->iteration % 3 == 0)
+		@if($loop->iteration % 2 == 0)
 			<div class="row">
-				<div class="col-xs-4">
+				<div class="col-xs-5">
 					<div class="panel panel-primary">
 						<div class="panel-heading"><h4 class="panel-title">{{ $collection['agensi'] }}</h4></div>
 						<div class="panel-body">
@@ -43,7 +41,7 @@
 				</div>	
 			</div>
 		@else
-			<div class="col-xs-4">
+			<div class="col-xs-5">
 				<div class="panel panel-primary">
 					<div class="panel-heading"><h4 class="panel-title">{{ $collection['agensiKod'] }}</h4></div>
 					<div class="panel-body">
@@ -74,11 +72,10 @@
 				</div>
 
 			</div>
-		@endif
+		@endif	
+
 	@endforeach
 
 </div>
-
-
 
 @endsection

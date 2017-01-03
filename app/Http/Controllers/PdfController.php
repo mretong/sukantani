@@ -67,7 +67,6 @@ class PdfController extends Controller
     //
     // Perserta info
     //
-
     public function peserta($id) {
 
         // check wether its from the right agensi_id
@@ -224,6 +223,9 @@ class PdfController extends Controller
         return $pdf->stream(Auth::user()->agensi->kod . ' - Ringkasan Penginapan.pdf');
     }
 
+    //
+    //  ADMIN :: Rumusan
+    //
     public function rumusan($id) {
 
         $agensi = Agensi::where('id', $id)->first();
@@ -254,6 +256,57 @@ class PdfController extends Controller
         $pdf = Pdf::loadView('members.pdf.rumusan', ['agensi' => $agensi, 'collections' => $collections]);
 
         return $pdf->stream(Auth::user()->agensi->kod . ' - Ringkasan Bilangan Pendaftaran Online.pdf');
+    }
+
+    public function summary() {
+
+        $agencies = Agensi::orderBy('id', 'asc')->get();
+
+        // dd($agencies);
+
+        // 1. kontinjen
+        // 2. peserta
+
+        $expect = 213;
+        $collections = collect();
+
+        foreach($agencies as $agency) {
+
+            $kontinjen          = Kontinjen::where('agensi_id', $agency->id)->count();
+            $kontinjenLelaki    = Kontinjen::where('agensi_id', $agency->id)
+                                    ->where('jantina', 'LELAKI')
+                                    ->count();
+            $kontinjenWanita    = Kontinjen::where('agensi_id', $agency->id)
+                                    ->where('jantina', 'WANITA')
+                                    ->count();
+            $peserta            = Peserta::where('agensi_id', $agency->id)->count();
+            $pesertaLelaki      = Peserta::where('agensi_id', $agency->id)
+                                    ->where('jantina', 'LELAKI')
+                                    ->count();
+            $pesertaWanita      = Peserta::where('agensi_id', $agency->id)
+                                    ->where('jantina', 'WANITA')
+                                    ->count();
+
+            $collections = $collections->push([
+                                'agensi'            => $agency->nama,
+                                'agensiKod'         => $agency->kod,
+                                'kontinjen'         => $kontinjen,
+                                'kontinjenLelaki'   => $kontinjenLelaki,
+                                'kontinjenWanita'   => $kontinjenWanita,
+                                'peserta'           => $peserta,
+                                'pesertaLelaki'     => $pesertaLelaki,
+                                'pesertaWanita'     => $pesertaWanita
+                            ]);
+        }
+
+        // return view('members.pdf.summary', compact('collections'));
+
+        view()->share('collections', $collections);
+        $html = View::make('members.pdf.summary');
+        $pdf = Pdf::loadHTML($html);
+
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Ringkasan Penyertaan Seluruh Agensi.pdf');
+
     }
 
 

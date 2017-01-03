@@ -194,6 +194,10 @@ Route::get('/pdf/laporan/kontinjen', [
 	'uses'	=> 'PdfController@kontinjen'
 ]);
 
+Route::get('/pdf/laporan/summary', [
+	'as'	=> 'pdf-laporan-summary',
+	'uses'	=> 'PdfController@summary'
+]);
 
 
 //
