@@ -36,7 +36,9 @@
 					@foreach($collections as $collection)
 					<tr>
 						<td>{{ $loop->iteration }}</td>
-						<td>{{ $collection->nama }}</td>
+						<td>
+							<a href="{{ route('peserta-info', $collection->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank">{{ $collection->nama }}</a>
+						</td>
 						<td>{{ $collection->nokp }}</td>
 						<td>{{ $collection->noAtlet }}</td>
 					</tr>
