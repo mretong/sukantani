@@ -4,7 +4,9 @@
 
 <div class="container">
 
-	<div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-laporan-summary') }}" target="_blank"> PDF </a></span></div>
+	<h4>Ringkasan Penyertaan Keseluruhan Agensi</h4>
+
+<!-- 	<div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-laporan-summary') }}" target="_blank"> PDF </a></span></div> -->
 	
 	@foreach($collections as $collection)
 
