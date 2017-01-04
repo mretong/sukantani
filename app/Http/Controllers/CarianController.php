@@ -125,4 +125,31 @@ class CarianController extends Controller
         return view('members.keputusanCarianRumusan', compact('agensi', 'collections', 'agencies'));
     }
 
+    public function acara() {
+
+        $games = Acara::orderBy('nama', 'asc')->pluck('nama', 'id');
+
+        return view('members.carianAcara', compact('games'));
+
+    }
+
+    public function acaraPost(Request $request) {
+
+        $penyertaan = Penyertaan::where('acara_id', $request->get('acara_id'))
+                    ->get();
+
+        $acara = Acara::where('id', $request->get('acara_id'))->first();
+
+        $pesertas = collect([]);
+        foreach($penyertaan as $temp) {
+
+            $peserta = Peserta::where('id', $temp->peserta_id)->first();
+            $pesertas->push($peserta);
+        }
+
+        $pesertas = $pesertas->sortBy('agensi_id');
+
+        return view('members.keputusanCarianAcara', compact('pesertas', 'acara'));
+    }
+
 }					

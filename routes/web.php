@@ -85,6 +85,7 @@ Route::get('/peserta/info/{id}', [
 	'uses'	=> 'PesertaController@info'
 ]);
 
+
 //
 // CARIAN
 //
@@ -127,6 +128,18 @@ Route::post('/carian/rumusan', [
 	'as'	=> 'carian-rumusan',
 	'uses'	=> 'CarianController@rumusanPost'
 ]);
+
+Route::get('carian/acara', [
+	'as'	=> 'carian-acara',
+	'uses'	=> 'CarianController@acara'
+]);
+
+Route::post('carian/acara', [
+	'as'	=> 'carian-acara-post',
+	'uses'	=> 'CarianController@acaraPost'
+]);
+
+
 
 //
 // Tagging

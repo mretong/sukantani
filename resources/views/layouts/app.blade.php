@@ -84,6 +84,7 @@
                 @if(Auth::user()->agensi_id == 1)
                   <li><a href="{{ route('carian-acara-agensi') }}">[ Admin ] :: Carian Mengikut Agensi dan Acara</a></li>
                   <li><a href="{{ route('carian-rumusan') }}">[ Admin ] :: Carian Rumusan Penyertaan Mengikut Agensi</a></li>                  
+                  <li><a href="{{ route('carian-acara') }}">[ Admin ] :: Carian Semua Peserta Mengikut Acara</a></li>
                 @endif
               </ul>
             </li>
