@@ -329,10 +329,10 @@ Route::get('/setting/nokp', [
 	'uses'	=> 'SettingsController@setting6'
 ]);
 
-Route::post('/setting/nokp', [
-	'as'	=> 'setting6-post',
-	'uses'	=> 'SettingsController@setting6Post'
-]);
+// Route::post('/setting/nokp', [
+// 	'as'	=> 'setting6-post',
+// 	'uses'	=> 'SettingsController@setting6Post'
+// ]);
 
 
 //

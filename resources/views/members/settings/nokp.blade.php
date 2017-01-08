@@ -22,6 +22,7 @@
 									<td><strong>Agensi</strong></td>
 									<td><strong>Nama</strong></td>
 									<td><strong>No KP</strong></td>
+									<td><strong>Acara</strong></td>
 									<td><strong>No Atlet</strong></td>
 								</tr>
 								@endif
@@ -36,6 +37,17 @@
 										{{ $agensi }}
 									</td>
 									<td>{{ $data['nama'] }}</td>
+									<td>
+										<?php
+											$peserta = \App\Peserta::where('id', $data['id'])->first();
+										?>
+										<ul>
+										@foreach($peserta->acara as $acara)
+											<li>{{ $acara->nama }}</li>
+										@endforeach
+										</ul>
+
+									</td>
 									<td>{{ $data['nokp'] }}</td>
 									<td>{{ $data['noAtlet'] }}</td>
 								</tr>
