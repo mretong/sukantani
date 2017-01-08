@@ -193,7 +193,7 @@ class SettingsController extends Controller
                         $year = '19' . substr($peserta->nokp, 0, 2);
                         $month = substr($peserta->nokp, 2, 2);
                         $day = substr($peserta->nokp, 4, 2);
-                        $age = Carbon::createFromDate('Y-m-d', $year, $month, $day)->age;
+                        $age = Carbon::createFromDate($year, $month, $day, 'Asia/Kuala_Lumpur')->age;
 
                         if($age > 60 && !strstr($peserta->nokp, '000'))
                             return true;
@@ -212,7 +212,7 @@ class SettingsController extends Controller
                         $year = '19' . substr($peserta->nokp, 0, 2);
                         $month = substr($peserta->nokp, 2, 2);
                         $day = substr($peserta->nokp, 4, 2);
-                        $age = Carbon::createFromDate('Y-m-d', $year, $month, $day)->age;
+                        $age = Carbon::createFromDate($year, $month, $day, 'Asia/Kuala_Lumpur')->age;
 
                         if($age < 18 && !strstr($peserta->nokp, '000'))
                             return true;
@@ -232,7 +232,7 @@ class SettingsController extends Controller
                         $month = substr($peserta->nokp, 2, 2);
                         $day = substr($peserta->nokp, 4, 2);
 
-                        $date = Carbon::createFromDate($year, $month, $day);
+                        $date = Carbon::createFromDate($year, $month, $day, 'Asia/Kuala_Lumpur');
 
                         if(!strstr($peserta->nokp, '000')) {
                             if($month == '02' && $day > 28 && !$date->isLeapYear())
