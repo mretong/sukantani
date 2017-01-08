@@ -15,7 +15,7 @@ input {
         <div class="col-xs-6">
         	<div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-peserta', $peserta->id) }}">PDF</a>&nbsp;&nbsp;</div>
             <div class="panel panel-default">
-                <div class="panel-heading"><strong>{{ Auth::User()->agensi->kod }} :: {{ Auth::User()->agensi->nama }}</strong></div>
+                <div class="panel-heading"><strong>{{ $peserta->agensi->kod }} :: {{ $peserta->agensi->nama }}</strong></div>
 
                 <div class="panel-body">
 

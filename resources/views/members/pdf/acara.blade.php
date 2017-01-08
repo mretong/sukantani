@@ -39,7 +39,7 @@
                             @if($participant['role'] == 'PENGURUS' || $participant['role'] == 'JURULATIH')
                                     <font color="green"><strong>{{ $participant['role'] }}</strong></font> <br />
                             @endif
-                            <a href="{{ route('peserta-info', $peserta->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank">{{ $participant['nama'] }}</a> <br />
+                            {{ $participant['nama'] }}<br />
                             {{ $participant['noAtlet'] }}
                         </td>
 						<td>

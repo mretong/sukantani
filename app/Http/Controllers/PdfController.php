@@ -72,7 +72,7 @@ class PdfController extends Controller
         // check wether its from the right agensi_id
         $peserta = Peserta::where('id', $id)->first();
 
-        if(Auth::user()->agensi->id != $peserta->agensi_id) {
+        if(Auth::user()->agensi->id > 2 && Auth::user()->agensi->id != $peserta->agensi_id) {
 
             if($peserta->agensi_id != Auth::user()->agensi->id){
                 Session::flash('error', 'Gagal. Peserta ini bukan dari agensi anda.');
