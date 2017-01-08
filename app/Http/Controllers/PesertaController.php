@@ -103,7 +103,7 @@ class PesertaController extends Controller
     	$filename = $destination . 'noPhoto.svg';
     	if(!empty($request->file('photo'))) {
     		$destination = 'images/peserta/';
-    		$filename = $destination . time() . '-' . $request->get('nama') . '.' . $request->file('photo')->getClientOriginalExtension();
+    		$filename = $destination . time() . '-' . $request->get('nokp') . '.' . $request->file('photo')->getClientOriginalExtension();
 
     		// return $destination;
 

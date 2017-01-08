@@ -32,7 +32,7 @@
 									<td>
 									<a href="{{ route('peserta-info', $peserta->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank"> {{ $peserta->nama }}</a><br />
 									<font color="green"><strong>{{ $peserta->role }}</strong></font> <br />
-									{{ $peserta->noAtlet }} 
+									{{ $peserta->noAtlet }}
 
 									</td>
 									<td>
