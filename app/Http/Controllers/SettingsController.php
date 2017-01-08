@@ -254,5 +254,33 @@ class SettingsController extends Controller
         return view('members.settings.nokp', compact('collections'));           
     }
 
+    //
+    // Display duplicated no kp
+    //
+    public function setting7() {
+
+        $pesertas = \DB::table('peserta')
+                      ->selectRaw('nokp, COUNT(nokp) as count')
+                      ->groupBy('nokp')
+                      ->orderBy('count', 'desc')
+                      ->get();
+
+        // dd($pesertas);
+
+        $collections = collect([]);
+
+        foreach($pesertas as $peserta) {
+
+            if($peserta->count > 1) {
+                $temps = Peserta::where('nokp', $peserta->nokp)->get();
+                $collections->push($temps->toArray());
+            }
+        }
+
+
+
+        return view('members.duplicateNoKP', compact('collections'));
+    }
+
 
 }

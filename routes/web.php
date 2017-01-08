@@ -329,10 +329,13 @@ Route::get('/setting/nokp', [
 	'uses'	=> 'SettingsController@setting6'
 ]);
 
-// Route::post('/setting/nokp', [
-// 	'as'	=> 'setting6-post',
-// 	'uses'	=> 'SettingsController@setting6Post'
-// ]);
+// Carian Duplicate No KP
+Route::get('/setting/7', [
+	'as'	=> 'setting7',
+	'uses'	=> 'SettingsController@setting7'
+]);
+
+
 
 
 //
