@@ -86,6 +86,21 @@ Route::get('/peserta/info/{id}', [
 ]);
 
 
+// Tagging
+Route::get('/tagging/kontinjen', [
+	'as'	=> 'tagging-kontinjen',
+	'uses'	=> 'TaggingController@kontinjen'
+]);
+
+Route::get('/tagging/atlet', [
+	'as'	=> 'tagging-atlet',
+	'uses'	=> 'TaggingController@atlet'
+]);
+
+
+
+
+
 //
 // CARIAN
 //

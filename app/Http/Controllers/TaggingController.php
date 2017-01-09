@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Agensi;
+use App\Peserta;
 
 class TaggingController extends Controller
 {
@@ -15,5 +16,12 @@ class TaggingController extends Controller
 
     	return view('members.tagging', compact('agencies'));
 
+    }
+
+    public function atlet() {
+
+    	$pesertas = Peserta::orderBy('agensi_id', 'asc')->get();
+
+    	return view('members.tagging.atlet', compact('pesertas'));
     }
 }

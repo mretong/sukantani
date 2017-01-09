@@ -112,18 +112,23 @@ class SettingsController extends Controller
     //
     public function setting4() {
 
-        $pesertas = \DB::table('peserta')
+        $temp = \DB::table('peserta')
                       ->selectRaw('noAtlet, COUNT(noAtlet) as count')
                       ->groupBy('noAtlet')
                       ->orderBy('count', 'desc')
                       ->get();
 
-        $collections = $pesertas->filter(function($peserta) {
-                            if($peserta->count > 1)
-                                return true;
-                        });
+        $pesertas = collect();
 
-        return view('members.duplicate', compact('collections'));
+        foreach($temp as $count) {
+
+            if($count->count > 1) {
+                $peserta = Peserta::where('noAtlet', $count->noAtlet)->get();
+                $pesertas->push($peserta->toArray());
+            }
+        }        
+
+        return view('members.duplicate', compact('pesertas'));
     }
 
     //

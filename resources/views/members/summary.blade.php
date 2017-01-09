@@ -4,7 +4,10 @@
 
 <div class="container">
 
-	<h4>Ringkasan Penyertaan Keseluruhan Agensi</h4>
+	<div class="row">
+		<h4>Ringkasan Penyertaan Keseluruhan Agensi</h4>
+		<small>*Tidak termasuk peserta yang tiada acara.</small>
+	</div>
 
 <!-- 	<div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-laporan-summary') }}" target="_blank"> PDF </a></span></div> -->
 	

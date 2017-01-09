@@ -407,7 +407,7 @@ class AgensiTableSeeder extends Seeder
         Agensi::create([
             'nama'  => strtoupper('maqis'),
             'kod'   => strtoupper('maqis'),
-            'kod2'  => strtoupper('n')
+            'kod2'  => strtoupper('q')
         ]);
 
         $agensi = Agensi::where('kod', 'maqis')->first();

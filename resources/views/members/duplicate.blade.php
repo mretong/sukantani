@@ -13,14 +13,21 @@
 					<table class="table table-condensed table-striped">
 					<tr>
 						<td><strong>Bil</strong></td>
+						<td><strong>Agensi</strong></td>
 						<td><strong>No Atlet</strong></td>
-						<td><strong>Bilangan Ulangan</strong></td>
 					</tr>
-					@foreach($collections as $collection)
+					@foreach($pesertas as $peserta)
 					<tr>
 						<td>{{ $loop->iteration }}</td>
-						<td>{{ $collection->noAtlet }}</td>
-						<td>{{ $collection->count }}</td>
+						@foreach($peserta as $temp)
+						<td>
+							<?php
+								$agensi = \App\Agensi::where('id', $temp['agensi_id'])->first();
+							?>
+							{{ $agensi->kod }}
+						</td>
+						<td>{{ $temp['noAtlet'] }}</td>
+						@endforeach
 					</tr>
 					@endforeach
 

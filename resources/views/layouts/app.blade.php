@@ -109,6 +109,14 @@
               </ul>
             </li>
 
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tagging <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ route('tagging-kontinjen')}}">Kontinjen</a></li>
+                <li><a href="{{ route('tagging-atlet')}}">Atlet</a></li>
+              </ul>
+            </li>
+
             @if(Auth::user()->email == 'suhairi81@gmail.com')
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Settings <span class="caret"></span></a>
