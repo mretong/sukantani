@@ -172,11 +172,12 @@ class PesertaController extends Controller
     //
     public function hapus($id) {
 
-    	$peserta = Peserta::where('id', $id)->delete();
+        $peserta = Peserta::where('id', $id)->first();
+    	$hapus = Peserta::where('id', $id)->delete();
         $penyertaan = Penyertaan::where('peserta_id', $id)->delete();
 
         // dd($peserta);
-    	if($peserta){
+    	if($hapus){
             $transaksi = new Transaksi;
             $transaksi->agensi_id = $peserta->agensi_id;
             $transaksi->peserta_id = $peserta->id;
