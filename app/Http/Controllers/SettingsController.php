@@ -127,6 +127,24 @@ class SettingsController extends Controller
     }
 
     //
+    // Display Peserta with no acara
+    //
+    public function setting8() {
+
+        $all = Peserta::orderBy('agensi_id', 'asc')->get();
+
+        $pesertas = collect([]);
+        foreach($all as $peserta) {
+
+            if(count($peserta->acara) <= 0)
+                $pesertas->push($peserta);            
+        }
+
+        return view('members.settings.noAcara', compact('pesertas'));
+
+    }
+
+    //
     // Update users' status. Act like a locking system.
     //
     public function setting5() {

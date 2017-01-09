@@ -115,7 +115,8 @@
               <ul class="dropdown-menu">
                 <li><a href="{{ route('setting1') }}">Remove peserta_id not_in peserta</a></li>
                 <li><a href="{{ route('setting2') }}">Remove penyertaan that exceed limit</a></li>
-                <li><a href="{{ route('setting3') }}">Remove peserta with no acara</a></li>
+                <!-- <li><a href="{{ route('setting3') }}">Remove peserta with no acara</a></li> -->
+                <li><a href="{{ route('setting8') }}">Senarai Peserta Tiada Acara</a></li>
                 <li><a href="{{ route('setting4') }}">Display duplicated No Atlet</a></li>
                 <li><a href="{{ route('setting7') }}">Display duplicated No KP</a></li>
                 <li><a href="{{ route('setting5') }}">Update User Login Status</a></li>

@@ -306,6 +306,12 @@ Route::get('/setting/3', [
 	'uses'	=> 'SettingsController@setting3'
 ]);
 
+// Display peserta with no acara
+Route::get('/setting/8', [
+	'as'	=> 'setting8',
+	'uses'	=> 'SettingsController@setting8'
+]);
+
 // Find duplication of no Atlet
 Route::get('setting/4', [
 	'as'	=> 'setting4',
@@ -334,6 +340,8 @@ Route::get('/setting/7', [
 	'as'	=> 'setting7',
 	'uses'	=> 'SettingsController@setting7'
 ]);
+
+
 
 
 
