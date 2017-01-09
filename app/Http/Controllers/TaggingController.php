@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 use App\Agensi;
 use App\Peserta;
 
+use Auth;
+use Session;
+
+use PDF;
+use View;
+
 class TaggingController extends Controller
 {
     public function index() {
@@ -22,6 +28,17 @@ class TaggingController extends Controller
 
     	$pesertas = Peserta::orderBy('agensi_id', 'asc')->get();
 
+    	view()->share('pesertas', $pesertas);
+    	$html = View::make('members.tagging.atlet');
+        $pdf = Pdf::loadHTML($html);
+        return $pdf->stream('Tagging Atlet.pdf');
+
     	return view('members.tagging.atlet', compact('pesertas'));
+    }
+
+    public function kontinjen() {
+    	Session::flash('error', 'Belum buat!!!');
+
+    	return back();
     }
 }

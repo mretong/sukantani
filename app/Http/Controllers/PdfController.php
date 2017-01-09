@@ -306,7 +306,6 @@ class PdfController extends Controller
         $pdf = Pdf::loadHTML($html);
 
         return $pdf->stream(Auth::user()->agensi->kod . ' - Ringkasan Penyertaan Seluruh Agensi.pdf');
-
     }
 
 

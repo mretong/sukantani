@@ -48,7 +48,7 @@
 							<td>{{ $loop->iteration }}</td>
 							<td>
 								<font color="green"><strong>{{ $peserta->role }}</strong></font><br />
-								<a href="{{ route('peserta-info', $peserta->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank">{{ $peserta->nama }}</a>
+								{{ $peserta->nama }}
 							</td>
 							<td>
 								{{ $peserta->nokp }} <br />
