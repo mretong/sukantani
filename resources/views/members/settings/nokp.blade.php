@@ -37,6 +37,7 @@
 										{{ $agensi }}
 									</td>
 									<td>{{ $data['nama'] }}</td>
+                                    <td>{{ $data['nokp'] }}</td>
 									<td>
 										<?php
 											$peserta = \App\Peserta::where('id', $data['id'])->first();
@@ -48,7 +49,6 @@
 										</ul>
 
 									</td>
-									<td>{{ $data['nokp'] }}</td>
 									<td>{{ $data['noAtlet'] }}</td>
 								</tr>
 
