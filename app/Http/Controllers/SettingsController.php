@@ -177,6 +177,12 @@ class SettingsController extends Controller
 
         $collections = Array();
 
+        // Reformatting nokp field
+        // Remove white space and '-'
+        $update = \DB::update("update peserta set nokp = replace(nokp, ' ', '')");
+        $update = \DB::update("update peserta set nokp = replace(nokp, '-', '')");
+
+
         // nokp less than 12
         $pesertas = Peserta::whereRaw('length(nokp) < 12')
                     ->orderBy('agensi_id', 'asc')
