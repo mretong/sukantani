@@ -308,6 +308,32 @@ class PdfController extends Controller
         return $pdf->stream(Auth::user()->agensi->kod . ' - Ringkasan Penyertaan Seluruh Agensi.pdf');
     }
 
+    public function pesertaAcara($id) {
+
+        $acara = Acara::where('id', $id)->first();
+
+        $pesertas = Peserta::orderBy('agensi_id', 'asc')
+                    ->orderBy('role', 'desc')
+                    ->get();
+
+        $pesertas = $pesertas->filter(function($peserta) use($id) {
+
+                        foreach($peserta->acara as $acara) {
+                            if($acara->id == $id)
+                                return true;
+                        }
+                    });
+
+        // dd($pesertas);
+        view()->share('pesertas', $pesertas);
+        view()->share('acara', $acara);
+
+        // return view('members.pdf.acara', compact('pesertas'));
+
+        $pdf = PDF::loadView('members.pdf.acara');
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Maklumat Keseluruhan Peserta Mengikut Acara.pdf');
+    }
+
 
 
 }

@@ -227,6 +227,11 @@ Route::get('/pdf/laporan/summary', [
 	'uses'	=> 'PdfController@summary'
 ]);
 
+Route::get('/pdf/peserta/acara/{id}', [
+    'as'    => 'pdf-peserta-acara',
+    'uses'  => 'PdfController@pesertaAcara'
+]);
+
 
 //
 // EXCEL
@@ -294,8 +299,6 @@ Route::post('/laporan/agensi/acara', [
 	'as'	=> 'laporan-agensi-acara-post',
 	'uses'	=> 'LaporanController@agensiAcaraPost'
 ]);
-
-
 
 
 

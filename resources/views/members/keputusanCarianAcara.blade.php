@@ -11,6 +11,7 @@
                 <div class="panel-body">
                 	
                 	<br />
+                    <div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-peserta-acara', $acara->id) }}" target="_blank"> PDF </a></span></div>
                     <table class="table table-hover">
                     	<tr>
                     		<th colspan="10">Senarai Atlet </th>

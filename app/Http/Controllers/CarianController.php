@@ -152,4 +152,5 @@ class CarianController extends Controller
         return view('members.keputusanCarianAcara', compact('pesertas', 'acara'));
     }
 
+
 }					
