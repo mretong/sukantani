@@ -16,11 +16,11 @@
                         @if($loop->index == 0)
                             <table class="table table-hover table-striped table-bordered">
                             <tr>
-                                <td width="10"><strong>Bil</strong></td>
+                                <td ><strong>Bil</strong></td>
                                 <td><strong>Nama</strong></td>
-                                <td><strong width="50">No KP</strong></td>
+                                <td><strong >No KP</strong></td>
                                 <td><strong>Jantina</strong></td>
-                                <td width="50" align="center"><strong>Acara</strong></td>
+                                <td  align="center"><strong>Acara</strong></td>
                             </tr>
                         @endif
                         @if($loop->index != 0 && (($loop->iteration) % 9) == 0)
@@ -28,11 +28,11 @@
                             <div class="page-break"></div>
                             <table class="table table-hover table-striped table-bordered">
                             <tr>
-                                <td width="10"><strong>Bil</strong></td>
+                                <td ><strong>Bil</strong></td>
                                 <td><strong>Nama</strong></td>
-                                <td><strong width="50">No KP</strong></td>
+                                <td><strong >No KP</strong></td>
                                 <td><strong>Jantina</strong></td>
-                                <td width="50" align="center"><strong>Acara</strong></td>
+                                <td  align="center"><strong>Acara</strong></td>
                             </tr>
                         @endif
     				<tr>

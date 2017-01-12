@@ -20,61 +20,49 @@ class SummaryController extends Controller
     	// 1. kontinjen
     	// 2. peserta
 
-    	$expect = 213;
     	$collections = collect();
 
     	foreach($agencies as $agency) {
 
-    		$kontinjen 			= Kontinjen::where('agensi_id', $agency->id)->count();
-    		$kontinjenLelaki	= Kontinjen::where('agensi_id', $agency->id)
-    								->where('jantina', 'LELAKI')
-    								->count();
-			$kontinjenWanita	= Kontinjen::where('agensi_id', $agency->id)
-    								->where('jantina', 'WANITA')
-    								->count();
-			// $peserta          = Peserta::where('agensi_id', $agency->id)->count();
-            // $pesertaLelaki       = Peserta::where('agensi_id', $agency->id)
-            //                      ->where('jantina', 'LELAKI')
-            //                      ->count();
-            // $pesertaWanita       = Peserta::where('agensi_id', $agency->id)
-            //                      ->where('jantina', 'WANITA')
-            //                      ->count();
-            $peserta 			= Peserta::where('agensi_id', $agency->id)->get();
-            $peserta = $peserta->filter(function($temp) {
-                            if(count($temp->acara) > 0)
-                                return true;
-                        });
-            $peserta = $peserta->count();
+            $kontinjen  = Kontinjen::where('agensi_id', $agency->id)->get();
+            $pesertas   = Peserta::where('agensi_id', $agency_id)->get();
 
-			$pesertaLelaki 		= Peserta::where('agensi_id', $agency->id)
-									->where('jantina', 'LELAKI')
-									->get();
-            $pesertaLelaki = $pesertaLelaki->filter(function($temp) {
-                                if(count($temp->acara) > 0)
-                                    return true;
-                            });
-            $pesertaLelaki = $pesertaLelaki->count();
+            $kontinjenLelaki    = $kontinjen->filter(function($temp) {
+                                    if($temp->jantina == 'LELAKI')
+                                        return true;
+                                });
+            $kontinjenWanita    = $kontinjen->filter(function($temp) {
+                                    if($temp->jantina == 'WANITA')
+                                        return true;
+                                });
 
-			$pesertaWanita 		= Peserta::where('agensi_id', $agency->id)
-									->where('jantina', 'WANITA')
-									->get();
-            $pesertaWanita = $pesertaWanita->filter(function($temp) {
-                                if(count($temp->acara) > 0)
-                                    return true;
-                            });
-            $pesertaWanita = $pesertaWanita->count();
+            $pesertaLelaki      = $pesertas->filter(function($temp) {
+                                    if($peserta->jantina == 'LELAKI') {
+                                        foreach($temp->acara as $acara) {
+                                            if(count($acara) > 0)
+                                                return true;
+                                        }
+                                    }
+                                });
+
+            $pesertaWanita      = $pesertas->filter(function($temp) {
+                                    if($peserta->jantina == 'WANITA') {
+                                        foreach($temp->acara as $acara) {
+                                            if(count($acara) > 0)
+                                                return true;
+                                        }
+                                    }
+                                });
 
 
-    		$collections = $collections->push([
-    							'agensi' 			=> $agency->nama,
-    							'agensiKod'			=> $agency->kod,
-    							'kontinjen' 		=> $kontinjen,
-    							'kontinjenLelaki' 	=> $kontinjenLelaki,
-    							'kontinjenWanita'	=> $kontinjenWanita,
-    							'peserta'			=> $peserta,
-    							'pesertaLelaki'		=> $pesertaLelaki,
-    							'pesertaWanita'		=> $pesertaWanita
-							]);
+
+
+            $collections = $collection->push([
+                            'agensi'    => $agency->nama,
+                            'lelaki'    => ,
+                            'wanita'    => ,
+                            'jumlah'    =>
+                            ])
     	}
 
     	return view('members.summary', compact('collections'));

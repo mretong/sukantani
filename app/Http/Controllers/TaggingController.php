@@ -30,10 +30,10 @@ class TaggingController extends Controller
 
     	view()->share('pesertas', $pesertas);
     	$html = View::make('members.tagging.atlet');
-        $pdf = Pdf::loadHTML($html);
-        return $pdf->stream('Tagging Atlet.pdf');
+        $pdf = Pdf::loadHtml($html);
+        return $pdf->setPaper('c3')->stream('Tagging Atlet.pdf');
 
-    	return view('members.tagging.atlet', compact('pesertas'));
+    	// return view('members.tagging.atlet', compact('pesertas'));
     }
 
     public function kontinjen() {
