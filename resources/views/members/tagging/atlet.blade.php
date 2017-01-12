@@ -30,7 +30,7 @@
         <tr>
             <td rowspan="3" align="center" valign="top" style="border-left: 0px">
                 &nbsp;&nbsp;&nbsp;
-                <img src="<?= public_path(); ?>/{{ $peserta->photo }}" height="375" width="350">
+                <img src="<?= public_path(); ?>/{{ $peserta->photo }}" height="377" width="350">
             </td>
             <td valign="top" align="center" width="100%">
                 <strong>{{ $peserta->nama }}</strong>
