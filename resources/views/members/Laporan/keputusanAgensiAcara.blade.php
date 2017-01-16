@@ -6,12 +6,14 @@
 	
 	<div class="col-xs-12">
 
+
 		<div class="panel panel-primary">
 			<div class="panel-heading"><h4>Senarai Peserta Mengikut Jenis Sukan {{ $agensi->kod }} </h4></div>
 			<div class="panel-body">
 				<h3>Agensi : {{ $agensi->nama }}</h3>
 
 				<table class="table table-condensed table-hover table-striped">
+{{--                 <div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-agensi-acara', $agensi->id) }}" target="_blank"> PDF </a></span></div> --}}
 
 				@foreach($games as $acara)
 					<tr>
@@ -37,7 +39,7 @@
 					<tr>
 						<td>{{ $loop->iteration }}</td>
 						<td>
-							<a href="{{ route('peserta-info', $collection->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank">{{ $collection->nama }}</a>
+							{{-- <a href="{{ route('peserta-info', $collection->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank"> --}}{{ $collection->nama }}{{-- </a> --}}
 						</td>
 						<td>{{ $collection->nokp }}</td>
 						<td>{{ $collection->noAtlet }}</td>

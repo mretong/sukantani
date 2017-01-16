@@ -334,6 +334,20 @@ class PdfController extends Controller
         return $pdf->stream(Auth::user()->agensi->kod . ' - Maklumat Keseluruhan Peserta Mengikut Acara.pdf');
     }
 
+    public function keputusanAgensiAcara($agensi_id) {
+
+        $agensi = Agensi::where('id', $agensi_id)->first();
+        $games = Acara::orderBy('nama', 'asc')->get();
+
+        view()->share('agensi', $agensi);
+        view()->share('games', $games);
+
+        $pdf = PDF::loadView('members.pdf.keputusanAgensiAcara');
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Maklumat Penyertaan Peserta Mengikut Acara.pdf'); 
+
+        return view('members.pdf.keputusanAgensiAcara', compact('games', 'agensi'));
+    }
+
 
 
 }

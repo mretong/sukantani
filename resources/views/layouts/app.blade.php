@@ -112,8 +112,8 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tagging <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="{{ route('tagging-kontinjen')}}">Kontinjen</a></li>
-                <li><a href="{{ route('tagging-atlet')}}">Atlet</a></li>
+                <li><a href="{{ route('tagging-kontinjen')}}" target="_blank">Kontinjen</a></li>
+                <li><a href="{{ route('tagging-atlet')}}" target="_blank">Atlet</a></li>
               </ul>
             </li>
 

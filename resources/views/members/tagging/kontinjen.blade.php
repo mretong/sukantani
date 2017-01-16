@@ -26,7 +26,7 @@
                 <br /><br />
                 <font size="10px"><br /><br /><br /></font>
 
-                <font face="arial" size="175px" color="yellow">ATLET</font>
+                <font face="arial" size="175px" color="yellow">KONTINJEN</font>
                 <br /><br />
             </td>
         </tr>
@@ -53,9 +53,11 @@
 
 
     </table>
-    @if($loop->iteration == 1)
-        @break
-    @endif
+@if($loop->iteration == 1)
+    @break
+@endif
 @endforeach
+
+
 
 @endsection

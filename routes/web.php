@@ -98,9 +98,6 @@ Route::get('/tagging/atlet', [
 ]);
 
 
-
-
-
 //
 // CARIAN
 //
@@ -230,6 +227,11 @@ Route::get('/pdf/laporan/summary', [
 Route::get('/pdf/peserta/acara/{id}', [
     'as'    => 'pdf-peserta-acara',
     'uses'  => 'PdfController@pesertaAcara'
+]);
+
+Route::get('/pdf/laporan/agensi/acara/{agensi_id}', [
+    'as'    => 'pdf-agensi-acara',
+    'uses'  => 'PdfController@keputusanAgensiAcara'
 ]);
 
 

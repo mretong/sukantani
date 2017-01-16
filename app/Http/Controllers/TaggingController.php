@@ -18,8 +18,6 @@ class TaggingController extends Controller
     public function index() {
 
     	$agencies = Agensi::orderBy('nama', 'asc')->pluck('nama', 'id');
-
-
     	return view('members.tagging', compact('agencies'));
 
     }
