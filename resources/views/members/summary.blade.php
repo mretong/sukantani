@@ -4,83 +4,56 @@
 
 <div class="container">
 
-	<div class="row">
-		<h4>Ringkasan Penyertaan Keseluruhan Agensi</h4>
-		<small>*Tidak termasuk peserta yang tiada acara.</small>
-	</div>
+    <div class="row">
+        <div class="col-xs-10">
+            
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Ringkasan Penyertaan Keseluruhan Agensi</h4>
+                    <small>*Tidak termasuk peserta yang tiada acara.</small>
+                </div>
+            
+                <div class="panel-body">
+                    <table class="table table-condensed table-bordered table-striped">
+                    <tr bgcolor="#CCC">
+                        <td><strong>BIL</strong></td>
+                        <td><strong>AGENSI</strong></td>
+                        <td><strong>JANTINA</strong></td>
+                        <td><strong>JUMLAH</strong></td>
+                        <td><strong>JUMLAH BESAR</strong></td>
+                    </tr>
+                
+                    <?php $grandTotal = 0; ?>
+                    @foreach($collections as $collection)
+                        <tr>
+                            <td rowspan="2" align="center" valign="middle">{{ $loop->iteration }}</td>
+                            <td rowspan="2" valign="middle">{{ $collection['agensi'] }}</td>
+                            <td>LELAKI</td>
+                            <td align="center">{{ $collection['lelaki'] }}</td>
+                            <td rowspan="2" align="center" valign="middle">{{ $collection['jumlah'] }}</td>            
+                        </tr>
+                        <tr>
+                            <td>WANITA</td>
+                            <td align="center">{{ $collection['wanita'] }}</td>
+                        </tr>
+                        <?php
+                            $grandTotal += $collection['jumlah'];
+                        ?>     
+                    @endforeach
+                    <tr>
+                        <td colspan="4" align="right"><strong><font size="5">JUMLAH BESAR</font></strong></td>
+                        <td align="center"><strong><font size="5">{{ $grandTotal }}</font></strong></td>
+                    </tr>
 
-<!-- 	<div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-laporan-summary') }}" target="_blank"> PDF </a></span></div> -->
-	
-	@foreach($collections as $collection)
+                    </table>                
+                </div>
+            </div>
 
-		@if($loop->iteration % 3 == 0)
-			<div class="row">
-				<div class="col-xs-4">
-					<div class="panel panel-primary">
-						<div class="panel-heading"><h4 class="panel-title">{{ $collection['agensi'] }}</h4></div>
-						<div class="panel-body">
 
-							<table class="table table-condensed table-striped">
-							<tr>
-								<td><strong>Perkara</strong></td>
-								<td><strong>Lelaki</strong></td>
-								<td><strong>Wanita</strong></td>
-								<td><strong>Jumlah</strong></td>
-							</tr>
-							<tr>
-								<td>Kontinjen</td>
-								<td>{{ $collection['kontinjenLelaki'] }}</td>
-								<td>{{ $collection['kontinjenWanita'] }}</td>
-								<td>{{ $collection['kontinjenLelaki'] + $collection['kontinjenWanita'] }}</td>
-							</tr>
-							<tr>
-								<td>Peserta</td>
-								<td>{{ $collection['pesertaLelaki'] }}</td>
-								<td>{{ $collection['pesertaWanita'] }}</td>
-								<td>{{ $collection['pesertaLelaki'] + $collection['pesertaWanita'] }}</td>
-							</tr>
-						</table>
 
-							
-						</div>
-					</div>
-
-				</div>	
-			</div>
-		@else
-			<div class="col-xs-4">
-				<div class="panel panel-primary">
-					<div class="panel-heading"><h4 class="panel-title">{{ $collection['agensiKod'] }}</h4></div>
-					<div class="panel-body">
-
-						<table class="table table-condensed table-striped">
-							<tr>
-								<td><strong>Perkara</strong></td>
-								<td><strong>Lelaki</strong></td>
-								<td><strong>Wanita</strong></td>
-								<td><strong>Jumlah</strong></td>
-							</tr>
-							<tr>
-								<td>Kontinjen</td>
-								<td>{{ $collection['kontinjenLelaki'] }}</td>
-								<td>{{ $collection['kontinjenWanita'] }}</td>
-								<td>{{ $collection['kontinjenLelaki'] + $collection['kontinjenWanita'] }}</td>
-							</tr>
-							<tr>
-								<td>Peserta</td>
-								<td>{{ $collection['pesertaLelaki'] }}</td>
-								<td>{{ $collection['pesertaWanita'] }}</td>
-								<td>{{ $collection['pesertaLelaki'] + $collection['pesertaWanita'] }}</td>
-							</tr>
-						</table>
-
-						
-					</div>
-				</div>
-
-			</div>
-		@endif
-	@endforeach
+        </div>
+    </div>
+    
 
 </div>
 

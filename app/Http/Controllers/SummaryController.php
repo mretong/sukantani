@@ -25,7 +25,7 @@ class SummaryController extends Controller
     	foreach($agencies as $agency) {
 
             $kontinjen  = Kontinjen::where('agensi_id', $agency->id)->get();
-            $pesertas   = Peserta::where('agensi_id', $agency_id)->get();
+            $pesertas   = Peserta::where('agensi_id', $agency->id)->get();
 
             $kontinjenLelaki    = $kontinjen->filter(function($temp) {
                                     if($temp->jantina == 'LELAKI')
@@ -37,7 +37,7 @@ class SummaryController extends Controller
                                 });
 
             $pesertaLelaki      = $pesertas->filter(function($temp) {
-                                    if($peserta->jantina == 'LELAKI') {
+                                    if($temp->jantina == 'LELAKI') {
                                         foreach($temp->acara as $acara) {
                                             if(count($acara) > 0)
                                                 return true;
@@ -46,7 +46,7 @@ class SummaryController extends Controller
                                 });
 
             $pesertaWanita      = $pesertas->filter(function($temp) {
-                                    if($peserta->jantina == 'WANITA') {
+                                    if($temp->jantina == 'WANITA') {
                                         foreach($temp->acara as $acara) {
                                             if(count($acara) > 0)
                                                 return true;
@@ -54,15 +54,18 @@ class SummaryController extends Controller
                                     }
                                 });
 
+            $lelaki = $kontinjenLelaki->count() + $pesertaLelaki->count();
+            $wanita = $kontinjenWanita->count() + $pesertaWanita->count();
+            $jumlah = $lelaki + $wanita;
 
 
-
-            $collections = $collection->push([
+            $collections = $collections->push([
+                            'agensiKod' => $agency->kod,
                             'agensi'    => $agency->nama,
-                            'lelaki'    => ,
-                            'wanita'    => ,
-                            'jumlah'    =>
-                            ])
+                            'lelaki'    => $lelaki,
+                            'wanita'    => $wanita,
+                            'jumlah'    => $jumlah
+                            ]);
     	}
 
     	return view('members.summary', compact('collections'));
