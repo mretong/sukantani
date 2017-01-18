@@ -238,7 +238,7 @@ Route::get('/pdf/laporan/agensi/acara/{agensi_id}', [
 //
 // EXCEL
 //
-Route::get('/excel/keseluruhan', [
+Route::get('/excel/keseluruhan/{id}', [
 	'as'	=> 'excel-keseluruhan',
 	'uses'	=> 'ExcelController@keseluruhan'
 ]);

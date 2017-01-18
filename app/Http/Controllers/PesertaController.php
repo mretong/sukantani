@@ -26,6 +26,13 @@ class PesertaController extends Controller
 
     public function index() {
 
+        if(Auth::user()->status == 0) {
+            Session::flush();
+            Session::flash('error', 'Ralat.');
+            Auth::logout();
+            return redirect()->route('login');
+        }
+
     	$participants = Peserta::where('agensi_id', Auth::user()->agensi_id)
                         ->orderBy('nama', 'asc')
                         ->paginate(10);
@@ -41,6 +48,13 @@ class PesertaController extends Controller
     }
 
     public function pesertaPost(Request $request) {
+
+        if(Auth::user()->status == 0) {
+            Session::flush();
+            Session::flash('error', 'Ralat.');
+            Auth::logout();
+            return redirect()->route('login');
+        }
 
     	if($request->get('nokp') != '') {
     		$nokp = Peserta::where('nokp', $request->get('nokp'))->first();

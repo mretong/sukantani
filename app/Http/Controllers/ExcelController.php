@@ -9,20 +9,23 @@ use Excel;
 
 use App\User;
 use App\Peserta;
+use App\Agensi;
 
 class ExcelController extends Controller
 {
-    public function keseluruhan() {
+    public function keseluruhan($id) {
+
+        $agensi = Agensi::where('id', $id)->first();
 
     	$pesertas = Peserta::select('vege as VEGETARIAN', 'nama as NAMA', 'nokp as ' . "NO_KAD_PENGENALAN" . '', 'jantina as JANTINA', 'noPekerja as NO_PEKERJA', 'noAtlet as NO_ATLET', 'gredJawatan as GRED_JAWATAN', 'tarafJawatan as TARAF_JAWATAN', 'tarikhLantikan as TARIKH_LANTIKAN')
-    				->where('agensi_id', Auth::user()->agensi->id)
+    				->where('agensi_id',$id)
     				->orderBy('vege', 'desc')
                     ->orderBy('jantina', 'asc')
                     ->orderBy('tarafJawatan', 'desc')
                     ->orderBy('nama', 'asc')
                     ->get();
 
-		Excel::create('Senarai Peserta', function($excel) use($pesertas) {
+		Excel::create($agensi->kod . ' - Senarai Peserta', function($excel) use($pesertas) {
 
 			// Set the title
 		    $excel->setTitle('Laporan Keseluruhan Peserta');

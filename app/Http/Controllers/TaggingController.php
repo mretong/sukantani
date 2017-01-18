@@ -24,7 +24,7 @@ class TaggingController extends Controller
 
     public function atlet() {
 
-    	$pesertas = Peserta::orderBy('agensi_id', 'asc')->skip(15)->take(100)->get();
+    	$pesertas = Peserta::orderBy('agensi_id', 'asc')->skip(0)->take(1)->get();
 
     	view()->share('pesertas', $pesertas);
     	$html = View::make('members.tagging.atlet');

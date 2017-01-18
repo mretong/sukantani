@@ -25,6 +25,13 @@ class LaporanController extends Controller
 
     public function keseluruhan() {
 
+        if(Auth::user()->status == 0) {
+            Session::flush();
+            Session::flash('error', 'Ralat.');
+            Auth::logout();
+            return redirect()->route('login');
+        }
+        
     	$pesertas = Peserta::where('agensi_id', Auth::user()->agensi->id)
                     ->orderBy('vege', 'desc')
                     ->orderBy('jantina', 'asc')

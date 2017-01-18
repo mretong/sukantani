@@ -30,6 +30,13 @@ class HomeController extends Controller
      */
     public function index() {
 
+        if(Auth::user()->status == 0) {
+            Session::flush();
+            Session::flash('error', 'Ralat.');
+            Auth::logout();
+            return redirect()->route('login');
+        }
+
         $agensi = Agensi::where('id', Auth::user()->agensi->id)->first();
 
         $contingents = Kontinjen::where('agensi_id', Auth::user()->agensi->id)

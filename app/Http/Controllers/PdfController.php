@@ -104,7 +104,7 @@ class PdfController extends Controller
 
         $pesertas = Peserta::where('agensi_id', $request->get('agensi_id'))
                     ->orderBy('noAtlet', 'asc')
-                    ->skip(100)
+                    ->skip(0)
                     ->take(50)
                     ->get();
 
