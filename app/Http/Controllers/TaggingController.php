@@ -24,7 +24,7 @@ class TaggingController extends Controller
 
     public function atlet() {
 
-    	$pesertas = Peserta::orderBy('agensi_id', 'asc')->skip(0)->take(3)->get();
+    	$pesertas = Peserta::orderBy('agensi_id', 'asc')->skip(0)->take(1)->get();
 
         $pesertas = $pesertas->filter(function($temp) {
                         if(count($temp->acara) > 0)
