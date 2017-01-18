@@ -13,7 +13,7 @@
 				<h3>Agensi : {{ $agensi->nama }}</h3>
 
 				<table class="table table-condensed table-hover table-striped">
-{{--                 <div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-agensi-acara', $agensi->id) }}" target="_blank"> PDF </a></span></div> --}}
+                <div align="right"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> <a href="{{ route('pdf-agensi-acara', $agensi->id) }}" target="_blank"> PDF </a></span></div>
 
 				@foreach($games as $acara)
 					<tr>
@@ -33,13 +33,19 @@
 											if($peserta->agensi_id == $agensi->id)
 												return true;
 										});
+                        $collections = $collections->sortByDesc('role');
 					?>
 
 					@foreach($collections as $collection)
 					<tr>
 						<td>{{ $loop->iteration }}</td>
 						<td>
-							{{-- <a href="{{ route('peserta-info', $collection->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank"> --}}{{ $collection->nama }}{{-- </a> --}}
+							{{-- <a href="{{ route('peserta-info', $collection->id) }}" title="Klik Untuk Maklumat Tambahan" target="_blank"> --}}
+                            {{ $collection->nama }}{{-- </a> --}}
+                            @if($collection->role != 'ATLET')
+                                <br />
+                                ({{ $collection->role }})
+                            @endif
 						</td>
 						<td>{{ $collection->nokp }}</td>
 						<td>{{ $collection->noAtlet }}</td>

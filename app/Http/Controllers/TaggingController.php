@@ -24,7 +24,7 @@ class TaggingController extends Controller
 
     public function atlet() {
 
-    	$pesertas = Peserta::orderBy('agensi_id', 'asc')->get();
+    	$pesertas = Peserta::orderBy('agensi_id', 'asc')->skip(15)->take(100)->get();
 
     	view()->share('pesertas', $pesertas);
     	$html = View::make('members.tagging.atlet');
@@ -35,7 +35,12 @@ class TaggingController extends Controller
     }
 
     public function kontinjen() {
-    	Session::flash('error', 'Belum buat!!!');
+    	$pesertas = Kontinjen::orderBy('agensi_id', 'asc')->skip(0)->take(1)->get();
+
+        view()->share('pesertas', $pesertas);
+        $html = View::make('members.tagging.kontinjen');
+        $pdf = Pdf::loadHtml($html);
+        return $pdf->setPaper('c3')->stream('Tagging Kontinjen.pdf');
 
     	return back();
     }
