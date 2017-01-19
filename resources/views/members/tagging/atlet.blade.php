@@ -6,25 +6,23 @@
     @if($loop->iteration != 1)
         {{-- <div class="page-break"></div> --}}
 
-        <table border="1" width="115%">
+        <table border="1" width="110%">
             <tr>
                 <td colspan="3" valign="bottom" align="center">
-                    <br /><br /><br /><br /><br /><br /><br />
-                    <br /><br />
+                    <br /><br /><br /><br /><br /><br /><br /><br /><br />
                     <font size="10px">
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                        <br /><br /><br />
                     </font>
 
                     <img src="<?= public_path(); ?>/images/tagging/atlet.png" width="350" height="140">
                     <font size="10px">
                         <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        <br /><br />
                     </font>
                 </td>
             </tr>
             <tr>
                 <td width="255" rowspan="3" align="left" valign="top">
-                    {{-- <font size="5px"><br /><br /><br /><br /></font> --}}
                     <img src="<?= public_path(); ?>/{{ $peserta->photo }}" height="385" width="350">
                 </td>
                 <td valign="top" width="100%" colspan="2" style="padding-left: 25px">
@@ -46,26 +44,24 @@
             </tr>
         </table>
     @else
-        <table border="0" width="110%">
+        <table border="1" width="110%">
             <tr>
                 <td colspan="3" valign="bottom" align="center">
-                    <br /><br /><br /><br /><br /><br /><br />
-                    <br /><br />
+                    <br /><br /><br /><br /><br /><br /><br /><br />
                     <font size="10px">
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                        <br />
+                        <br /><br /><br /><br />
                     </font>
 
-                    <img src="<?= public_path(); ?>/images/tagging/atlet.png" width="350" height="140">
+                    <img src="<?= public_path(); ?>/images/tagging/atlet.png" width="500" height="175">
                     <font size="10px">
                         <br /><br /><br /><br /><br /><br /><br /><br /><br />
-                        <br /><br /><br />
+                        <br /><br />
                     </font>
                 </td>
             </tr>
             <tr>
                 <td width="255" rowspan="3" align="left" valign="top">
-                    {{-- <font size="5px"><br /><br /><br /><br /></font> --}}
                     <img src="<?= public_path(); ?>/{{ $peserta->photo }}" height="385" width="350">
                 </td>
                 <td valign="top" width="100%" colspan="2" style="padding-left: 25px">
@@ -81,7 +77,7 @@
                 <td valign="top" width="100%" style="padding-left: 25px">
                     <font size="65"><strong>{{ $peserta->noAtlet }}</strong></font>
                 </td>
-                <td align="left">
+                <td align="right">
                     <img src="<?= public_path(); ?>/images/tagging/{{ $peserta->agensi->kod2 }}.png" height="140" width="150">                    
                 </td>
             </tr>

@@ -81,6 +81,11 @@ class HomeController extends Controller
 
         if(!$update) {
 
+            if(Auth::user()->id != 13 || Auth::user()->id != 6 || Auth::user()->id != 5) {
+                Session::flash('error', 'Ralat. Tidak dibenarkan pendaftaran baru. Hanya kemaskini dibenarkan.');
+                return back();
+            }
+
             $countKetua = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
                             ->where('role', 'KETUA')
                             ->count();

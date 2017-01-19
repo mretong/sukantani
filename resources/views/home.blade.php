@@ -66,7 +66,7 @@ input {
         </div>
 
         <?php $readonly = 'readonly'; ?>
-        @if(Auth::user()->id == 13)
+        @if(Auth::user()->id == 13 || Auth::user()->id == 6 || Auth::user()->id == 5)
             <?php $readonly = ''; ?>
         @endif
 
