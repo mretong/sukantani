@@ -51,7 +51,6 @@ class HomeController extends Controller
         // return $request->all();
 
         // Validation
-
         $validation = Validator::make($request->all(), [
                         'nama'      => 'required|min:3',
                         'role'      => 'required',

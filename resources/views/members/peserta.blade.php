@@ -87,6 +87,11 @@ input {
             </div>
         </div>
 
+        <?php $readonly = 'readonly'; ?>
+        @if(Auth::user()->id == 13)
+            <?php $readonly = ''; ?>
+        @endif
+
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Pendaftaran Peserta</strong></div>
@@ -103,11 +108,11 @@ input {
 
                 <div class="form-group">
                 	{!! Form::label('*Nama Penuh') !!}	
-                	{!! Form::text('nama', '', ['class' => 'form-control', 'autofocus' => 'on']) !!}
+                	{!! Form::text('nama', '', ['class' => 'form-control', 'autofocus' => 'on', $readonly]) !!}
             	</div>
 
 				{!! Form::label('*No Kad Pengenalan') !!}	
-				{!! Form::text('nokp', '', ['class' => 'form-control', 'placeholder' => 'Contoh : 710150025697']) !!}
+				{!! Form::text('nokp', '', ['class' => 'form-control', 'placeholder' => 'Contoh : 710150025697', $readonly]) !!}
 
 				{!! Form::label('No Telefon') !!}	
 				{!! Form::text('notel', '', ['class' => 'form-control', 'placeholder' => 'Contoh : 0123456789']) !!}

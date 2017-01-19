@@ -49,6 +49,11 @@ class PesertaController extends Controller
 
     public function pesertaPost(Request $request) {
 
+        if(Auth::user()->id != 13) {
+            Session::flash('error', 'Ralat. Tidak dibenarkan pendaftaran baru. Hanya kemaskini dibenarkan.');
+            return back();
+        }
+
         if(Auth::user()->status == 0) {
             Session::flush();
             Session::flash('error', 'Ralat.');

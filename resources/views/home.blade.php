@@ -65,20 +65,25 @@ input {
             </div>
         </div>
 
+        <?php $readonly = 'readonly'; ?>
+        @if(Auth::user()->id == 13)
+            <?php $readonly = ''; ?>
+        @endif
+
         <div class="col-xs-4">
             <div class="panel panel-primary">
-                <div class="panel-heading"><h4>Pendaftaran Maklumat Kontinjen</h4></div>
+                <div class="panel-heading"><h4>Pendaftaran Maklumat Kontinjen {{ Auth::user()->id }}</h4></div>
                 <div class="panel-body">
                 {!! Form::model(@$kontinjen, ['route' => ['kontinjen-post', @$kontinjen], 'method' => 'post', 'autocomplete' => 'off']) !!}
 
                 {!! Form::label('*Nama') !!}
-                {!! Form::text('nama', @$kontinjen->nama, ['class' => 'form-control', 'required']) !!}
+                {!! Form::text('nama', @$kontinjen->nama, ['class' => 'form-control', 'required', $readonly]) !!}
 
                 {!! Form::label('*Posisi') !!}
                 {!! Form::select('role', ['KETUA' => 'KETUA KONTINJEN', 'TIMBALAN' => 'TIMBALAN', 'URUSETIA' => 'URUSETIA'], @$kontinjen->role, ['class' => 'form-control', 'placeholder' => 'Posisi', 'required']) !!}
 
                 {!! Form::label('*No KP') !!}
-                {!! Form::text('nokp', @$kontinjen->nokp, ['class' => 'form-control', 'required']) !!}
+                {!! Form::text('nokp', @$kontinjen->nokp, ['class' => 'form-control', 'required', $readonly]) !!}
 
                 {!! Form::label('*No Tel') !!}
                 {!! Form::text('notel', @$kontinjen->notel, ['class' => 'form-control', 'required']) !!}

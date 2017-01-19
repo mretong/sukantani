@@ -22,6 +22,7 @@
                 -moz-background-size: cover;
                 -o-background-size: cover;
                 background-size: cover;
+                padding-left: 15px;
         }
 
         img {
@@ -34,7 +35,7 @@
 
         td  {
             font-size: 60px;
-            padding-left: 15px;
+            padding-left: 5px;
         }
 
         td img {
