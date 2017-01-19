@@ -80,7 +80,7 @@ class HomeController extends Controller
         // Check if role urusetia exceed limit
 
         if(!$update) {
-
+            
             if(Auth::user()->id != 13 || Auth::user()->id != 6 || Auth::user()->id != 5) {
                 Session::flash('error', 'Ralat. Tidak dibenarkan pendaftaran baru. Hanya kemaskini dibenarkan.');
                 return back();

@@ -23,6 +23,7 @@
                 -o-background-size: cover;
                 background-size: cover;
                 padding-left: 15px;
+                
         }
 
         img {

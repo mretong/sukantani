@@ -4,25 +4,19 @@
 
 @foreach($pesertas as $peserta)
     @if($loop->iteration != 1)
-        {{-- <div class="page-break"></div> --}}
+        <div class="page-break"></div>
 
-        <table border="1" width="110%">
+        <table border="1" width="105%">
+            <tr>
+                <td valign="bottom" align="center" height="350px" width="100%">&nbsp;</td>
+                <td colspan="2" valign="bottom" align="right">
+                    <img src="<?= public_path(); ?>/images/tagging/memacu.png" width="500" height="70">
+
+                </td>
+            </tr>
             <tr>
                 <td colspan="3" valign="bottom" align="center">
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <font size="10px">
-                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                        <br /><br /><br /><br />
-                    </font>
-                     <font size="5px">
-                        <br />
-                    </font>
-
                     <img src="<?= public_path(); ?>/images/tagging/atlet.png" width="500" height="175">
-                    <font size="10px">
-                        <br /><br /><br /><br /><br /><br /><br /><br /><br />
-                        <br /><br />
-                    </font>
                 </td>
             </tr>
             <tr>
@@ -50,20 +44,19 @@
     @else
         <table border="1" width="110%">
             <tr>
-                <td colspan="3" valign="bottom" align="center">
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <font size="10px">
-                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                        <br /><br /><br /><br />
+                <td valign="bottom" align="center" height="600" width="100%">&nbsp;</td>
+                <td colspan="2" valign="bottom" align="right">                    
+                    <img src="<?= public_path(); ?>/images/tagging/memacu.png" width="500" height="70">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" valign="middle" align="center" height="250">
+                    <font size="15px">
+                        <br /><br /><br /><br /><br /><br /><br />
                     </font>
-                     <font size="5px">
-                        <br />
-                    </font>
-
                     <img src="<?= public_path(); ?>/images/tagging/atlet.png" width="500" height="175">
-                    <font size="10px">
-                        <br /><br /><br /><br /><br /><br /><br /><br /><br />
-                        <br /><br />
+                    <font size="15px">
+                        <br /><br /><br />
                     </font>
                 </td>
             </tr>
