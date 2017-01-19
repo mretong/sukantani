@@ -30,8 +30,6 @@ class HomeController extends Controller
      */
     public function index() {
 
-        return Auth::user()->id;
-
         if(Auth::user()->status == 0) {
             Session::flush();
             Session::flash('error', 'Ralat.');
@@ -83,10 +81,12 @@ class HomeController extends Controller
 
         if(!$update) {
 
-            if(Auth::user()->id != 13 || Auth::user()->id != 6 || Auth::user()->id != 5) {
+            if(Auth::user()->id != 13 && Auth::user()->id != 6 && Auth::user()->id != 5) {
                 Session::flash('error', 'Ralat. Tidak dibenarkan pendaftaran baru. Hanya kemaskini dibenarkan.');
                 return back();
             }
+
+            // return Auth::user()->id;
 
             $countKetua = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
                             ->where('role', 'KETUA')
