@@ -30,6 +30,8 @@ class HomeController extends Controller
      */
     public function index() {
 
+        return Auth::user()->id;
+
         if(Auth::user()->status == 0) {
             Session::flush();
             Session::flash('error', 'Ralat.');
@@ -80,7 +82,7 @@ class HomeController extends Controller
         // Check if role urusetia exceed limit
 
         if(!$update) {
-            
+
             if(Auth::user()->id != 13 || Auth::user()->id != 6 || Auth::user()->id != 5) {
                 Session::flash('error', 'Ralat. Tidak dibenarkan pendaftaran baru. Hanya kemaskini dibenarkan.');
                 return back();
