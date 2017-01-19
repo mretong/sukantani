@@ -86,7 +86,7 @@ class HomeController extends Controller
                 return back();
             }
 
-            return Auth::user()->id;
+            // return Auth::user()->id;
 
             $countKetua = Kontinjen::where('agensi_id', Auth::user()->agensi->id)
                             ->where('role', 'KETUA')
