@@ -6,17 +6,28 @@
     @if($loop->iteration != 1)
         <div class="page-break"></div>
 
-        <table border="1" width="105%">
+        <table border="0" width="108%">
             <tr>
-                <td valign="bottom" align="center" height="350px" width="100%">&nbsp;</td>
-                <td colspan="2" valign="bottom" align="right">
+                <td valign="bottom" align="center" height="630" width="100%">&nbsp;</td>
+                <td colspan="2" valign="bottom" align="right">                    
                     <img src="<?= public_path(); ?>/images/tagging/memacu.png" width="500" height="70">
-
                 </td>
             </tr>
             <tr>
-                <td colspan="3" valign="bottom" align="center">
+                <td colspan="3" valign="middle" align="center" height="250">
+                    <font size="15px">
+                        <br /><br /><br /><br /><br />
+                    </font>
                     <img src="<?= public_path(); ?>/images/tagging/atlet.png" width="500" height="175">
+                    <font size="8px">
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                    </font>
+                    <font size="3px">
+                        <br />
+                    </font>
+                    <font size="2px">
+                        <br />
+                    </font>
                 </td>
             </tr>
             <tr>
@@ -42,9 +53,9 @@
             </tr>
         </table>
     @else
-        <table border="1" width="110%">
+        <table border="0" width="108%">
             <tr>
-                <td valign="bottom" align="center" height="600" width="100%">&nbsp;</td>
+                <td valign="bottom" align="center" height="630" width="100%">&nbsp;</td>
                 <td colspan="2" valign="bottom" align="right">                    
                     <img src="<?= public_path(); ?>/images/tagging/memacu.png" width="500" height="70">
                 </td>
@@ -52,11 +63,17 @@
             <tr>
                 <td colspan="3" valign="middle" align="center" height="250">
                     <font size="15px">
-                        <br /><br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br />
                     </font>
                     <img src="<?= public_path(); ?>/images/tagging/atlet.png" width="500" height="175">
-                    <font size="15px">
-                        <br /><br /><br />
+                    <font size="8px">
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                    </font>
+                    <font size="3px">
+                        <br />
+                    </font>
+                    <font size="2px">
+                        <br />
                     </font>
                 </td>
             </tr>
