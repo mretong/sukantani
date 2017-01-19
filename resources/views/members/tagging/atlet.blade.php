@@ -9,12 +9,16 @@
         <table border="1" width="110%">
             <tr>
                 <td colspan="3" valign="bottom" align="center">
-                    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br /><br /><br />
                     <font size="10px">
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br />
+                    </font>
+                     <font size="5px">
+                        <br />
                     </font>
 
-                    <img src="<?= public_path(); ?>/images/tagging/atlet.png" width="350" height="140">
+                    <img src="<?= public_path(); ?>/images/tagging/atlet.png" width="500" height="175">
                     <font size="10px">
                         <br /><br /><br /><br /><br /><br /><br /><br /><br />
                         <br /><br />
@@ -51,6 +55,9 @@
                     <font size="10px">
                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                         <br /><br /><br /><br />
+                    </font>
+                     <font size="5px">
+                        <br />
                     </font>
 
                     <img src="<?= public_path(); ?>/images/tagging/atlet.png" width="500" height="175">
