@@ -302,6 +302,16 @@ Route::post('/laporan/agensi/acara', [
 	'uses'	=> 'LaporanController@agensiAcaraPost'
 ]);
 
+Route::get('/laporan/senarai/pengurus', [
+    'as'    => 'senarai-pengurus',
+    'uses'  => 'LaporanController@senaraiPengurus'
+]);
+
+Route::post('/laporan/senarai/pengurus', [
+    'as'    => 'senarai-pengurus-post',
+    'uses'  => 'LaporanController@senaraiPengurusPost'
+]);
+
 
 
 //

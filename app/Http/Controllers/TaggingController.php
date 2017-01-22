@@ -24,16 +24,56 @@ class TaggingController extends Controller
 
     public function atlet() {
 
-    	$pesertas = Peserta::where('noAtlet', 'like', 'Q%')
+    	$pesertas = Peserta::where('noAtlet', 'like', 'M%')
                     ->orderBy('agensi_id', 'asc')
-                    ->skip(0)
-                    ->take(5)
+                    ->orderBy('noAtlet', 'asc')
+                    ->skip(160)
+                    ->take(50)
                     ->get();
 
         $pesertas = $pesertas->filter(function($temp) {
                         if(count($temp->acara) > 0)
                             return true;
                     });
+
+        //
+        // Query by Acara
+        //
+        // $pesertas = Peserta::where('noAtlet', 'like', 'D%')
+        //             ->orderBy('noAtlet', 'asc')
+        //             ->get();
+
+        // $pesertas = $pesertas->filter(function($temp) {
+        //                 foreach($temp->acara as $acara) {
+        //                     if($acara->id == 6)
+        //                         return true;
+        //                 }
+        //             });
+
+        //
+        // Query by noAtlet
+        //
+        // $pesertas = Peserta::where('noAtlet', 'M001')
+        //             ->orWhere('noAtlet', 'M002')
+        //             ->orWhere('noAtlet', 'M034')
+        //             ->orWhere('noAtlet', 'M035')
+        //             ->orWhere('noAtlet', 'M036')
+        //             ->orWhere('noAtlet', 'M045')
+        //             ->orWhere('noAtlet', 'M043')
+        //             ->orWhere('noAtlet', 'M042')
+        //             ->orWhere('noAtlet', 'M041')
+        //             ->orWhere('noAtlet', 'M046')
+        //             ->orWhere('noAtlet', 'M050')
+        //             ->orWhere('noAtlet', 'M055')
+        //             ->orWhere('noAtlet', 'M060')
+        //             ->orWhere('noAtlet', 'M061')
+        //             ->orWhere('noAtlet', 'M062')
+        //             ->orWhere('noAtlet', 'M022')
+        //             ->orWhere('noAtlet', 'M021')
+        //             ->get();
+
+
+        // dd($pesertas->toArray());
 
     	view()->share('pesertas', $pesertas);
     	$html = View::make('members.tagging.atlet');

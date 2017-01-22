@@ -95,6 +95,7 @@
                 @if(Auth::user()->agensi->id == 1)
                   <li><a href="{{ route('laporan-kontinjen') }}" target="_blank">ADMIN :: Senarai Kontinjen</a></li>
                   <li><a href="{{ route('tagging') }}" target="_blank">ADMIN :: Senarai Tag Peserta</a></li>
+                  <li><a href="{{ route('senarai-pengurus') }}" target="_blank">ADMIN :: Senarai Pengurus dan Jurulatih</a></li>
                   <li><a href="{{ route('penginapan') }}" target="_blank">ADMIN :: Penginapan</a></li>
                   <li><a href="{{ route('pdf-profil') }}" target="_blank" id="profil">ADMIN :: Profil Peserta</a></li>
                   <li><a href="{{ route('laporan-agensi-acara') }}" target="_blank" id="profil">ADMIN :: Laporan Senarai Peserta Agensi Mengikut Acara</a></li>

@@ -81,7 +81,7 @@ class HomeController extends Controller
 
         if(!$update) {
 
-            if(Auth::user()->id != 13 && Auth::user()->id != 6 && Auth::user()->id != 5) {
+            if(Auth::user()->id != 13 && Auth::user()->id != 6 && Auth::user()->id != 5 && Auth::user()->id != 2) {
                 Session::flash('error', 'Ralat. Tidak dibenarkan pendaftaran baru. Hanya kemaskini dibenarkan.');
                 return back();
             }
@@ -102,7 +102,7 @@ class HomeController extends Controller
                             ->where('role', 'TIMBALAN')
                             ->count();
 
-            if($countTimbalan > 0&& $request->get('role') == 'TIMBALAN') {
+            if($countTimbalan > 0 && $request->get('role') == 'TIMBALAN') {
                 Session::flash('error', 'Gagal. Mengikut rekod, kontinjen ini telah mempunyai Timbalan Ketua Kontinjen. Sila kemaskini untuk melakukan perubahan.');
                 return back()->withInput($request->all());
             }
@@ -111,8 +111,8 @@ class HomeController extends Controller
                             ->where('role', 'URUSETIA')
                             ->count();
 
-            if($countUrusetia > 10 && $request->get('role') == 'URUSETIA') {
-                Session::flash('error', 'Gagal. Mengikut rekod, kontinjen ini telah mempunyai had 10 urusetia. Sila kemaskini/hapus untuk melakukan perubahan.');
+            if($countUrusetia > 18 && $request->get('role') == 'URUSETIA') {
+                Session::flash('error', 'Gagal. Mengikut rekod, kontinjen ini telah mempunyai had 18 urusetia. Sila kemaskini/hapus untuk melakukan perubahan.');
                 return back()->withInput($request->all());
             }
 

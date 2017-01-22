@@ -49,7 +49,7 @@ class PesertaController extends Controller
 
     public function pesertaPost(Request $request) {
 
-        if(Auth::user()->id != 13 && Auth::user()->id != 6 && Auth::user()->id != 5) {
+        if(Auth::user()->id != 13 && Auth::user()->id != 6 && Auth::user()->id != 5 && Auth::user()->id != 2) {
             Session::flash('error', 'Ralat. Tidak dibenarkan pendaftaran baru. Hanya kemaskini dibenarkan.');
             return back();
         }
