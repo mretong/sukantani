@@ -12,7 +12,7 @@
             <div class="panel-body">
 		        <h3>Carian Senarai Pengurus dan Jurulatih Penyertaan Acara</h3>
 
-		        @include('members.includes._carian_pengurus')
+		        @include('members.includes._carian_agensi_acara')
 					
 	        </div>
         </div>
