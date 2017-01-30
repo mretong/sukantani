@@ -12,16 +12,29 @@
 				<div class="panel-body">
 				
 				<?php $count = 0; ?>
-				@foreach($acaras as $acara)
+				@foreach($games as $acara)
 
 					@if($loop->iteration != 1)
 						<div class="page-break"></div>
 					@endif
 
-					<?php $count++; ?>
+                    <?php 
+                        $bil = 0;
+                        $collection = collect($acara->peserta);
+                        $collection = $collection->sortByDesc('role');
+                        $collection = $collection->filter(function($peserta) {
+                                        if($peserta->agensi_id == Auth::user()->agensi->id)
+                                            return true;
+                                        });
+                        $collection = $collection->take(3);
+                        $pesertas   = $collection->sortByDesc('role');
+
+
+                    ?>
+
 					<table class="table table-condensed table-striped">
 					<tr>
-						<td colspan="8"><h4>#{{ $count }} - Acara {{ ucWords(strtolower($acara->nama)) }}</h4></td>
+						<td colspan="8"><h4>#{{ $loop->iteration }} - Acara {{ ucWords(strtolower($acara->nama)) }}</h4></td>
 					</tr>
 					<tr>
 						<td>Bil</td>
@@ -33,17 +46,27 @@
 						<td>Taraf Jawatan</td>
 						<td>No Atlet</td>
 					</tr>
-					<?php 
-						$bil = 0;
-						$collection = collect($acara->peserta);
-						$collection = $collection->sortByDesc('role');
-						$collection 	= $collection->filter(function($peserta) {
-										if($peserta->agensi_id == Auth::user()->agensi->id)
-											return true;
-										});
-						$pesertas 	= $collection->take(3);
-					?>
+					
 					@foreach($pesertas as $peserta)
+
+                        @if($loop->iteration % 6 == 0)
+                            </table>
+                            <div class="page-break"></div>
+                            <table class="table table-condensed table-striped">
+                            <tr>
+                                <td colspan="8"><h4>#{{ $loop->iteration }} - Acara {{ ucWords(strtolower($acara->nama)) }}</h4></td>
+                            </tr>
+                            <tr>
+                                <td>Bil</td>
+                                <td>Nama</td>
+                                <td>No KP</td>
+                                <td>Jantina</td>
+                                <td>No Pekerja</td>
+                                <td>Gred Jawatan</td>
+                                <td>Taraf Jawatan</td>
+                                <td>No Atlet</td>
+                            </tr>
+                        @endif
 						<tr>
 							<td>{{ $loop->iteration }}</td>
 							<td>

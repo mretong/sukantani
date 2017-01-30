@@ -169,40 +169,12 @@ class PdfController extends Controller
     }
 
     public function laporanAcaraKeseluruhan() {
-        $acaras = Acara::orderBy('nama', 'asc')->get();
+        $agensi = Agensi::where('id', Auth::user()->id)->first();
+        $games = Acara::orderBy('nama', 'asc')->get();
 
-        // ### TESTING ###
-        // $pesertas = null;
-        // foreach($acaras as $acara) {
+        // return view('members.pdf.laporan.acara-keseluruhan', compact('games', 'agensi'));
 
-        //     $collection = collect($acara->peserta);
-        //     $collection = $collection->sortByDesc('role');
-        //     $collection = $collection->filter(function($peserta) {
-        //                     if($peserta->agensi_id == Auth::user()->agensi->id)
-        //                         return true;
-        //                     });
-        //     $pesertas   = $collection->take(3);
-
-        //     echo "<br /><br />";
-        //     echo "Acara : " . $acara->nama . "<br />";
-
-        //     $bil = 1;
-        //     foreach($pesertas as $peserta){
-                
-        //         echo $bil++ . "<br />";
-        //         echo "Nama : " . $peserta->nama . "<br />";
-        //         echo "Agensi : " . $peserta->agensi->nama . "<br />";
-        //     }
-
-        // }
-
-        // return;
-        // dd($pesertas->toArray());
-
-        // ### END OF TESTING ###
-
-        // return view('members.pdf.laporan.acara-keseluruhan', compact('acaras'));
-        $pdf = Pdf::loadView('members.pdf.laporan.acara-keseluruhan', ['acaras' => $acaras]);
+        $pdf = Pdf::loadView('members.pdf.laporan.acara-keseluruhan', ['games' => $games, 'agensi' => $agensi]);
         return $pdf->stream(Auth::user()->agensi->kod . ' - Laporan Keseluruhan Peserta Mengikut Acara.pdf');
     }
 
@@ -343,6 +315,33 @@ class PdfController extends Controller
         view()->share('games', $games);
 
         $pdf = PDF::loadView('members.pdf.keputusanAgensiAcara');
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Senarai Peserta Mengikut Acara.pdf'); 
+
+        return view('members.pdf.keputusanAgensiAcara', compact('games', 'agensi'));
+    }
+
+    public function pengurusPertandingan($acara_id) {
+
+        $acara = Acara::where('id', $acara_id)->first();
+
+        $pesertas = Peserta::all();
+
+        $pesertas = $pesertas->filter(function($peserta) use ($acara_id) {
+                            foreach($peserta->acara as $acara) {
+                                if($acara->id == $acara_id){
+                                    return true;
+                                }
+                            }
+                        });
+
+        $pesertas = $pesertas->sortByDesc('role')->sortBy('agensi_id');
+
+        // dd($pesertas->toArray());
+
+        view()->share('acara', $acara);
+        view()->share('pesertas', $pesertas);
+
+        $pdf = PDF::loadView('members.pdf.pengurusPertandingan');
         return $pdf->stream(Auth::user()->agensi->kod . ' - Senarai Peserta Mengikut Acara.pdf'); 
 
         return view('members.pdf.keputusanAgensiAcara', compact('games', 'agensi'));

@@ -151,7 +151,7 @@ class LaporanController extends Controller
         $games = Acara::orderBy('nama', 'asc')->get();
 
         return view('members.laporan.keputusanAgensiAcara', compact('games', 'agensi'));
-    }
+    }    
 
     public function senaraiPengurus() {
 
@@ -167,6 +167,32 @@ class LaporanController extends Controller
         $managers = Peserta::where('role', '!=', 'ATLET')->where('agensi_id', $request->get('agensi_id'))->get();
 
         return view('members.laporan.senaraiPengurus', compact('games', 'managers', 'agensi'));
+    }
+
+    public function laporanPengurusPertandingan() {
+
+        $games = Acara::orderBy('nama', 'asc')->pluck('nama', 'id');
+
+        return view('members.laporan.pengurus-pertandingan', compact('games'));
+    }
+
+    public function laporanPengurusPertandinganPost(Request $request) {
+
+        $acara = Acara::where('id', $request->get('acara_id'))->first();
+
+        $pesertas = Peserta::all();
+
+        $pesertas = $pesertas->filter(function($peserta) use ($request) {
+                            foreach($peserta->acara as $acara) {
+                                if($acara->id == $request->get('acara_id')){
+                                    return true;
+                                }
+                            }
+                        });
+
+        $pesertas = $pesertas->sortByDesc('role')->sortBy('agensi_id');
+
+        return view('members.laporan.keputusanPengurusPertandingan', compact('pesertas', 'acara'));
     }
 
 

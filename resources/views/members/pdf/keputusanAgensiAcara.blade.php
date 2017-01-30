@@ -1,4 +1,3 @@
-
 @extends('layouts.pdf')
 
 @section('content')

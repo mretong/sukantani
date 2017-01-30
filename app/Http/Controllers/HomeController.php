@@ -111,7 +111,7 @@ class HomeController extends Controller
                             ->where('role', 'URUSETIA')
                             ->count();
 
-            if($countUrusetia > 18 && $request->get('role') == 'URUSETIA') {
+            if($countUrusetia > 20 && $request->get('role') == 'URUSETIA') {
                 Session::flash('error', 'Gagal. Mengikut rekod, kontinjen ini telah mempunyai had 18 urusetia. Sila kemaskini/hapus untuk melakukan perubahan.');
                 return back()->withInput($request->all());
             }

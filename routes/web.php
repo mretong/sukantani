@@ -234,6 +234,11 @@ Route::get('/pdf/laporan/agensi/acara/{agensi_id}', [
     'uses'  => 'PdfController@keputusanAgensiAcara'
 ]);
 
+Route::get('/pdf/laporan/pengurus/pertandingan/{id}', [
+    'as'    => 'pdf-pengurus-pertandingan',
+    'uses'  => 'PdfController@pengurusPertandingan'
+]);
+
 
 //
 // EXCEL
@@ -311,6 +316,18 @@ Route::post('/laporan/senarai/pengurus', [
     'as'    => 'senarai-pengurus-post',
     'uses'  => 'LaporanController@senaraiPengurusPost'
 ]);
+
+Route::get('/laporan/pengurus/pertandingan', [
+    'as'    => 'laporan-pengurus-pertandingan',
+    'uses'  => 'LaporanController@laporanPengurusPertandingan'
+]);
+
+Route::post('/laporan/pengurus/pertandingan', [
+    'as'    => 'laporan-pengurus-pertandingan-post',
+    'uses'  => 'LaporanController@laporanPengurusPertandinganPost'
+]);
+
+
 
 
 

@@ -99,6 +99,7 @@
                   <li><a href="{{ route('penginapan') }}" target="_blank">ADMIN :: Penginapan</a></li>
                   <li><a href="{{ route('pdf-profil') }}" target="_blank" id="profil">ADMIN :: Profil Peserta</a></li>
                   <li><a href="{{ route('laporan-agensi-acara') }}" target="_blank" id="profil">ADMIN :: Laporan Senarai Peserta Agensi Mengikut Acara</a></li>
+                  <li><a href="{{ route('laporan-pengurus-pertandingan') }}" target="_blank" id="profil">ADMIN :: Laporan Kepada Pengurus Pertandingan</a></li>
                   <li><a href="{{ route('summary') }}">ADMIN :: Rumusan</a></li>
                   <li><a href="{{ route('transaksi') }}">ADMIN :: Transaksi</a></li>
                   <li><a href="{{ route('setting6') }}">ADMIN :: No KP bermasalah</a></li>
