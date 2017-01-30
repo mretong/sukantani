@@ -234,6 +234,11 @@ Route::get('/pdf/laporan/agensi/acara/{agensi_id}', [
     'uses'  => 'PdfController@keputusanAgensiAcara'
 ]);
 
+Route::get('/pdf/laporan/agensi/acara2/{agensi_id}', [
+    'as'    => 'pdf-agensi-acara2',
+    'uses'  => 'PdfController@keputusanAgensiAcara2'
+]);
+
 Route::get('/pdf/laporan/pengurus/pertandingan/{id}', [
     'as'    => 'pdf-pengurus-pertandingan',
     'uses'  => 'PdfController@pengurusPertandingan'
@@ -298,14 +303,26 @@ Route::post('/laporan/kontinjen', [
 ]);
 
 Route::get('/laporan/agensi/acara', [
-	'as'	=> 'laporan-agensi-acara',
-	'uses'	=> 'LaporanController@agensiAcara'
+    'as'    => 'laporan-agensi-acara',
+    'uses'  => 'LaporanController@agensiAcara'
 ]);
 
 Route::post('/laporan/agensi/acara', [
-	'as'	=> 'laporan-agensi-acara-post',
-	'uses'	=> 'LaporanController@agensiAcaraPost'
+    'as'    => 'laporan-agensi-acara-post',
+    'uses'  => 'LaporanController@agensiAcaraPost'
 ]);
+
+Route::get('/laporan/agensi/acara2', [
+	'as'	=> 'laporan-agensi-acara2',
+	'uses'	=> 'LaporanController@agensiAcara2'
+]);
+
+Route::post('/laporan/agensi/acara2', [
+	'as'	=> 'laporan-agensi-acara-post2',
+	'uses'	=> 'LaporanController@agensiAcaraPost2'
+]);
+
+
 
 Route::get('/laporan/senarai/pengurus', [
     'as'    => 'senarai-pengurus',

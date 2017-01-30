@@ -151,7 +151,26 @@ class LaporanController extends Controller
         $games = Acara::orderBy('nama', 'asc')->get();
 
         return view('members.laporan.keputusanAgensiAcara', compact('games', 'agensi'));
-    }    
+    }
+
+
+    public function agensiAcara2() {
+
+        $agencies = Agensi::orderBy('nama', 'asc')->pluck('nama', 'id');
+
+        return view('members.laporan.agensiAcara2', compact('agencies'));
+    }
+
+    public function agensiAcaraPost2(Request $request) {
+
+        $agensi = Agensi::where('id', $request->get('agensi_id'))->first();
+        $games = Acara::orderBy('nama', 'asc')->get();
+
+        return view('members.laporan.keputusanAgensiAcara2', compact('games', 'agensi'));
+    }
+
+
+
 
     public function senaraiPengurus() {
 

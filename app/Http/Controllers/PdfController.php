@@ -103,6 +103,8 @@ class PdfController extends Controller
     public function profilPost(Request $request) {
 
         $pesertas = Peserta::where('agensi_id', $request->get('agensi_id'))
+                    ->skip(199)
+                    ->take(100)
                     ->orderBy('noAtlet', 'asc')
                     ->get();
 
@@ -315,6 +317,20 @@ class PdfController extends Controller
         view()->share('games', $games);
 
         $pdf = PDF::loadView('members.pdf.keputusanAgensiAcara');
+        return $pdf->stream(Auth::user()->agensi->kod . ' - Senarai Peserta Mengikut Acara.pdf'); 
+
+        return view('members.pdf.keputusanAgensiAcara', compact('games', 'agensi'));
+    }
+
+    public function keputusanAgensiAcara2($agensi_id) {
+
+        $agensi = Agensi::where('id', $agensi_id)->first();
+        $games = Acara::orderBy('nama', 'asc')->get();
+
+        view()->share('agensi', $agensi);
+        view()->share('games', $games);
+
+        $pdf = PDF::loadView('members.pdf.keputusanAgensiAcara2');
         return $pdf->stream(Auth::user()->agensi->kod . ' - Senarai Peserta Mengikut Acara.pdf'); 
 
         return view('members.pdf.keputusanAgensiAcara', compact('games', 'agensi'));
