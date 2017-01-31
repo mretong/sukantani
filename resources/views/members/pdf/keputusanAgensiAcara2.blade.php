@@ -39,7 +39,7 @@
 
                         @foreach($collections as $collection)
 
-                            @if($loop->iteration % 11 == 0)
+                            @if($loop->iteration % 10 == 0)
                                 </table>
                                 <div class="page-break"></div>
 

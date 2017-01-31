@@ -103,8 +103,6 @@ class PdfController extends Controller
     public function profilPost(Request $request) {
 
         $pesertas = Peserta::where('agensi_id', $request->get('agensi_id'))
-                    ->skip(199)
-                    ->take(100)
                     ->orderBy('noAtlet', 'asc')
                     ->get();
 
