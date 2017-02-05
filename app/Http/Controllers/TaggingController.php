@@ -61,10 +61,10 @@ class TaggingController extends Controller
         // 3 - Query by noAtlet
         // ########################
 
-         $pesertas = Peserta::where('noAtlet', 'D046')
-                     ->orWhere('noAtlet', 'D045')
-        //             ->orWhere('noAtlet', 'M080')
-        //             ->orWhere('noAtlet', 'M175')
+         $pesertas = Peserta::where('noAtlet', 'R031')
+                    // ->orWhere('noAtlet', 'D172')
+                    // ->orWhere('noAtlet', 'D171')
+                    // ->orWhere('noAtlet', 'C014')
         //             ->orWhere('noAtlet', 'M212')
         //             ->orWhere('noAtlet', 'M194')
         //             ->orWhere('noAtlet', 'M197')

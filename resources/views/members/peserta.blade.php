@@ -87,7 +87,7 @@ input {
             </div>
         </div>
 
-        <?php $readonly = 'readonly'; ?>
+        <?php $readonly = ''; ?>
         @if(Auth::user()->id == 13 || Auth::user()->id == 6 || Auth::user()->id == 5 || Auth::user()->id == 2)
             <?php $readonly = ''; ?>
         @endif
