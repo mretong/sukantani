@@ -20,5 +20,13 @@ class UsersTableSeeder extends Seeder
             'agensi_id'     => '1',
             'status'        => '1'
         ]);
+
+        User::create([
+            'name'          => strtoupper('akmal'),
+            'email'         => 'mretong@gmail.com',
+            'password'      => bcrypt('akmal'),
+            'agensi_id'     => '1',
+            'status'        => '1'
+        ]);
     }
 }
